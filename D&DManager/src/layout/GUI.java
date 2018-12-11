@@ -1,6 +1,6 @@
 package layout;
 
-public class WindowManager {
+public class GUI {
 
 	public static void main(String[] args) {
 		@SuppressWarnings("unused")
