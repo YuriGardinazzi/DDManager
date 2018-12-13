@@ -20,14 +20,13 @@ import javax.swing.JLabel;
 public class LeftPanel extends CustomPanel {
 
 	private static final long serialVersionUID = 1L;
-
+	private BufferedImage myPicture;
 	public LeftPanel(Dimension d, Color bg) {
 		super(d, bg);
 		this.setLayout(new GridBagLayout());
 		
-		BufferedImage myPicture = null;
 		try {
-			myPicture = ImageIO.read(new File("images/testPic.jpg"));
+			this.setMyPicture(ImageIO.read(new File("images/testPic.jpg")));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,6 +52,18 @@ public class LeftPanel extends CustomPanel {
 	    }
 		
 
+	}
+	/**
+	 * @return the myPicture
+	 */
+	public BufferedImage getMyPicture() {
+		return myPicture;
+	}
+	/**
+	 * @param myPicture the myPicture to set
+	 */
+	public void setMyPicture(BufferedImage myPicture) {
+		this.myPicture = myPicture;
 	}
 
 }
