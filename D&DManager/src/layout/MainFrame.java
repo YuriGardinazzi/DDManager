@@ -27,7 +27,7 @@ public class MainFrame extends JFrame {
 
 		this.setLayout(new GridBagLayout());
 
-		LeftPanel p1 = new LeftPanel(new Dimension(20,70), Color.red);		
+		LeftPanel p1 = new LeftPanel(new Dimension(20,70), Color.orange);		
 		
 		GridPanel grid = new GridPanel(20,20, 50);
 		JScrollPane scrollGrid = new JScrollPane(grid,
