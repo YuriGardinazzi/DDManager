@@ -3,6 +3,7 @@ package layout;
 import javax.swing.*;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 public class MyMenu extends JMenuBar {
 
@@ -24,16 +25,30 @@ public class MyMenu extends JMenuBar {
 		        "The only menu in this program that has menu items");
 		this.add(menu);
 		
-		menuItem = new JMenuItem("Random text",KeyEvent.VK_T);
+		
+		//change profile picture
+		menuItem = new JMenuItem("Change profile picture",KeyEvent.VK_T);
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(
 								KeyEvent.VK_1, ActionEvent.ALT_MASK));
 		menuItem.getAccessibleContext().setAccessibleDescription(
 											"This doesn't really do anything");
+		menuItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Son stato premuto");
+				
+			}
+		});
+		
 		menu.add(menuItem);
 		
+		
+		//Save file item
 		menuItem = new JMenuItem("save", new ImageIcon("images/save_icon.png"));
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(
 										KeyEvent.VK_S, ActionEvent.CTRL_MASK));
+		
 		menu.add(menuItem);
 		
 	}
