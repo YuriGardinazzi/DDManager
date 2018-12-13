@@ -1,6 +1,7 @@
-package layout;
+package menu;
 
 import javax.swing.*;
+import layout.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,9 +12,9 @@ public class MyMenu extends JMenuBar {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private LeftPanel leftP;
 	
-	
-	public MyMenu() {
+	public MyMenu(LeftPanel p) {
 		super();
 		
 		//menu building

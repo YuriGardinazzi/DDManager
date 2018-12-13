@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
 import player_map.GridPanel;
-
+import menu.*;
 public class MainFrame extends JFrame {
 
 	/**
@@ -64,7 +64,7 @@ public class MainFrame extends JFrame {
 		this.add(p3, c);
 		
 		
-		MyMenu m = new MyMenu();
+		MyMenu m = new MyMenu(p1);
 		this.setJMenuBar(m);
 		this.pack();
 		
