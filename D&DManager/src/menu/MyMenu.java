@@ -28,21 +28,9 @@ public class MyMenu extends JMenuBar {
 		
 		
 		//change profile picture
-		menuItem = new JMenuItem("Change profile picture",KeyEvent.VK_T);
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(
-								KeyEvent.VK_1, ActionEvent.ALT_MASK));
-		menuItem.getAccessibleContext().setAccessibleDescription(
-											"This doesn't really do anything");
-		menuItem.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Son stato premuto");
-				
-			}
-		});
-		
-		menu.add(menuItem);
+		ChangeProPic proPicItem = new ChangeProPic(this.leftP);
+
+		menu.add(proPicItem);
 		
 		
 		//Save file item
