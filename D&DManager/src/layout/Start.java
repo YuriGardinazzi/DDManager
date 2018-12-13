@@ -1,6 +1,6 @@
 package layout;
 
-public class GUI {
+public class Start {
 
 	public static void main(String[] args) {
 		@SuppressWarnings("unused")
