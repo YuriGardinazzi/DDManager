@@ -18,7 +18,9 @@ public class MainFrame extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	private LeftPanel p1;
+	private CustomPanel p2;
+	private CustomPanel p3;
 	public MainFrame() {
 		this("");
 	}
@@ -27,7 +29,7 @@ public class MainFrame extends JFrame {
 
 		this.setLayout(new GridBagLayout());
 
-		LeftPanel p1 = new LeftPanel(new Dimension(20,70), Color.orange);		
+		this.p1 = new LeftPanel(new Dimension(20,70), Color.orange);		
 		
 		GridPanel grid = new GridPanel(20,20, 50);
 		JScrollPane scrollGrid = new JScrollPane(grid,
@@ -40,31 +42,32 @@ public class MainFrame extends JFrame {
 		 * e un limite massimo
 		 */
 		//Middle Panel
-		CustomPanel p2 = new CustomPanel(new Dimension(50,70), Color.gray);
+		this.p2 = new CustomPanel(new Dimension(50,70), Color.gray);
 					p2.add(scrollGrid);
 	
 		//Right Panel		
-		CustomPanel p3 = new CustomPanel(new Dimension(20,70), Color.pink);
+		this.p3 = new CustomPanel(new Dimension(20,70), Color.pink);
 		GridBagConstraints c = new GridBagConstraints();
 		
 		//left panel
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;  //coloumn
 		c.gridy = 0;  //row
-		this.add(p1,c);
+		
+		this.add(this.p1,c);
+		
 		//middle panel
 		c.fill = GridBagConstraints.NONE;
 		c.gridx = 1;
 		c.gridy = 0;
-		this.add(p2, c);
+		this.add(this.p2, c);
 		//right panel
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 2;
 		c.gridy = 0;
-		this.add(p3, c);
+		this.add(this.p3, c);
 		
-		
-		MyMenu m = new MyMenu(p1);
+		MyMenu m = new MyMenu(this.p1);
 		this.setJMenuBar(m);
 		this.pack();
 		

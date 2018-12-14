@@ -16,7 +16,7 @@ public class MyMenu extends JMenuBar {
 	
 	public MyMenu(LeftPanel p) {
 		super();
-		
+		this.setLeftP(p);
 		//menu building
 		JMenu menu = new JMenu("File");
 		JMenuItem menuItem;
@@ -28,7 +28,7 @@ public class MyMenu extends JMenuBar {
 		
 		
 		//change profile picture
-		ChangeProPic proPicItem = new ChangeProPic(this.leftP);
+		ChangeProPic proPicItem = new ChangeProPic(this.getLeftP());
 
 		menu.add(proPicItem);
 		
@@ -40,6 +40,20 @@ public class MyMenu extends JMenuBar {
 		
 		menu.add(menuItem);
 		
+	}
+
+	/**
+	 * @return the leftP
+	 */
+	public LeftPanel getLeftP() {
+		return leftP;
+	}
+
+	/**
+	 * @param leftP the leftP to set
+	 */
+	public void setLeftP(LeftPanel leftP) {
+		this.leftP = leftP;
 	}
 
 }

@@ -4,8 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
+
+import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import layout.LeftPanel;
 
@@ -32,14 +35,33 @@ public class ChangeProPic extends JMenuItem implements ActionListener{
 								KeyEvent.VK_P, ActionEvent.CTRL_MASK));
 		this.addActionListener(this);
 	}
+	
+	/**
+	 * Event that change the profile pic
+	 */
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("Sono dentro l'evento :OOOOOO");
+		
+		JFileChooser chooser = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(
+				"JPG & png Images", "jpg", "png");
+		chooser.setFileFilter(filter);
+		chooser.setAcceptAllFileFilterUsed(false);
+		int returnVal = chooser.showOpenDialog(this.getParent());
+		
+		if(returnVal == JFileChooser.APPROVE_OPTION) {
+
+			if(chooser.getSelectedFile().getPath() != null) {
+				
+				this.getPanel().ChangeProfilePic(chooser.getSelectedFile().getPath());
+			}
+			
+		}
 	}
 	/**
 	 * @return the panel
 	 */
 	private LeftPanel getPanel() {
-		return panel;
+		return this.panel;
 	}
 	/**
 	 * @param panel the panel to set
