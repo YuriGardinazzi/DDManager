@@ -20,30 +20,20 @@ import javax.swing.JLabel;
 public class LeftPanel extends CustomPanel {
 
 	private static final long serialVersionUID = 1L;
-
+	private BufferedImage myPicture;
+	private JLabel imgLabel;
+	
 	public LeftPanel(Dimension d, Color bg) {
 		super(d, bg);
 		this.setLayout(new GridBagLayout());
-		
-		BufferedImage myPicture = null;
-		try {
-			myPicture = ImageIO.read(new File("images/testPic.jpg"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		ImageIcon toScale = new ImageIcon(myPicture);
-	//	Dimension scaledDim = super.calculateDimensions(new Dimension(5,5));
-		Image scaledImage = toScale.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH );
-		JLabel picLabel = new JLabel(new ImageIcon(scaledImage));
-			   picLabel.setPreferredSize(new Dimension(myPicture.getWidth(), myPicture.getHeight()));
+		this.setImgLabel(new JLabel());
+		this.ChangeProfilePic("images/testPic.jpg");
+		this.imgLabel.setPreferredSize(new Dimension(this.getMyPicture().getWidth(),this.getMyPicture().getHeight()));
 
-			   
 	    GridBagConstraints c = new GridBagConstraints();   
 		
 	    c.gridy = 0;
-	    this.add(picLabel, c);
+	    this.add(this.getImgLabel(), c);
 	  
 	    for(int i = 0; i < 10; i++) {
 	    	c.gridy++;
@@ -53,6 +43,44 @@ public class LeftPanel extends CustomPanel {
 	    }
 		
 
+	}
+	
+	public void ChangeProfilePic(String path) {
+		try {
+			this.setMyPicture( ImageIO.read(new File(path)));
+		} catch (IOException e) {
+			System.out.println("Wrong Image Path!");
+			e.printStackTrace();
+		}
+		ImageIcon toScale = new ImageIcon(this.getMyPicture());
+		Image scaledImage = toScale.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH );
+	//	this.setImgLabel(new JLabel(new ImageIcon(scaledImage)));
+		this.getImgLabel().setIcon( new ImageIcon(scaledImage));
+	}
+	
+	/**
+	 * @return the myPicture
+	 */
+	public BufferedImage getMyPicture() {
+		return myPicture;
+	}
+	/**
+	 * @param myPicture the myPicture to set
+	 */
+	public void setMyPicture(BufferedImage myPicture) {
+		this.myPicture = myPicture;
+	}
+	/**
+	 * @return the imgLabel
+	 */
+	public JLabel getImgLabel() {
+		return imgLabel;
+	}
+	/**
+	 * @param imgLabel the imgLabel to set
+	 */
+	public void setImgLabel(JLabel imgLabel) {
+		this.imgLabel = imgLabel;
 	}
 
 }
