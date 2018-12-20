@@ -21,13 +21,14 @@ public class LeftPanel extends CustomPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage myPicture;
+	private String myPicturePath = "images" + File.separator + "default.jpg";
 	private JLabel imgLabel;
 	
 	public LeftPanel(Dimension d, Color bg) {
 		super(d, bg);
 		this.setLayout(new GridBagLayout());
 		this.setImgLabel(new JLabel());
-		this.ChangeProfilePic("images/testPic.jpg");
+		this.ChangeProfilePic(this.getMyPicturePath());
 		this.imgLabel.setPreferredSize(new Dimension(this.getMyPicture().getWidth(),this.getMyPicture().getHeight()));
 
 	    GridBagConstraints c = new GridBagConstraints();   
@@ -52,10 +53,22 @@ public class LeftPanel extends CustomPanel {
 			System.out.println("Wrong Image Path!");
 			e.printStackTrace();
 		}
+		//change profile pic
 		ImageIcon toScale = new ImageIcon(this.getMyPicture());
 		Image scaledImage = toScale.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH );
-	//	this.setImgLabel(new JLabel(new ImageIcon(scaledImage)));
 		this.getImgLabel().setIcon( new ImageIcon(scaledImage));
+		
+		//save profile pic as default.jpg
+		try {
+			ImageIO.write(this.getMyPicture(), "jpg", new File(this.getMyPicturePath()));
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.err.println("Can't save the profile picture");
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
 	/**
@@ -81,6 +94,20 @@ public class LeftPanel extends CustomPanel {
 	 */
 	public void setImgLabel(JLabel imgLabel) {
 		this.imgLabel = imgLabel;
+	}
+
+	/**
+	 * @return the myPicturePath
+	 */
+	public String getMyPicturePath() {
+		return myPicturePath;
+	}
+
+	/**
+	 * @param myPicturePath the myPicturePath to set
+	 */
+	public void setMyPicturePath(String myPicturePath) {
+		this.myPicturePath = myPicturePath;
 	}
 
 }
