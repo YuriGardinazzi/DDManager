@@ -2,8 +2,11 @@ package layout;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+
+import javax.swing.BoxLayout;
 
 //import java.awt.Dimension;
 
@@ -27,7 +30,7 @@ public class MainFrame extends JFrame {
 	public MainFrame(String title) {
 		super(title);
 
-		this.setLayout(new GridBagLayout());
+		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.X_AXIS));
 
 		this.p1 = new LeftPanel(new Dimension(20,70), Color.orange);		
 		
@@ -43,29 +46,20 @@ public class MainFrame extends JFrame {
 		 */
 		//Middle Panel
 		this.p2 = new CustomPanel(new Dimension(50,70), Color.gray);
-					p2.add(scrollGrid);
+			 p2.add(scrollGrid);
+			 p2.setLayout(new FlowLayout());
 	
 		//Right Panel		
 		this.p3 = new CustomPanel(new Dimension(20,70), Color.pink);
-		GridBagConstraints c = new GridBagConstraints();
-		
+		     p3.setLayout(new FlowLayout());
+
+		     
 		//left panel
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridx = 0;  //coloumn
-		c.gridy = 0;  //row
-		
-		this.add(this.p1,c);
-		
+		this.add(this.p1);		
 		//middle panel
-		c.fill = GridBagConstraints.NONE;
-		c.gridx = 1;
-		c.gridy = 0;
-		this.add(this.p2, c);
+		this.add(this.p2);
 		//right panel
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridx = 2;
-		c.gridy = 0;
-		this.add(this.p3, c);
+		this.add(this.p3);
 		
 		MyMenu m = new MyMenu(this.p1);
 		this.setJMenuBar(m);
@@ -73,7 +67,7 @@ public class MainFrame extends JFrame {
 		
 		
 		//this.setMaximumSize(new Dimension(300,500));
-		this.setResizable(false);
+	//	this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
