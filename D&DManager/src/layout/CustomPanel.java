@@ -10,7 +10,7 @@ public class CustomPanel extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	private Dimension screenRatio;
-	private final Dimension MINIMUM_RATIO = new Dimension(5,25);
+	private final Dimension MINIMUM_RATIO = new Dimension(10,25);
 	
 	public CustomPanel(Dimension d, Color bg) {	
 		//this.setPreferredSize(d);
