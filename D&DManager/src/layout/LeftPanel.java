@@ -15,6 +15,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 
 public class LeftPanel extends CustomPanel {
@@ -38,7 +39,7 @@ public class LeftPanel extends CustomPanel {
 	  
 	    for(int i = 0; i < 10; i++) {
 	    	c.gridy++;
-	    	Button btn  = new Button("Test " + i);
+	    	JButton btn  = new JButton("Test " + i);
 	    	btn.setMinimumSize(new Dimension(100, 25));
 	    	this.add(btn, c);
 	    }
@@ -46,6 +47,10 @@ public class LeftPanel extends CustomPanel {
 
 	}
 	
+	/**
+	 * Change profile pic with a given path
+	 * @param path
+	 */
 	public void ChangeProfilePic(String path) {
 		try {
 			this.setMyPicture( ImageIO.read(new File(path)));

@@ -3,9 +3,6 @@ package layout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-
 import javax.swing.BoxLayout;
 
 //import java.awt.Dimension;
@@ -23,7 +20,7 @@ public class MainFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private LeftPanel p1;
 	private CustomPanel p2;
-	private CustomPanel p3;
+	private RightPanel p3;
 	public MainFrame() {
 		this("");
 	}
@@ -52,7 +49,7 @@ public class MainFrame extends JFrame {
 			// p2.setLayout(new FlowLayout());
 	
 		//Right Panel		
-		this.p3 = new CustomPanel(new Dimension(20,70), Color.pink);
+		this.p3 = new RightPanel(new Dimension(20,70), Color.pink);
 		     p3.setLayout(new FlowLayout());
 
 		     
