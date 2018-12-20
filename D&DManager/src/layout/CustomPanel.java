@@ -12,14 +12,14 @@ public class CustomPanel extends JPanel{
 	private Dimension screenRatio;
 	private final Dimension MINIMUM_RATIO = new Dimension(5,25);
 	
-	public CustomPanel(Dimension d, Color bg) {
-		
+	public CustomPanel(Dimension d, Color bg) {	
 		//this.setPreferredSize(d);
 		this.setScreenRatio(d);
 		this.setBackground(bg);
 		this.setSizes();
 		
 	}
+	
 	/**
 	 * Set preferred and minimum size
 	 */
@@ -75,12 +75,3 @@ public class CustomPanel extends JPanel{
 		return MINIMUM_RATIO;
 	}
 }
-
-/*class ResizeListener extends ComponentAdapter {
-    public void componentResized(ComponentEvent e) {
-        //TODO: codice del resize
-    	((CustomPanel) e.getComponent()).updateSize();
-    	//System.out.println();
-    }
-}
-*/
