@@ -32,13 +32,15 @@ public class MainFrame extends JFrame {
 
 		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.X_AXIS));
 
+
 		this.p1 = new LeftPanel(new Dimension(20,70), Color.orange);		
 		
 		GridPanel grid = new GridPanel(20,20, 50);
 		JScrollPane scrollGrid = new JScrollPane(grid,
 												  JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 												  JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		scrollGrid.setPreferredSize(new Dimension(600,350));			
+					scrollGrid.setPreferredSize(new Dimension(600,350));
+					scrollGrid.setMinimumSize(new Dimension(600,350));			
 		/**
 		 * TODO:
 		 * Creare una dimensione coerente con la grandezza delle celle 
@@ -47,7 +49,7 @@ public class MainFrame extends JFrame {
 		//Middle Panel
 		this.p2 = new CustomPanel(new Dimension(50,70), Color.gray);
 			 p2.add(scrollGrid);
-			 p2.setLayout(new FlowLayout());
+			// p2.setLayout(new FlowLayout());
 	
 		//Right Panel		
 		this.p3 = new CustomPanel(new Dimension(20,70), Color.pink);
