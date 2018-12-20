@@ -3,7 +3,6 @@
  */
 package layout;
 
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -17,7 +16,11 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-
+/**
+ * This class describes the left panel of the MainFrame
+ * @author Yuri Gardinazzi
+ *
+ */
 public class LeftPanel extends CustomPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -83,7 +86,8 @@ public class LeftPanel extends CustomPanel {
 		return myPicture;
 	}
 	/**
-	 * @param myPicture the myPicture to set
+	 * set profile picture
+	 * @param myPicture 
 	 */
 	public void setMyPicture(BufferedImage myPicture) {
 		this.myPicture = myPicture;
@@ -95,7 +99,8 @@ public class LeftPanel extends CustomPanel {
 		return imgLabel;
 	}
 	/**
-	 * @param imgLabel the imgLabel to set
+	 * set the Label where the profile picture will be shown
+	 * @param imgLabel 
 	 */
 	public void setImgLabel(JLabel imgLabel) {
 		this.imgLabel = imgLabel;
