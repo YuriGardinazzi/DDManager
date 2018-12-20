@@ -39,7 +39,7 @@ public class LeftPanel extends CustomPanel {
 	  
 	    for(int i = 0; i < 10; i++) {
 	    	c.gridy++;
-	    	JButton btn  = new JButton("Test " + i);
+	    	JButton btn= new JButton("Test " + i);
 	    	btn.setMinimumSize(new Dimension(100, 25));
 	    	this.add(btn, c);
 	    }
