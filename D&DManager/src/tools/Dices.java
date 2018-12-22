@@ -42,7 +42,10 @@ public class Dices extends Dice {
 		
 		return sum;
 	}
-	
+	@Override
+	public String toString() {
+		return this.getNumberOfDices() +"d"+ this.getNSide();
+	}
 	/**
 	 * @return the numberOfDices
 	 */
@@ -50,15 +53,19 @@ public class Dices extends Dice {
 		return numberOfDices;
 	}
 	/**
-	 * @param numberOfDices the numberOfDices to set
+	 * Set the number of dices
+	 * the value must be different from 0 but can be negative.
+	 * negative number of dices could be useful in a formula
+	 * @param numberOfDices 
 	 */
 	public void setNumberOfDices(int numberOfDices) {
-		if(numberOfDices <=0) {
+		if(numberOfDices == 0) {
 			System.err.println("number of dices wrong!\n set to the default value of 1");
 			this.numberOfDices = 1;
 		}else {
 			this.numberOfDices = numberOfDices;
 		}
 	}
+	
 
 }

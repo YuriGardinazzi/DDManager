@@ -1,6 +1,6 @@
 
 /**
- * this package has classes that could be usefull to handle various calculations that use dices
+ * this package has classes that could be useful like dices and so on
  * <p>
  * 
  * @author Yuri Gardinazzi

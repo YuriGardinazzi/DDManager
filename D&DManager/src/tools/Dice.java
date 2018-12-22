@@ -10,6 +10,11 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Dice {
 
 	private int nSide;
+	
+	/**
+	 * takes in input the number of sides of the dice
+	 * @param n
+	 */
 	public Dice(int n) {
 		this.setNSide(n);
 	}
