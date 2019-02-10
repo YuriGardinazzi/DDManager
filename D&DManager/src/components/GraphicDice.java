@@ -12,6 +12,9 @@ import javax.swing.JPanel;
 /**
  * @author Yuri Gardinazzi
  * TODO: to finish
+ * This class describes the drawing of a dice
+ * It can draw a dice with any number of sides.
+ * 
  */
 public class GraphicDice extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -20,19 +23,25 @@ public class GraphicDice extends JPanel {
 	private int offsetX = 250;
 	private int offsetY = 250;
 	/**
-	 * 
+	 * Constructor of the graphic dice
+	 * @param n number of sides
+	 * @param r radius  
 	 */
 	public GraphicDice(int n, int r) {
 		this.setNumberOfSides(n);
 		this.setRadius(r);
 	}
 	
+	/**
+	 * Draws the dice
+	 */
 	public void paint(Graphics g) {
 		final int N = this.getNumberOfSides();
 		final int R = this.getRadius();
 		final int Tetha = 360/N;
-		for(int i = 0; i < N; i++) {
-			
+	
+		//Draw the sides of the dice
+		for(int i = 0; i < N; i++) {	
 			Graphics2D g2 = (Graphics2D) g;
 			double x1 =  (Math.cos(Math.toRadians(Tetha*i))*R + this.offsetX);
 			double y1 =  (Math.sin(Math.toRadians(Tetha*i))*R + this.offsetY);
@@ -45,26 +54,8 @@ public class GraphicDice extends JPanel {
 			Font f = new Font("TimesRoman", Font.BOLD, 40);
 			g2.setFont(f);
 			g2.drawString(Integer.toString(N),this.offsetX -20, this.offsetY +10);
-			
-					
+								
 		}
-	}
-
-	/**
-	 * test GraphicDice
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		JFrame frame = new JFrame("test Graphic Dice");
-			   frame.setPreferredSize(new Dimension(500,500));
-		GraphicDice dice = new GraphicDice(8,100);
-		frame.add(dice);
-		frame.pack();
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.setVisible(true);
-		
-			   
-
 	}
 
 	/**
@@ -106,4 +97,20 @@ public class GraphicDice extends JPanel {
 		
 	}
 
+	/**
+	 * test GraphicDice
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		JFrame frame = new JFrame("test Graphic Dice");
+			   frame.setPreferredSize(new Dimension(500,500));
+		GraphicDice dice = new GraphicDice(8,100);
+		frame.add(dice);
+		frame.pack();
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setVisible(true);
+		
+			   
+
+	}
 }
