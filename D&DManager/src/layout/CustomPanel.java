@@ -2,7 +2,12 @@ package layout;
 
 import javax.swing.JPanel;
 import java.awt.*;
-
+/**
+ * 
+ * @author Yuri 
+ * This class describes a custom JPanel
+ *
+ */
 public class CustomPanel extends JPanel{
 	//TODO: Non gli piace 100 come valore, settare controlli anche per il massimo
 	/**
@@ -12,12 +17,20 @@ public class CustomPanel extends JPanel{
 	private Dimension screenRatio;
 	private final Dimension MINIMUM_RATIO = new Dimension(10,25);
 	
+	/**
+	 * Creates a customized JPanel
+	 * @param d dimension of the panel
+	 * @param bg background of the panel
+	 */
 	public CustomPanel(Dimension d, Color bg) {	
 		//this.setPreferredSize(d);
 		this.setScreenRatio(d);
 		this.setBackground(bg);
 		this.setSizes();
 		
+	}
+	public CustomPanel(Color bg) {
+		this.setBackground(bg);
 	}
 	
 	/**
