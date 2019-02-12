@@ -32,13 +32,16 @@ public class MyMenu extends JMenuBar {
 		menu.add(proPicItem);
 		
 		
-		//Save file item
-		menuItem = new JMenuItem("save", new ImageIcon("images/save_icon.png"));
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(
-										KeyEvent.VK_S, ActionEvent.CTRL_MASK));
+		//Save file item, shortcut Ctrl + S
+		menuItem = new JMenuItem("save", new ImageIcon("images/save_icon.png"));		
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
 		
+		menu.add(menuItem); 
+		
+		
+		menuItem = new JMenuItem("new character");
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
 		menu.add(menuItem);
-		
 	}
 
 	/**
