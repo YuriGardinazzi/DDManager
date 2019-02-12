@@ -31,6 +31,8 @@ public class LeftPanel extends CustomPanel {
 	public LeftPanel(Dimension d, Color bg) {
 		super(d, bg);
 		this.setLayout(new GridBagLayout());
+		
+		//add profile pic
 		this.setImgLabel(new JLabel());
 		this.ChangeProfilePic(this.getMyPicturePath());
 		this.imgLabel.setPreferredSize(new Dimension(this.getMyPicture().getWidth(),this.getMyPicture().getHeight()));
@@ -40,6 +42,7 @@ public class LeftPanel extends CustomPanel {
 	    c.gridy = 0;
 	    this.add(this.getImgLabel(), c);
 	  
+	    //generate buttons for test purposes
 	    for(int i = 0; i < 10; i++) {
 	    	c.gridy++;
 	    	JButton btn= new JButton("Test " + i);
