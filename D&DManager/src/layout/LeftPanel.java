@@ -25,12 +25,15 @@ public class LeftPanel extends CustomPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage myPicture;
+	
 	private String myPicturePath = "images" + File.separator + "default.jpg";
 	private JLabel imgLabel;
 	
 	public LeftPanel(Dimension d, Color bg) {
 		super(d, bg);
 		this.setLayout(new GridBagLayout());
+		
+		//add profile pic
 		this.setImgLabel(new JLabel());
 		this.ChangeProfilePic(this.getMyPicturePath());
 		this.imgLabel.setPreferredSize(new Dimension(this.getMyPicture().getWidth(),this.getMyPicture().getHeight()));
@@ -40,6 +43,7 @@ public class LeftPanel extends CustomPanel {
 	    c.gridy = 0;
 	    this.add(this.getImgLabel(), c);
 	  
+	    //generate buttons for test purposes
 	    for(int i = 0; i < 10; i++) {
 	    	c.gridy++;
 	    	JButton btn= new JButton("Test " + i);

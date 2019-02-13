@@ -1,6 +1,7 @@
 
 package components;
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -8,7 +9,8 @@ import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+
+import layout.CustomPanel;
 /**
  * @author Yuri Gardinazzi
  * TODO: to finish
@@ -16,7 +18,7 @@ import javax.swing.JPanel;
  * It can draw a dice with any number of sides.
  * 
  */
-public class GraphicDice extends JPanel {
+public class GraphicDice extends CustomPanel {
 	private static final long serialVersionUID = 1L;
 	private int numberOfSides;
 	private int radius;
@@ -27,11 +29,13 @@ public class GraphicDice extends JPanel {
 	 * @param n number of sides
 	 * @param r radius  
 	 */
-	public GraphicDice(int n, int r) {
+	public GraphicDice(int n, int r, Dimension d, Color bg) {
+		super(d, bg);
 		this.setNumberOfSides(n);
 		this.setRadius(r);
+		this.setOpaque(true);
 	}
-	
+
 	/**
 	 * Draws the dice
 	 */
@@ -39,6 +43,7 @@ public class GraphicDice extends JPanel {
 		final int N = this.getNumberOfSides();
 		final int R = this.getRadius();
 		final int Tetha = 360/N;
+	
 	
 		//Draw the sides of the dice
 		for(int i = 0; i < N; i++) {	
@@ -104,7 +109,7 @@ public class GraphicDice extends JPanel {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("test Graphic Dice");
 			   frame.setPreferredSize(new Dimension(500,500));
-		GraphicDice dice = new GraphicDice(8,100);
+		GraphicDice dice = new GraphicDice(8,100, new Dimension(100,100), Color.blue);
 		frame.add(dice);
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
