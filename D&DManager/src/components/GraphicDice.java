@@ -9,7 +9,6 @@ import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import layout.CustomPanel;
 /**
