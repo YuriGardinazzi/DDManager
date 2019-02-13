@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
-import javax.swing.BoxLayout;
+
 import javax.swing.JButton;
 import components.GraphicDice;
 
