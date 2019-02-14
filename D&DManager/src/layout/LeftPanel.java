@@ -29,8 +29,28 @@ public class LeftPanel extends CustomPanel {
 	private String myPicturePath = "images" + File.separator + "default.jpg";
 	private JLabel imgLabel;
 	
+	
+	/**
+	 * Creates the left panel with a given background color
+	 * @param bg Background color
+	 */
+	public LeftPanel(Color bg) {
+		super(bg);
+		this.CreatePanel();
+	}
+	/**
+	 * Create the left panel with a given Dimension and background color
+	 * @param d Dimension
+	 * @param bg Background color
+	 */
 	public LeftPanel(Dimension d, Color bg) {
 		super(d, bg);
+		this.CreatePanel();	
+	}
+	/**
+	 * Insert inside the panel each element
+	 */
+	private void CreatePanel() {
 		this.setLayout(new GridBagLayout());
 		
 		//add profile pic
@@ -53,7 +73,6 @@ public class LeftPanel extends CustomPanel {
 		
 
 	}
-	
 	/**
 	 * Change profile pic with a given path
 	 * @param path
