@@ -20,8 +20,28 @@ public class RightPanel extends CustomPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	
+	/**
+	 * Create the right panel with a given background color
+	 * @param bg
+	 */
+	public RightPanel(Color bg) {
+		super(bg);
+		this.CreatePanel();
+	}
+	/**
+	 * Create the right panel with a given dimension and background color
+	 * @param d
+	 * @param bg
+	 */
 	public RightPanel(Dimension d, Color bg) {
 		super(d, bg);
+		this.CreatePanel();
+	}
+	/**
+	 * Insert each element inside the panel
+	 */
+	public void CreatePanel() {
 		//this.setLayout(new FlowLayout());
 
 		for(int i = 0; i < 10; i++) {
