@@ -31,7 +31,7 @@ public class GridPanel extends JPanel {
 		this.setGridWidth(w);
 		this.setCellSide(cell);
 		this.setLayout(new GridBagLayout());
-		this.setMatrice();
+		this.setMatrix();
 		
 		//Creation of the grid with the Cells
 		GridBagConstraints cons = new GridBagConstraints();
@@ -101,7 +101,7 @@ public class GridPanel extends JPanel {
 	 * @param x
 	 * @param y
 	 */
-	public void setMatrice() {
+	public void setMatrix() {
 		
 		this.matrice = new Cell[this.getGridWidth()][this.getGridHeight()];
 		for(int c = 0; c < this.getGridWidth(); c++) {
