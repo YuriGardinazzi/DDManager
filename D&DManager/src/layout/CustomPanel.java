@@ -19,12 +19,12 @@ public class CustomPanel extends JPanel{
 	
 	/**
 	 * Creates a customized JPanel
-	 * @param d dimension of the panel
+	 * @param ratio dimension of the panel
 	 * @param bg background of the panel
 	 */
-	public CustomPanel(Dimension d, Color bg) {	
+	public CustomPanel(Dimension ratio, Color bg) {	
 		//this.setPreferredSize(d);
-		this.setScreenRatio(d);
+		this.setScreenRatio(ratio);
 		this.setBackground(bg);
 		this.setSizes();
 		
@@ -43,18 +43,18 @@ public class CustomPanel extends JPanel{
 	}
 	
 	/**
-	 * Return a dimension relative to the screen size given a ratio P
-	 * @param p
+	 * Return a dimension relative to the screen size given a ratio 
+	 * @param ratio
 	 * @return
 	 */
-	protected Dimension calculateDimensions(Dimension p) {
+	protected Dimension calculateDimensions(Dimension ratio) {
 		
 		Dimension output = new Dimension(0,0);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		
 		
-		output.setSize(screenSize.getWidth()*p.getWidth()/100,
-					   screenSize.getHeight()*p.getHeight()/100);
+		output.setSize(screenSize.getWidth()*ratio.getWidth()/100,
+					   screenSize.getHeight()*ratio.getHeight()/100);
 	
 		return output;
 	}

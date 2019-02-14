@@ -33,7 +33,7 @@ public class RightPanel extends CustomPanel {
 		//add Graphic Dice  TODO: doesn't work
 		//GraphicDice dice= new GraphicDice(4,50, new Dimension(100,100), Color.white);
 		JPanel prova = new JPanel();
-			   prova.setSize(new Dimension(100,100));
+			   prova.setPreferredSize(new Dimension(100,100));
 			   prova.setBackground(Color.blue);
 		
 		this.add(prova);
