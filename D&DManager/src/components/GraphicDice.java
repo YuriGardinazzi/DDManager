@@ -99,7 +99,7 @@ public class GraphicDice extends JPanel {
 	 */
 	public void setRadius(int radius) {
 		if(radius <=0) {
-			System.err.println("raidius of the GraphicDice <= 0\nValue set to default: 20");
+			System.err.println("radius of the GraphicDice <= 0\nValue set to default: 20");
 			this.radius = 20;
 		}else {
 			this.radius = radius;
@@ -114,8 +114,11 @@ public class GraphicDice extends JPanel {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("test Graphic Dice");
 			   frame.setPreferredSize(new Dimension(500,500));
-		GraphicDice dice = new GraphicDice(8,20, new Dimension(50,50), Color.blue);
-		frame.add(dice);
+		GraphicDice dice = new GraphicDice(8,50, new Dimension(50,50), Color.blue);
+		JPanel panel = new JPanel();
+			   panel.add(dice);
+		
+		frame.add(panel);
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setVisible(true);
