@@ -17,12 +17,12 @@ public class MyMenu extends JMenuBar {
 		super();
 		this.setLeftP(p);
 		//menu building
-		JMenu menu = new JMenu("File");
+		JMenu menu = new JMenu("Options");
 		JMenuItem menuItem;
 		
-		menu.setMnemonic(KeyEvent.VK_A);
-		menu.getAccessibleContext().setAccessibleDescription(
-		        "The only menu in this program that has menu items");
+	//	menu.setMnemonic(KeyEvent.VK_A);
+	//	menu.getAccessibleContext().setAccessibleDescription(
+	//	        "The only menu in this program that has menu items");
 		this.add(menu);
 		
 		
@@ -39,9 +39,10 @@ public class MyMenu extends JMenuBar {
 		menu.add(menuItem); 
 		
 		
-		menuItem = new JMenuItem("new character");
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
-		menu.add(menuItem);
+		//menuItem = new JMenuItem("new character");
+		//menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
+		NewCharacter characterCreationItem = new NewCharacter();
+		menu.add(characterCreationItem);
 	}
 
 	/**
