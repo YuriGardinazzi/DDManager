@@ -55,7 +55,6 @@ public class MainFrame extends JFrame {
 		//Right Panel		
    //		this.p3 = new RightPanel(new Dimension(20,70), Color.pink);
 		this.p3 = new RightPanel( Color.pink);
-		     p3.setLayout(new FlowLayout());
 
 		//Insert each panel inside a SplitPane
 		JSplitPane splitter = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
