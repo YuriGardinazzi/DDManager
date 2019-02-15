@@ -84,7 +84,7 @@ public class LeftPanel extends CustomPanel {
 			System.out.println("Wrong Image Path!");
 			e.printStackTrace();
 		}
-		//change profile pic
+		//change profile pic and scale it
 		ImageIcon toScale = new ImageIcon(this.getMyPicture());
 		Image scaledImage = toScale.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH );
 		this.getImgLabel().setIcon( new ImageIcon(scaledImage));
@@ -94,7 +94,6 @@ public class LeftPanel extends CustomPanel {
 			ImageIO.write(this.getMyPicture(), "jpg", new File(this.getMyPicturePath()));
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			System.err.println("Can't save the profile picture");
 			e.printStackTrace();
 		}
