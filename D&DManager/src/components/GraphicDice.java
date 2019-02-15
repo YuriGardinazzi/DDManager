@@ -115,10 +115,7 @@ public class GraphicDice extends JPanel {
 		JFrame frame = new JFrame("test Graphic Dice");
 			   frame.setPreferredSize(new Dimension(500,500));
 		GraphicDice dice = new GraphicDice(8,50, new Dimension(50,50), Color.blue);
-		JPanel panel = new JPanel();
-			   panel.add(dice);
-		
-		frame.add(panel);
+		frame.add(dice);
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setVisible(true);
