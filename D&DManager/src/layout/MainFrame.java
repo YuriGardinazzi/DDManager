@@ -35,7 +35,7 @@ public class MainFrame extends JFrame {
 		super(title);
 
 		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.X_AXIS));	
-		this.p1 = new LeftPanel(Color.orange);		
+		this.p1 = new LeftPanel(new Dimension(20,70), Color.orange);		
 
 		
 		GridPanel grid = new GridPanel(20,20, 50);
@@ -54,7 +54,7 @@ public class MainFrame extends JFrame {
 			 p2.add(scrollGrid);
 	
 		//Right Panel		
-		this.p3 = new RightPanel(Color.pink);
+		this.p3 = new RightPanel(new Dimension(20,70), Color.pink);
 
 		//Insert each panel inside a SplitPane
 		JSplitPane splitter = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
