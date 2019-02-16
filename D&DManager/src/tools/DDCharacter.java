@@ -7,8 +7,39 @@ package tools;
  * @author Yuri
  * This class describes a general character
  */
-public class Character {
+public class DDCharacter {
 
+	
+	/**
+	 * Constructor of the character 
+	 * @param name
+	 * @param alignment
+	 * @param divinity
+	 * @param level
+	 * @param experience
+	 * @param strength
+	 * @param dexterity
+	 * @param constitution
+	 * @param intelligence
+	 * @param wisdom
+	 * @param charisma
+	 */
+	public DDCharacter(String name, String alignment, String divinity, Integer level, Integer experience,
+			Integer strength, Integer dexterity, Integer constitution, Integer intelligence, Integer wisdom,
+			Integer charisma) {
+		super();
+		this.setName(name);
+		this.setAlignment(alignment);
+		this.setDivinity(divinity);
+		this.setLevel(level);
+		this.setExperience(experience);
+		this.setStrength(strength);
+		this.setDexterity(dexterity);
+		this.setConstitution(constitution);
+		this.setIntelligence(intelligence);
+		this.setWisdom(wisdom);
+		this.setCharisma(charisma);
+	}
 	private String name;
 	private String alignment;
 	private String divinity;
@@ -18,12 +49,28 @@ public class Character {
 
 	private Integer strength;
 	private Integer	dexterity;
-	private Integer	costitution;
+	private Integer	constitution;
 	private Integer	intelligence;
 	private Integer	wisdom;
 	private Integer charisma;
 	
 
+	@Override
+	public String toString() {
+		return("Character stats:\n " +
+			   "Name: " + this.getName() +
+			   "\nAlignment: "+ this.getAlignment()+
+			   "\nDivinity: "+ this.getDivinity() + 
+			   "\nLevel: "+ this.getLevel()+
+			   "\nExperience: "+ this.getExperience()+
+			   "\nStrength: "+ this.getStrength()+
+			   "\nDexterity: "+ this.getDexterity() +
+			   "\nConstitution: " + this.getConstitution()+
+			   "\nIntelligence: "+ this.getIntelligence() +
+			   "\nWisdom: "+ this.getWisdom() +
+			   "\nCharisma: "+ this.getCharisma());
+	}
+	
 	/**
 	 * @return the name
 	 */
@@ -87,14 +134,14 @@ public class Character {
 	/**
 	 * @return the costitution
 	 */
-	public Integer getCostitution() {
-		return costitution;
+	public Integer getConstitution() {
+		return constitution;
 	}
 	/**
 	 * @param costitution the costitution to set
 	 */
-	public void setCostitution(Integer costitution) {
-		this.costitution = costitution;
+	public void setConstitution(Integer costitution) {
+		this.constitution = costitution;
 	}
 	/**
 	 * @return the intelligence
