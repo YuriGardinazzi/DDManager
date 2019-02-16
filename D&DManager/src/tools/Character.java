@@ -12,7 +12,10 @@ public class Character {
 	private String name;
 	private String alignment;
 	private String divinity;
+	private Integer level;
+	private Integer experience;
 	
+
 	private Integer strength;
 	private Integer	dexterity;
 	private Integer	costitution;
@@ -128,5 +131,29 @@ public class Character {
 	 */
 	public void setCharisma(Integer charisma) {
 		this.charisma = charisma;
+	}
+	/**
+	 * @return the level
+	 */
+	public Integer getLevel() {
+		return level;
+	}
+	/**
+	 * @param level the level to set
+	 */
+	public void setLevel(Integer level) {
+		this.level = level;
+	}
+	/**
+	 * @return the experience
+	 */
+	public Integer getExperience() {
+		return experience;
+	}
+	/**
+	 * @param experience the experience to set
+	 */
+	public void setExperience(Integer experience) {
+		this.experience = experience;
 	}
 }
