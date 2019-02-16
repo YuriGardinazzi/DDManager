@@ -3,6 +3,9 @@ package layout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -42,24 +45,24 @@ public class RightPanel extends CustomPanel {
 	 * Insert each element inside the panel
 	 */
 	public void CreatePanel() {
-		//this.setLayout(new FlowLayout());
+		this.setLayout(new GridBagLayout());
 
+		GridBagConstraints cons = new GridBagConstraints();
+		cons.gridx = 0;
+		cons.gridy = 0;
 		for(int i = 0; i < 10; i++) {
 			JButton btn = new JButton("test"+i);
-			
-			this.add(btn);
+			this.add(btn, cons);
+			cons.gridy++;
 		}
 	
 		//add Graphic Dice  TODO: doesn't work
 		//GraphicDice dice= new GraphicDice(4,50, new Dimension(100,100), Color.white);
-		JPanel prova = new JPanel();
-			   prova.setPreferredSize(new Dimension(100,100));
-			   prova.setBackground(Color.blue);
 		
-		this.add(prova);
-		this.repaint();   
+		//this.add(dice, cons);
+
+		//this.repaint();   
 		
-		System.out.println("Dice dimension: "+ prova.getSize());
 	}
 
 }
