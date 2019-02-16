@@ -6,7 +6,7 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import components.GraphicDice;
+import graphical_components.GraphicDice;
 
 /**
  * 
