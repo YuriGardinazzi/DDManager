@@ -18,7 +18,7 @@ import layout.LeftPanel;
  * @author Yuri Gardinazzi
  *
  */
-public class ChangeProPic extends JMenuItem implements ActionListener{
+public class MenuItemChangeProPic extends JMenuItem implements ActionListener{
 
 	/**
 	 * 
@@ -27,7 +27,7 @@ public class ChangeProPic extends JMenuItem implements ActionListener{
 	private LeftPanel panel;
 	
 	
-	public ChangeProPic(LeftPanel p) {
+	public MenuItemChangeProPic(LeftPanel p) {
 		super("Change profile picture");
 		this.setPanel(p);
 		
@@ -41,6 +41,8 @@ public class ChangeProPic extends JMenuItem implements ActionListener{
 	 */
 	public void actionPerformed(ActionEvent e) {
 		
+		
+		//Get a picture from the user
 		JFileChooser chooser = new JFileChooser();
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(
 				"JPG & png Images", "jpg", "png");
@@ -48,6 +50,7 @@ public class ChangeProPic extends JMenuItem implements ActionListener{
 		chooser.setAcceptAllFileFilterUsed(false);
 		int returnVal = chooser.showOpenDialog(this.getParent());
 		
+		//Show the picture
 		if(returnVal == JFileChooser.APPROVE_OPTION) {
 
 			if(chooser.getSelectedFile().getPath() != null) {

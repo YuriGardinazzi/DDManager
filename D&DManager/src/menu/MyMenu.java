@@ -27,7 +27,7 @@ public class MyMenu extends JMenuBar {
 		
 		
 		//change profile picture
-		ChangeProPic proPicItem = new ChangeProPic(this.getLeftP());
+		MenuItemChangeProPic proPicItem = new MenuItemChangeProPic(this.getLeftP());
 
 		menu.add(proPicItem);
 		
