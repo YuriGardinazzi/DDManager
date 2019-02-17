@@ -9,7 +9,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
@@ -18,6 +23,7 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -111,7 +117,23 @@ public class CharacterCreation extends JFrame {
 				picLabel.setIcon(this.getScaledPicture(this.imgPath));
 		form.add(picLabel, cons);
 		
-
+		cons.gridx = 1;
+		
+		JButton addPic = new JButton("Change profile pic");
+				addPic.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						
+						String newCharPath = getCharPicturePath();
+						if(newCharPath != getImgPath()) {
+							setImgPath(newCharPath);
+						}
+						picLabel.setIcon(getScaledPicture(getImgPath()));
+					}
+				});
+		
+		form.add(addPic, cons);
 		
 		cons.gridy++;
 		cons.gridx = 0;
@@ -235,15 +257,17 @@ public class CharacterCreation extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DDCharacter c = new DDCharacter(textName.getText(), textAlign.getText(),
+				DDCharacter c = new DDCharacter(
+												getImgPath(),
+												textName.getText(), textAlign.getText(),
 												textDivinity.getText(), textClass.getText(), 
 												numLevel.getNumber(),
 												numExp.getNumber(), numStr.getNumber(),
 												numDex.getNumber(), numConst.getNumber(),
 												numInt.getNumber(), numWis.getNumber(), numChar.getNumber());
 				
-				//TODO: save character informations
-				System.out.println(c);
+				saveCharacter(c);
+		
 			}
 		});
 		
@@ -259,6 +283,36 @@ public class CharacterCreation extends JFrame {
 	 * @return path to that picture
 	 */
 	
+	private void saveCharacter(DDCharacter character) {
+	
+		JFileChooser chooser = new JFileChooser();
+
+		int retrival = chooser.showSaveDialog(this.getParent());
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(
+				"D&D character", "ddc");
+		if (retrival == JFileChooser.APPROVE_OPTION) {
+			try {
+					FileOutputStream fOut = new FileOutputStream(chooser.getSelectedFile()+ ".ddc");
+					ObjectOutputStream objOut = new ObjectOutputStream(fOut);
+					objOut.writeObject(character);
+					objOut.close();
+					JOptionPane.showMessageDialog(null, character.getName() + " Has been saved");
+					
+					//TEST DESERIALIZATION
+			         FileInputStream fileIn = new FileInputStream(chooser.getSelectedFile()+".ddc");
+			         ObjectInputStream in = new ObjectInputStream(fileIn);
+			         DDCharacter c = (DDCharacter) in.readObject();
+			         in.close();
+			         fileIn.close();
+				
+			         System.out.println(c);
+					
+		        } catch (Exception ex) {
+		        	JOptionPane.showMessageDialog(null, "Something went wrong :C");
+		            ex.printStackTrace();
+		        }
+		    }
+	}
 	private ImageIcon getScaledPicture(String path) {
 		BufferedImage picture;
 		try {
@@ -303,6 +357,18 @@ public class CharacterCreation extends JFrame {
 			}
 			
 		}
-		return "images" + File.separator + "character.jpg";
+		return this.imgPath;
+	}
+	/**
+	 * @return the imgPath
+	 */
+	public String getImgPath() {
+		return imgPath;
+	}
+	/**
+	 * @param imgPath the imgPath to set
+	 */
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
 	}
 }
