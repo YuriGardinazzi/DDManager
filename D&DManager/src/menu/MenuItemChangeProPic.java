@@ -54,8 +54,8 @@ public class MenuItemChangeProPic extends JMenuItem implements ActionListener{
 		if(returnVal == JFileChooser.APPROVE_OPTION) {
 
 			if(chooser.getSelectedFile().getPath() != null) {
-				
-				this.getPanel().ChangeProfilePic(chooser.getSelectedFile().getPath());
+				String path = chooser.getSelectedFile().getPath();
+				this.getPanel().ChangeProfilePic(path);
 			}
 			
 		}

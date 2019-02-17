@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageOutputStream;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -24,9 +25,10 @@ import javax.swing.JLabel;
 public class LeftPanel extends CustomPanel {
 
 	private static final long serialVersionUID = 1L;
-	private BufferedImage myPicture;
 	
+	private BufferedImage myPicture;
 	private String myPicturePath = "images" + File.separator + "default.jpg";
+	
 	private JLabel imgLabel;
 	
 	
@@ -56,7 +58,8 @@ public class LeftPanel extends CustomPanel {
 		//add profile pic
 		this.setImgLabel(new JLabel());
 		this.ChangeProfilePic(this.getMyPicturePath());
-		this.imgLabel.setPreferredSize(new Dimension(this.getMyPicture().getWidth(),this.getMyPicture().getHeight()));
+	
+		this.imgLabel.setPreferredSize(new Dimension(150,150));
 
 	    GridBagConstraints c = new GridBagConstraints();   
 		
@@ -75,11 +78,15 @@ public class LeftPanel extends CustomPanel {
 	}
 	/**
 	 * Change profile pic with a given path
-	 * @param path
+	 * @param newPicturePath
 	 */
-	public void ChangeProfilePic(String path) {
+	public void ChangeProfilePic(String newPicturePath) {
+		
+		//Set myPicture field with the new picture
 		try {
-			this.setMyPicture( ImageIO.read(new File(path)));
+			
+			this.setMyPicture(ImageIO.read(new File(newPicturePath)));
+		
 		} catch (IOException e) {
 			System.out.println("Wrong Image Path!");
 			e.printStackTrace();
@@ -87,18 +94,33 @@ public class LeftPanel extends CustomPanel {
 		//change profile pic and scale it
 		ImageIcon toScale = new ImageIcon(this.getMyPicture());
 		Image scaledImage = toScale.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH );
-		this.getImgLabel().setIcon( new ImageIcon(scaledImage));
+		this.getImgLabel().setIcon(new ImageIcon(scaledImage));
 		
-		//save profile pic as default.jpg
-		try {
-			ImageIO.write(this.getMyPicture(), "jpg", new File(this.getMyPicturePath()));
+		//save new profile pic as default.jpg
+		try {	
 			
+			ImageIO.write(this.getMyPicture(),"jpg", new File(this.getMyPicturePath()));
+						
 		} catch (IOException e) {
 			System.err.println("Can't save the profile picture");
 			e.printStackTrace();
 		}
 		
 		
+	}
+	
+	/*
+	 * Get the extension of a file.
+	 */  
+	private String getExtension(File f) {
+	    String ext = null;
+	    String s = f.getName();
+	    int i = s.lastIndexOf('.');
+
+	    if (i > 0 &&  i < s.length() - 1) {
+	        ext = s.substring(i+1).toLowerCase();
+	    }
+	    return ext;
 	}
 	
 	/**
@@ -141,5 +163,6 @@ public class LeftPanel extends CustomPanel {
 	public void setMyPicturePath(String myPicturePath) {
 		this.myPicturePath = myPicturePath;
 	}
+
 
 }
