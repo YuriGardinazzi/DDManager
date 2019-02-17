@@ -4,14 +4,23 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import graphical_components.FormLabel;
 import graphical_components.FormNumber;
@@ -26,7 +35,9 @@ import tools.DDCharacter;
 public class CharacterCreation extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	//TODO: aggiungere random button
+	
+	private String imgPath = "images" + File.separator + "character.jpg";
+	
 	private FormLabel labelName = new FormLabel("Name");
 	private FormTextField textName = new FormTextField("name", 16);
 	private FormLabel labelAlignment = new FormLabel("Alignment");
@@ -68,8 +79,8 @@ public class CharacterCreation extends JFrame {
 		this.CreateGUI();
 	}
 
-	public void CreateGUI() {
-		CustomPanel form = this.CreateForm(new Dimension(20,40), Color.cyan);
+	private void CreateGUI() {
+		CustomPanel form = this.CreateForm(new Dimension(30,50), Color.cyan);
 		
 		this.add(form);
 		this.pack();
@@ -78,7 +89,14 @@ public class CharacterCreation extends JFrame {
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
 	}
-	public CustomPanel CreateForm(Dimension ratio, Color bg) {
+	
+	/**
+	 * Create the Form panel with a given ratio and background color
+	 * @param ratio
+	 * @param bg background color
+	 * @return
+	 */
+	private CustomPanel CreateForm(Dimension ratio, Color bg) {
 		CustomPanel form = new CustomPanel(ratio, bg);
 		form.setLayout(new GridBagLayout());
 		
@@ -87,6 +105,16 @@ public class CharacterCreation extends JFrame {
 		cons.gridx = 0;
 		cons.gridy = 0;
 
+		//Profile picture fields
+		JLabel	picLabel = new JLabel();
+				picLabel.setPreferredSize(new Dimension(150,150));
+				picLabel.setIcon(this.getScaledPicture(this.imgPath));
+		form.add(picLabel, cons);
+		
+
+		
+		cons.gridy++;
+		cons.gridx = 0;
 		//Name fields
 		form.add(labelName, cons);
 		cons.gridx = 1;
@@ -221,11 +249,60 @@ public class CharacterCreation extends JFrame {
 		
 		
 		form.add(save,cons);
-		
-		
-		
-		
+			
 		return form;
 	}
 	
+	/**
+	 * Show an input dialog for a picture
+	 * return the default path if something goes wrong.
+	 * @return path to that picture
+	 */
+	
+	private ImageIcon getScaledPicture(String path) {
+		BufferedImage picture;
+		try {
+			picture = ImageIO.read(new File(path));
+			
+			//If the image is  .png this code converts it to jpg
+			BufferedImage result = new BufferedImage(
+			        picture.getWidth(),
+			        picture.getHeight(),
+			        BufferedImage.TYPE_INT_RGB);
+			//color the transparent background into white
+			result.createGraphics().drawImage(picture, 0, 0, Color.white, null);
+			
+			ImageIcon toScale = new ImageIcon(result);
+			Image scaledImage = toScale.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+		
+			return new ImageIcon(scaledImage);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+		
+		
+	}
+	private String getCharPicturePath() {
+		//Get a picture from the user
+		JFileChooser chooser = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(
+				"JPG & png Images", "jpg", "png");
+		chooser.setFileFilter(filter);
+		chooser.setAcceptAllFileFilterUsed(false);
+		int returnVal = chooser.showOpenDialog(this.getParent());
+		
+		//return the path
+		if(returnVal == JFileChooser.APPROVE_OPTION) {
+
+			if(chooser.getSelectedFile().getPath() != null) {
+				return chooser.getSelectedFile().getPath();
+			
+			}
+			
+		}
+		return "images" + File.separator + "character.jpg";
+	}
 }
