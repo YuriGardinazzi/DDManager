@@ -77,8 +77,8 @@ public class LeftPanel extends CustomPanel {
 
 	}
 	/**
-	 * Change profile pic with a given path
-	 * @param newPicturePath
+	 * Change profile picture
+	 * @param newPicturePath path of the picture
 	 */
 	public void ChangeProfilePic(String newPicturePath) {
 		
