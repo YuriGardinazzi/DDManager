@@ -40,8 +40,6 @@ public class MenuItemChangeProPic extends JMenuItem implements ActionListener{
 	 * Event that change the profile pic
 	 */
 	public void actionPerformed(ActionEvent e) {
-		
-		
 		//Get a picture from the user
 		JFileChooser chooser = new JFileChooser();
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(
