@@ -24,13 +24,16 @@ public class DDCharacter {
 	 * @param wisdom
 	 * @param charisma
 	 */
-	public DDCharacter(String name, String alignment, String divinity, Integer level, Integer experience,
-			Integer strength, Integer dexterity, Integer constitution, Integer intelligence, Integer wisdom,
-			Integer charisma) {
+	public DDCharacter(	String name, String alignment, String divinity, String charClass,
+						Integer level, Integer experience,
+						Integer strength, Integer dexterity,
+						Integer constitution, Integer intelligence, Integer wisdom,
+						Integer charisma) {
 		super();
 		this.setName(name);
 		this.setAlignment(alignment);
 		this.setDivinity(divinity);
+		this.setCharClass(charClass);
 		this.setLevel(level);
 		this.setExperience(experience);
 		this.setStrength(strength);
@@ -43,10 +46,11 @@ public class DDCharacter {
 	private String name;
 	private String alignment;
 	private String divinity;
+	private String charClass;
+	
+	
 	private Integer level;
 	private Integer experience;
-	
-
 	private Integer strength;
 	private Integer	dexterity;
 	private Integer	constitution;
@@ -202,5 +206,19 @@ public class DDCharacter {
 	 */
 	public void setExperience(Integer experience) {
 		this.experience = experience;
+	}
+
+	/**
+	 * @return the charClass
+	 */
+	public String getCharClass() {
+		return charClass;
+	}
+
+	/**
+	 * @param charClass the charClass to set
+	 */
+	public void setCharClass(String charClass) {
+		this.charClass = charClass;
 	}
 }

@@ -33,6 +33,8 @@ public class CharacterCreation extends JFrame {
 	private FormTextField textAlign = new FormTextField("chaotic-evil", 16);
 	private FormLabel labelDivinity = new FormLabel("Divinity");
 	private FormTextField textDivinity = new FormTextField("Boccob", 16);
+	private FormLabel labelClass = new FormLabel("Class");
+	private FormTextField textClass = new FormTextField("Wizard", 16);
 	private FormLabel labelLevel = new FormLabel("Level");
 	private FormNumber numLevel = new FormNumber();
 	private FormLabel labelExp = new FormLabel("Experience");
@@ -86,11 +88,8 @@ public class CharacterCreation extends JFrame {
 		cons.gridy = 0;
 
 		//Name fields
-	
 		form.add(labelName, cons);
-		
 		cons.gridx = 1;
-
 		form.add(textName, cons);
 		
 		cons.gridy++;
@@ -99,9 +98,7 @@ public class CharacterCreation extends JFrame {
 		//Alignment fields
 	
 		form.add(labelAlignment, cons);
-		
 		cons.gridx = 1;
-	
 		form.add(textAlign, cons);
 		
 		cons.gridy++;
@@ -110,18 +107,24 @@ public class CharacterCreation extends JFrame {
 		//Divinity fields
 	
 		form.add(labelDivinity, cons);
-		
-		cons.gridx = 1;
-		
+		cons.gridx = 1;		
 		form.add(textDivinity, cons);
+		
+		cons.gridy++;
+		cons.gridx = 0;
+	
+		//Class fields
+		
+		form.add(labelClass, cons);		
+		cons.gridx = 1;	
+		form.add(textClass, cons);
 		
 		cons.gridy++;
 		cons.gridx = 0;
 	
 		//Level fields
 	
-		form.add(labelLevel, cons);
-		
+		form.add(labelLevel, cons);		
 		cons.gridx = 1;
 		cons.anchor = GridBagConstraints.CENTER;
 		
@@ -130,10 +133,8 @@ public class CharacterCreation extends JFrame {
 		cons.gridy++;
 		cons.gridx = 0;
 		
-		//Experience fields
-		
-		form.add(labelExp, cons);
-		
+		//Experience fields	
+		form.add(labelExp, cons);	
 		cons.gridx = 1;
 		cons.anchor = GridBagConstraints.CENTER;
 		
@@ -142,13 +143,10 @@ public class CharacterCreation extends JFrame {
 		cons.gridy++;
 		cons.gridx = 0;
 		
-		//Strength fields
-		
+		//Strength fields	
 		form.add(labelStrength, cons);
-		
 		cons.gridx = 1;
 		cons.anchor = GridBagConstraints.CENTER;
-	
 		form.add(numStr, cons);
 		
 		cons.gridy++;
@@ -156,11 +154,9 @@ public class CharacterCreation extends JFrame {
 		
 		//Dexterity fields
 
-		form.add(labelDex, cons);
-		
+		form.add(labelDex, cons);	
 		cons.gridx = 1;
 		cons.anchor = GridBagConstraints.CENTER;
-	
 		form.add(numDex, cons);
 		
 		cons.gridy++;
@@ -168,23 +164,18 @@ public class CharacterCreation extends JFrame {
 		
 		//Constitution fields
 		
-		form.add(labelConst, cons);
-		
+		form.add(labelConst, cons);	
 		cons.gridx = 1;
 		cons.anchor = GridBagConstraints.CENTER;
-	
-		form.add(numConst, cons);
-		
+		form.add(numConst, cons);	
 		cons.gridy++;
 		cons.gridx = 0;
 		
 		//Intelligence fields
 
-		form.add(labelInt, cons);
-		
+		form.add(labelInt, cons);		
 		cons.gridx = 1;
-		cons.anchor = GridBagConstraints.CENTER;
-		
+		cons.anchor = GridBagConstraints.CENTER;		
 		form.add(numInt, cons);
 		
 		cons.gridy++;
@@ -192,23 +183,18 @@ public class CharacterCreation extends JFrame {
 		
 		//Wisdom fields
 		
-		form.add(labelWis, cons);
-		
+		form.add(labelWis, cons);		
 		cons.gridx = 1;
 		cons.anchor = GridBagConstraints.CENTER;
-
 		form.add(numWis, cons);
-		
 		cons.gridy++;
 		cons.gridx = 0;
 		
 		//Charisma fields
 		
-		form.add(labelChar, cons);
-		
+		form.add(labelChar, cons);	
 		cons.gridx = 1;
-		cons.anchor = GridBagConstraints.CENTER;
-	
+		cons.anchor = GridBagConstraints.CENTER;	
 		form.add(numChar, cons);
 
 		
@@ -222,11 +208,13 @@ public class CharacterCreation extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				DDCharacter c = new DDCharacter(textName.getText(), textAlign.getText(),
-												textDivinity.getText(), numLevel.getNumber(),
+												textDivinity.getText(), textClass.getText(), 
+												numLevel.getNumber(),
 												numExp.getNumber(), numStr.getNumber(),
 												numDex.getNumber(), numConst.getNumber(),
 												numInt.getNumber(), numWis.getNumber(), numChar.getNumber());
 				
+				//TODO: save character informations
 				System.out.println(c);
 			}
 		});
