@@ -26,7 +26,7 @@ public class LeftPanel extends CustomPanel {
 
 	private static final long serialVersionUID = 1L;
 	
-	private BufferedImage myPicture;
+	
 	private String myPicturePath = "images" + File.separator + "default.jpg";
 	
 	private JLabel imgLabel;
@@ -82,46 +82,31 @@ public class LeftPanel extends CustomPanel {
 	 */
 	public void ChangeProfilePic(String newPicturePath) {
 		
-		//Set myPicture field with the new picture
 		try {
+			//save new profile pic as default.jpg
+			BufferedImage picture = ImageIO.read(new File(newPicturePath));
 			
-			this.setMyPicture(ImageIO.read(new File(newPicturePath)));
+			//If the image is  .png this code converts it to jpg
+			BufferedImage result = new BufferedImage(
+			        picture.getWidth(),
+			        picture.getHeight(),
+			        BufferedImage.TYPE_INT_RGB);
+			//color the transparent background into white
+			result.createGraphics().drawImage(picture, 0, 0, Color.white, null);
+					
+			ImageIO.write(result ,"jpg", new File(this.getMyPicturePath()));
+
+			
+			//change profile pic and scale it
+			ImageIcon toScale = new ImageIcon(result);
+			Image scaledImage = toScale.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+			this.getImgLabel().setIcon(new ImageIcon(scaledImage));	
 		
 		} catch (IOException e) {
 			System.out.println("Wrong Image Path!");
 			e.printStackTrace();
 		}
-		//change profile pic and scale it
-		ImageIcon toScale = new ImageIcon(this.getMyPicture());
-		Image scaledImage = toScale.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH );
-		this.getImgLabel().setIcon(new ImageIcon(scaledImage));
-		
-		//save new profile pic as default.jpg
-		try {	
 			
-			ImageIO.write(this.getMyPicture(),"jpg", new File(this.getMyPicturePath()));
-						
-		} catch (IOException e) {
-			System.err.println("Can't save the profile picture");
-			e.printStackTrace();
-		}
-		
-		
-	}
-	
-	
-	/**
-	 * @return the myPicture
-	 */
-	public BufferedImage getMyPicture() {
-		return myPicture;
-	}
-	/**
-	 * set profile picture
-	 * @param myPicture 
-	 */
-	public void setMyPicture(BufferedImage myPicture) {
-		this.myPicture = myPicture;
 	}
 	/**
 	 * @return the imgLabel
