@@ -3,8 +3,19 @@
  */
 package menu;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
+import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import player_map.Cell;
+import tools.DDCharacter;
 
 /**
  * @author Yuri
@@ -18,19 +29,68 @@ public class MapPopMenu extends JPopupMenu {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private JMenuItem anItem;
+	private JMenuItem addCharacter;
+	private Cell cell;
+	public MapPopMenu(Cell c) {
+		this.setCell(c);
+		this.addCharacter = new JMenuItem("Add new character");
+		this.addCharacter.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//TODO: add character to the cell
+				
+			}
+		});
+		this.add(this.addCharacter);
+	}
+
+	private DDCharacter retrieveCharacter() {
+		DDCharacter c = null;
+		//Get a picture from the user
+		JFileChooser chooser = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(
+				"D&D Character", "ddc");
+		chooser.setFileFilter(filter);
+		chooser.setAcceptAllFileFilterUsed(false);
+		int returnVal = chooser.showOpenDialog(this.getParent());
 		
-	public MapPopMenu() {
-		this.anItem = new JMenuItem("Add new character");
-		this.add(this.anItem);
+		//Show the picture
+		if(returnVal == JFileChooser.APPROVE_OPTION) {
+
+			if(chooser.getSelectedFile().getPath() != null) {
+				String path = chooser.getSelectedFile().getPath();
+				
+				//Character deserialization
+				 try {
+			         FileInputStream fileIn = new FileInputStream(chooser.getSelectedFile()+".ddc");
+			         ObjectInputStream in = new ObjectInputStream(fileIn);
+			         c = (DDCharacter) in.readObject();
+			         in.close();
+			         fileIn.close();
+				 }catch( IOException e) {
+					 e.printStackTrace();
+				 } catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+		         System.out.println(c);
+			}
+			
+		}
+		return c;
 	}
 
 	/**
-	 * @param label
+	 * @return the cell
 	 */
-	//public MapPopMenu(String label) {
-		//super(label);
-		// TODO Auto-generated constructor stub
-//	}
+	public Cell getCell() {
+		return cell;
+	}
 
+	/**
+	 * @param cell the cell to set
+	 */
+	public void setCell(Cell cell) {
+		this.cell = cell;
+	}
 }

@@ -313,15 +313,7 @@ public class CharacterCreation extends JFrame {
 					objOut.writeObject(character);
 					objOut.close();
 					JOptionPane.showMessageDialog(null, character.getName() + " Has been saved");
-					
-					//TEST DESERIALIZATION
-			         FileInputStream fileIn = new FileInputStream(chooser.getSelectedFile()+".ddc");
-			         ObjectInputStream in = new ObjectInputStream(fileIn);
-			         DDCharacter c = (DDCharacter) in.readObject();
-			         in.close();
-			         fileIn.close();
-				
-			         System.out.println(c);
+
 			         
 			         //Close the character creation frame
 			         this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));

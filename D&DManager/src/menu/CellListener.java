@@ -47,7 +47,7 @@ public class CellListener extends MouseAdapter {
     }
 
     private void showMenu(MouseEvent e){
-        MapPopMenu menu = new MapPopMenu();
+        MapPopMenu menu = new MapPopMenu(this.getCell());
         menu.show(e.getComponent(), e.getX(), e.getY());
     }
 
