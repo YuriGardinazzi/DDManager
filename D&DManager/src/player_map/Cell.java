@@ -10,6 +10,9 @@ import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
+import menu.MapPopMenu;
+
+
 /**
  * 
  * @author Yuri Gardinazzi
@@ -42,22 +45,24 @@ public class Cell extends JPanel {
 			
             @Override
             public void mousePressed(MouseEvent e) {
-            	if(actualColor.equals(Color.black)) {
-            		this.actualColor = this.defaultBg;
-            		setBackground(this.defaultBg);
-            	}else {
-            		 setBackground(Color.black);
-            		 this.actualColor = Color.black;
+            	
+            	//left click
+            	if(e.getButton() == MouseEvent.BUTTON1) {
+	            	if(actualColor.equals(Color.black)) {
+	            		this.actualColor = this.defaultBg;
+	            		setBackground(this.defaultBg);
+	            	}else {
+	            		 setBackground(Color.black);
+	            		 this.actualColor = Color.black;
+	            	}
+	                repaint();
+            	}else if(e.getButton() == MouseEvent.BUTTON3) {
+            		MapPopMenu menu = new MapPopMenu();
+            		menu.show(e.getComponent(), e.getX(), e.getY());
             	}
-               
-                repaint();
+
             }
             
-
-           /* @Override
-            public void mouseReleased(MouseEvent e) {
-                setBackground(background);
-            } */
         });
 	}
 
@@ -71,7 +76,6 @@ public class Cell extends JPanel {
 		super.paint(g);
 		this.setBackground(bg);
 	}
-	
 	
 	
 	/**
