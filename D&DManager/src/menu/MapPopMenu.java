@@ -40,7 +40,7 @@ public class MapPopMenu extends JPopupMenu {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				DDCharacter c = retrieveCharacter();
-				System.out.println(c);
+				getCell().changeCellPicture(c.getImagePath());
 			}
 		});
 		this.add(this.addCharacter);
