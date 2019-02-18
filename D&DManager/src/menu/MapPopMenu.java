@@ -31,6 +31,7 @@ public class MapPopMenu extends JPopupMenu {
 
 	private JMenuItem addCharacter;
 	private Cell cell;
+	
 	public MapPopMenu(Cell c) {
 		this.setCell(c);
 		this.addCharacter = new JMenuItem("Add new character");
@@ -38,8 +39,8 @@ public class MapPopMenu extends JPopupMenu {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//TODO: add character to the cell
-				
+				DDCharacter c = retrieveCharacter();
+				System.out.println(c);
 			}
 		});
 		this.add(this.addCharacter);
@@ -63,7 +64,7 @@ public class MapPopMenu extends JPopupMenu {
 				
 				//Character deserialization
 				 try {
-			         FileInputStream fileIn = new FileInputStream(chooser.getSelectedFile()+".ddc");
+			         FileInputStream fileIn = new FileInputStream(chooser.getSelectedFile());
 			         ObjectInputStream in = new ObjectInputStream(fileIn);
 			         c = (DDCharacter) in.readObject();
 			         in.close();
@@ -73,7 +74,6 @@ public class MapPopMenu extends JPopupMenu {
 				 } catch (ClassNotFoundException e) {
 					e.printStackTrace();
 				}
-		         System.out.println(c);
 			}
 			
 		}
