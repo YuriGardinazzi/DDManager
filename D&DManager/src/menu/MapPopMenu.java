@@ -19,9 +19,9 @@ public class MapPopMenu extends JPopupMenu {
 	private static final long serialVersionUID = 1L;
 
 	private JMenuItem anItem;
-	
+		
 	public MapPopMenu() {
-		this.anItem = new JMenuItem("Click me :o");
+		this.anItem = new JMenuItem("Add new character");
 		this.add(this.anItem);
 	}
 
