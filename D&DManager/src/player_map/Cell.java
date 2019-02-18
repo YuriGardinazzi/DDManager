@@ -45,25 +45,26 @@ public class Cell extends JPanel {
 	public void paint(Graphics g) {
 		
 		super.paint(g);
-		
-		try {
-			BufferedImage picture = ImageIO.read(new File(this.getCellPicPath()));
-			//If the image is  .png this code converts it to jpg
-			BufferedImage result = new BufferedImage(
-			        picture.getWidth(),
-			        picture.getHeight(),
-			        BufferedImage.TYPE_INT_RGB);
-			//color the transparent background into white
-			result.createGraphics().drawImage(picture, 0, 0, Color.white, null);
-
-			Image scaledImage = result.getScaledInstance(this.getSide(),
-														 this.getSide(), Image.SCALE_SMOOTH);
-			g.drawImage(scaledImage, 0,0, this);
-			System.out.println("ho provato a stampare "+ this.getCellPicPath());
-			
-		}catch(IOException e) {
-			
-			e.printStackTrace();
+		if(this.getCellPicPath() != null) {
+			try {
+				BufferedImage picture = ImageIO.read(new File(this.getCellPicPath()));
+				//If the image is  .png this code converts it to jpg
+				BufferedImage result = new BufferedImage(
+				        picture.getWidth(),
+				        picture.getHeight(),
+				        BufferedImage.TYPE_INT_RGB);
+				//color the transparent background into white
+				result.createGraphics().drawImage(picture, 0, 0, Color.white, null);
+	
+				Image scaledImage = result.getScaledInstance(this.getSide(),
+															 this.getSide(), Image.SCALE_SMOOTH);
+				g.drawImage(scaledImage, 0,0, this);
+				System.out.println("ho provato a stampare "+ this.getCellPicPath());
+				
+			}catch(IOException e) {
+				
+				e.printStackTrace();
+			}
 		}
 		
 
@@ -76,7 +77,7 @@ public class Cell extends JPanel {
 		super();
 		this.setSide(side);
 		this.setBackground(bg);
-		this.setCellPicPath("images"+File.separator+"grass.jpg");
+
 		this.setPreferredSize(new Dimension(this.getSide(), this.getSide()));
 		this.setBorder(BorderFactory.createLoweredBevelBorder());
 
@@ -88,8 +89,11 @@ public class Cell extends JPanel {
 
 	
 	public void changeCellPicture(String path) {
-
-		this.setCellPicPath(path);
+		if(this.getCellPicPath() != null) {
+			this.setCellPicPath(path);
+		}else {
+			this.cellPicPath = new String(path);
+		}
 		this.repaint();
 	}
 	

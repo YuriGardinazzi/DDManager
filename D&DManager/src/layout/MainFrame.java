@@ -38,7 +38,7 @@ public class MainFrame extends JFrame {
 		this.p1 = new LeftPanel(new Dimension(20,70), Color.orange);		
 
 		
-		GridPanel grid = new GridPanel(15,8, 100);
+		GridPanel grid = new GridPanel(10,5, 75);
 		JScrollPane scrollGrid = new JScrollPane(grid,
 												 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 												 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
