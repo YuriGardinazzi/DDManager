@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
+import menu.CellListener;
 import menu.MapPopMenu;
 
 
@@ -36,34 +37,8 @@ public class Cell extends JPanel {
 		this.setPreferredSize(new Dimension(this.getSide(), this.getSide()));
 		this.setBorder(BorderFactory.createLoweredBevelBorder());
 		
-		this.addMouseListener(new MouseAdapter() {
-     
-	       	//getBackground return the background color of the father
-			//@SuppressWarnings("unused")
-			private Color defaultBg = getBackground();
-			private Color actualColor = getBackground();
-			
-            @Override
-            public void mousePressed(MouseEvent e) {
-            	
-            	//left click
-            	if(e.getButton() == MouseEvent.BUTTON1) {
-	            	if(actualColor.equals(Color.black)) {
-	            		this.actualColor = this.defaultBg;
-	            		setBackground(this.defaultBg);
-	            	}else {
-	            		 setBackground(Color.black);
-	            		 this.actualColor = Color.black;
-	            	}
-	                repaint();
-            	}else if(e.getButton() == MouseEvent.BUTTON3) {
-            		MapPopMenu menu = new MapPopMenu();
-            		menu.show(e.getComponent(), e.getX(), e.getY());
-            	}
+		this.addMouseListener(new CellListener(this));
 
-            }
-            
-        });
 	}
 
 
