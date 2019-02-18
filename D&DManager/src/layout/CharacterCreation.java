@@ -89,7 +89,7 @@ public class CharacterCreation extends JFrame {
 	}
 
 	private void CreateGUI() {
-		CustomPanel form = this.CreateForm(new Dimension(30,50), Color.cyan);
+		CustomPanel form = this.CreateForm(new Dimension(30,60), Color.cyan);
 		
 		this.add(form);
 		this.pack();
@@ -140,6 +140,8 @@ public class CharacterCreation extends JFrame {
 		
 		cons.gridy++;
 		cons.gridx = 0;
+		cons.anchor = GridBagConstraints.WEST;
+		cons.fill = GridBagConstraints.HORIZONTAL;
 		//Name fields
 		form.add(labelName, cons);
 		cons.gridx = 1;
