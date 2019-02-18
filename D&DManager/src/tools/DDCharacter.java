@@ -17,7 +17,7 @@ public class DDCharacter implements Serializable {
 	private String divinity;
 	private String charClass;
 	
-	
+	private Integer hitPoints;
 	private Integer level;
 	private Integer experience;
 	private Integer strength;
@@ -31,9 +31,11 @@ public class DDCharacter implements Serializable {
 	
 	/**
 	 * Constructor of the character 
+	 * @param imagePath path of the picture of the character
 	 * @param name
 	 * @param alignment
 	 * @param divinity
+	 * @param hitPoints
 	 * @param level
 	 * @param experience
 	 * @param strength
@@ -46,16 +48,17 @@ public class DDCharacter implements Serializable {
 	public DDCharacter(
 						String imagePath,
 						String name, String alignment, String divinity,
-						String charClass,Integer level, Integer experience,
+						String charClass,Integer hitPoints,Integer level, Integer experience,
 						Integer strength, Integer dexterity,
 						Integer constitution, Integer intelligence, Integer wisdom,
 						Integer charisma) {
-		super();
+		
 		this.setImagePath(imagePath);
 		this.setName(name);
 		this.setAlignment(alignment);
 		this.setDivinity(divinity);
 		this.setCharClass(charClass);
+		this.setHitPoints(hitPoints);
 		this.setLevel(level);
 		this.setExperience(experience);
 		this.setStrength(strength);
@@ -69,11 +72,12 @@ public class DDCharacter implements Serializable {
 	@Override
 	public String toString() {
 		return("Character stats:\n " +
-			   "\nImagePath"+ this.getImagePath() +
+			   "\nImagePath: "+ this.getImagePath() +
 			   "\nName: " + this.getName() +
 			   "\nAlignment: "+ this.getAlignment()+
 			   "\nDivinity: "+ this.getDivinity() + 
-			   "\nClass: " + this.getClass() +
+			   "\nclass: " + this.getCharClass()+
+			   "\nHit Points: " + this.getHitPoints()+
 			   "\nLevel: "+ this.getLevel()+
 			   "\nExperience: "+ this.getExperience()+
 			   "\nStrength: "+ this.getStrength()+
@@ -243,5 +247,19 @@ public class DDCharacter implements Serializable {
 	 */
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
+	}
+
+	/**
+	 * @return the hitPoints
+	 */
+	public Integer getHitPoints() {
+		return hitPoints;
+	}
+
+	/**
+	 * @param hitPoints the hitPoints to set
+	 */
+	public void setHitPoints(Integer hitPoints) {
+		this.hitPoints = hitPoints;
 	}
 }

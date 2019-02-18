@@ -52,6 +52,8 @@ public class CharacterCreation extends JFrame {
 	private FormTextField textDivinity = new FormTextField("Boccob", 16);
 	private FormLabel labelClass = new FormLabel("Class");
 	private FormTextField textClass = new FormTextField("Wizard", 16);
+	private FormLabel labelHP = new FormLabel("HitPoints");
+	private FormNumber numHP = new FormNumber();
 	private FormLabel labelLevel = new FormLabel("Level");
 	private FormNumber numLevel = new FormNumber();
 	private FormLabel labelExp = new FormLabel("Experience");
@@ -172,6 +174,17 @@ public class CharacterCreation extends JFrame {
 		cons.gridy++;
 		cons.gridx = 0;
 	
+		//HitPoints fields
+		
+		form.add(labelHP, cons);		
+		cons.gridx = 1;
+		cons.anchor = GridBagConstraints.CENTER;
+		
+		form.add(numHP, cons);
+		
+		cons.gridy++;
+		cons.gridx = 0;
+		
 		//Level fields
 	
 		form.add(labelLevel, cons);		
@@ -261,7 +274,7 @@ public class CharacterCreation extends JFrame {
 												getImgPath(),
 												textName.getText(), textAlign.getText(),
 												textDivinity.getText(), textClass.getText(), 
-												numLevel.getNumber(),
+												numHP.getNumber(),numLevel.getNumber(),
 												numExp.getNumber(), numStr.getNumber(),
 												numDex.getNumber(), numConst.getNumber(),
 												numInt.getNumber(), numWis.getNumber(), numChar.getNumber());
