@@ -23,9 +23,15 @@ public class CellListener extends MouseAdapter {
 	}
 
     public void mousePressed(MouseEvent e){
-        
+        //left Click
     	if(e.getButton() == MouseEvent.BUTTON1) {
-        	if(this.getBg().equals(Color.black)) {
+        	if(this.getCell().getCharacter() != null) {
+   
+        		this.getCell().getRightPanel().setCharacter(this.getCell().getCharacter());
+        		this.getCell().getRightPanel().createAndShowGui();
+        	}
+    		
+    		if(this.getBg().equals(Color.black)) {
         		this.setBg(Color.red);
         		this.cell.setBackground(this.getBg());
         	}else {

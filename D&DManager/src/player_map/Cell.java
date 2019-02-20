@@ -16,6 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import layout.RightPanel;
 import menu.CellListener;
 import menu.MapPopMenu;
 import tools.DDCharacter;
@@ -33,6 +34,7 @@ public class Cell extends JPanel {
 	private Color bg;
 	private String cellPicPath;
 	private DDCharacter character;
+	private RightPanel rightPanel;
 	
 	private static final int DEFAULT_SIDE = 25;
 
@@ -69,16 +71,13 @@ public class Cell extends JPanel {
 		}
 		
 
-	}
-	public Cell() {
-		this(DEFAULT_SIDE, Color.yellow);
-	}
-	
-	public Cell(int side, Color bg) {
+	}	
+	public Cell(int side, Color bg, RightPanel rightPanel) {
 		super();
 		this.setSide(side);
 		this.setBackground(bg);
-
+		this.setRightPanel(rightPanel);
+		
 		this.setPreferredSize(new Dimension(this.getSide(), this.getSide()));
 		this.setBorder(BorderFactory.createLoweredBevelBorder());
 
@@ -173,5 +172,11 @@ public class Cell extends JPanel {
 	 */
 	public void setCharacter(DDCharacter character) {
 		this.character = character;
+	}
+	public RightPanel getRightPanel() {
+		return rightPanel;
+	}
+	public void setRightPanel(RightPanel rightPanel) {
+		this.rightPanel = rightPanel;
 	}
 }

@@ -61,7 +61,10 @@ public class RightPanel extends CustomPanel {
 		this.createAndShowGui();
 	}
 
-	private void createAndShowGui() {
+	/**
+	 * Draws the GUI of the right panel
+	 */
+	public void createAndShowGui() {
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints cons = new GridBagConstraints();
 		

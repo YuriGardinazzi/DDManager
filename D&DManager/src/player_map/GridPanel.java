@@ -6,6 +6,8 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JPanel;
 
+import layout.RightPanel;
+
 public class GridPanel extends JPanel {
 
 	/**
@@ -15,6 +17,7 @@ public class GridPanel extends JPanel {
 	private int gridHeight;
 	private int gridWidth;
 	private int cellSide;
+	private RightPanel rightPanel;
 	private static final int DEFAULT_WIDTH = 5;
 	private static final int DEFAULT_HEIGHT = 5;
 	private Cell[][] matrice;
@@ -25,11 +28,12 @@ public class GridPanel extends JPanel {
 	 * @param w coloumns
 	 * @param cell cell that draws
 	 */
-	public GridPanel(int w, int h, int cell) {
+	public GridPanel(int w, int h, int cell, RightPanel rightPanel) {
 		super();
 		this.setGridHeight(h);
 		this.setGridWidth(w);
 		this.setCellSide(cell);
+		this.setRightPanel(rightPanel);
 		this.setLayout(new GridBagLayout());
 		this.setMatrix();
 		
@@ -106,11 +110,25 @@ public class GridPanel extends JPanel {
 		this.matrice = new Cell[this.getGridWidth()][this.getGridHeight()];
 		for(int c = 0; c < this.getGridWidth(); c++) {
 			for(int r = 0; r < this.getGridHeight(); r++) {
-				this.matrice[c][r] = new Cell(this.getCellSide(), Color.red);
+				this.matrice[c][r] = new Cell(this.getCellSide(), Color.red, this.getRightPanel());
 			}
 		}
 		
 		
+	}
+
+
+
+
+	public RightPanel getRightPanel() {
+		return rightPanel;
+	}
+
+
+
+
+	public void setRightPanel(RightPanel rightPanel) {
+		this.rightPanel = rightPanel;
 	}
 
 }
