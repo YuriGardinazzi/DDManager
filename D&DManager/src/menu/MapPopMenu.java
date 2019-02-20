@@ -46,6 +46,10 @@ public class MapPopMenu extends JPopupMenu {
 		this.add(this.addCharacter);
 	}
 
+	/**
+	 * This functions returns a character object from a *.ddc file choosed from the user
+	 * @return character object
+	 */
 	private DDCharacter retrieveCharacter() {
 		DDCharacter c = null;
 		//Get a picture from the user
