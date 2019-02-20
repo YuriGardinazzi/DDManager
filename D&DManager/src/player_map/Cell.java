@@ -55,13 +55,12 @@ public class Cell extends JPanel {
 				        picture.getWidth(),
 				        picture.getHeight(),
 				        BufferedImage.TYPE_INT_RGB);
-				//color the transparent background into white
+				//color the transparent background of white
 				result.createGraphics().drawImage(picture, 0, 0, Color.white, null);
 	
 				Image scaledImage = result.getScaledInstance(this.getSide(),
 															 this.getSide(), Image.SCALE_SMOOTH);
-				g.drawImage(scaledImage, 0,0, this);
-				System.out.println("ho provato a stampare "+ this.getCellPicPath());
+				g.drawImage(scaledImage, 0,0, this);	
 				
 			}catch(IOException e) {
 				
