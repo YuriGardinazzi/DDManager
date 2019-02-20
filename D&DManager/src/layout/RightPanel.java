@@ -206,14 +206,11 @@ public class RightPanel extends CustomPanel {
 		
 	}
 	/**
-	 * Update the stats written in the form
+	 * Update the stats written in the form with the one of a given character
 	 */
-	public void updateStat() {
+	public void updateStat(DDCharacter c) {
 		GridBagConstraints cons = new GridBagConstraints();
-		
-		DDCharacter c = this.getCharacter();
-
-		
+		this.setCharacter(c);	
 		this.picLabel.setIcon(this.getScaledPicture(c.getImagePath()));
 		this.labelName.setText(c.getName());
 		this.labelAlignment.setText(c.getAlignment());

@@ -26,9 +26,7 @@ public class CellListener extends MouseAdapter {
         //left Click
     	if(e.getButton() == MouseEvent.BUTTON1) {
         	if(this.getCell().getCharacter() != null) {
-   
-        		this.getCell().getRightPanel().setCharacter(this.getCell().getCharacter());
-        		this.getCell().getRightPanel().updateStat();
+        		this.getCell().getRightPanel().updateStat(this.getCell().getCharacter());
         	}
     		
     	/*	if(this.getBg().equals(Color.black)) {
