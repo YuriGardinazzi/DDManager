@@ -31,13 +31,13 @@ public class CellListener extends MouseAdapter {
         		this.getCell().getRightPanel().updateStat();
         	}
     		
-    		if(this.getBg().equals(Color.black)) {
+    	/*	if(this.getBg().equals(Color.black)) {
         		this.setBg(Color.red);
         		this.cell.setBackground(this.getBg());
         	}else {
         		 this.cell.setBackground(Color.black);
         		 this.setBg(Color.black);
-        	}
+        	}*/
     	}
     	
     	if (e.isPopupTrigger()) {
