@@ -214,6 +214,7 @@ public class RightPanel extends CustomPanel {
 		this.picLabel.setIcon(this.getScaledPicture(c.getImagePath()));
 		this.labelName.setText(c.getName());
 		this.labelAlignment.setText(c.getAlignment());
+		this.labelClass.setText(c.getCharClass());
 		this.labelDivinity.setText(c.getDivinity());
 		this.labelHP.setText(c.getHitPoints());
 		this.labelLevel.setText(c.getLevel());

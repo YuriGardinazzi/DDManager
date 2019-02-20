@@ -110,7 +110,7 @@ public class GridPanel extends JPanel {
 		this.matrice = new Cell[this.getGridWidth()][this.getGridHeight()];
 		for(int c = 0; c < this.getGridWidth(); c++) {
 			for(int r = 0; r < this.getGridHeight(); r++) {
-				this.matrice[c][r] = new Cell(this.getCellSide(), Color.red, this.getRightPanel());
+				this.matrice[c][r] = new Cell(this.getCellSide(), new Color(4, 165, 13), this.getRightPanel());
 			}
 		}
 		

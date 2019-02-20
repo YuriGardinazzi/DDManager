@@ -25,7 +25,7 @@ public class FormNumber extends JFormattedTextField implements PropertyChangeLis
 	private int fontSize = 18;
 	private NumberFormat nFormat;
 	public FormNumber() {
-		super(NumberFormat.getNumberInstance());
+		super(new DecimalFormat("######"));
 		this.setValue(0);
 		this.addPropertyChangeListener("value",this);
 		this.setFont(new Font(this.font, Font.PLAIN, this.fontSize));
