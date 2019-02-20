@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.text.DecimalFormat;
 
 import javax.swing.JFormattedTextField;
+import javax.swing.text.NumberFormatter;
 
 
 /**
@@ -20,9 +21,16 @@ public class FormNumber extends JFormattedTextField {
 	private String font = "Times new roman";
 	private int fontSize = 18;
 	public FormNumber() {
-		super(new DecimalFormat("###"));
+		super();
+		
+		DecimalFormat decimalFormat = new DecimalFormat("###");
+		decimalFormat.setMinimumIntegerDigits(0);
+		
+		NumberFormatter formatter = new NumberFormatter(decimalFormat);
+		this.setFormatter(formatter);
 		this.setFont(new Font(this.font, Font.PLAIN, this.fontSize));
-		this.setText("000");
+		this.setText("0");
+		
 	
 		
 	}
