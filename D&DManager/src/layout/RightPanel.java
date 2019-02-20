@@ -14,12 +14,10 @@ import java.io.ObjectInputStream;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import graphical_components.FormLabel;
-import graphical_components.GraphicDice;
+import graphical_components.FormNumber;
+import graphical_components.FormTextField;
 import tools.DDCharacter;
 
 /**
@@ -33,6 +31,21 @@ public class RightPanel extends CustomPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+	private JLabel picLabel;
+	private FormLabel labelName;
+	private FormLabel labelAlignment;	
+	private FormLabel labelDivinity;	
+	private FormLabel labelClass;	
+	private FormLabel labelHP;
+	private FormLabel labelLevel;	
+	private FormLabel labelExp;
+	private FormLabel labelStrength ;
+	private FormLabel labelDex;
+	private FormLabel labelConst;
+	private FormLabel labelInt;
+	private FormLabel labelWis;
+	private FormLabel labelCharisma;
 
 	private DDCharacter character;
 	/**
@@ -66,101 +79,156 @@ public class RightPanel extends CustomPanel {
 	 */
 	public void createAndShowGui() {
 		this.setLayout(new GridBagLayout());
+
+		DDCharacter c = this.getCharacter();
 		GridBagConstraints cons = new GridBagConstraints();
 		
 		cons.gridx = 0;
 		cons.gridy = 0;
 
 		//Profile picture 
-		JLabel	picLabel = new JLabel();
-				picLabel.setPreferredSize(new Dimension(150,150));
-				picLabel.setIcon(this.getScaledPicture(this.getCharacter().getImagePath()));
+		this.picLabel = new JLabel();
+		this.picLabel.setPreferredSize(new Dimension(150,150));
+		this.picLabel.setIcon(this.getScaledPicture(this.getCharacter().getImagePath()));
 		this.add(picLabel, cons);
 	
 		
 		cons.anchor = GridBagConstraints.WEST;
 		cons.fill = GridBagConstraints.HORIZONTAL;
+		
+		//Add each label on the left side
 		//Character name
 		
 		cons.gridx = 0;
-		cons.gridy++;	
-		this.add(new FormLabel(this.getCharacter().getName()), cons);
-
+		cons.gridy++;
+		this.add(new FormLabel("Name: "), cons);
+		cons.gridx = 1;
+		this.labelName = new FormLabel(c.getName());
+		this.add(this.labelName, cons);
+	
 		//Character Alignment	
+		
 		cons.gridx = 0;
 		cons.gridy++;
 		this.add(new FormLabel("Alignment: "), cons);
 		cons.gridx = 1;
-		this.add(new FormLabel(this.getCharacter().getAlignment()), cons);
+		this.labelAlignment = new FormLabel(c.getAlignment());
+		this.add(this.labelAlignment, cons);
+		
 		//Character Divinity	
 		cons.gridx = 0;
 		cons.gridy++;
 		this.add(new FormLabel("Divinity: "), cons);
 		cons.gridx = 1;
-		this.add(new FormLabel(this.getCharacter().getDivinity()), cons);
+		this.labelDivinity = new FormLabel(c.getDivinity());
+		this.add(this.labelDivinity, cons);
+		
 		//Character Class
 		cons.gridx = 0;
 		cons.gridy++;
 		this.add(new FormLabel("Class: "), cons);
 		cons.gridx = 1;
-		this.add(new FormLabel(this.getCharacter().getCharClass()), cons);
+		this.labelClass = new FormLabel(c.getCharClass());
+		this.add(this.labelClass, cons);
+		
 		//Character HP
 		cons.gridx = 0;
 		cons.gridy++;
 		this.add(new FormLabel("HP: "), cons);
 		cons.gridx = 1;
-		this.add(new FormLabel(this.getCharacter().getHitPoints()), cons);
+		this.labelHP = new FormLabel(c.getHitPoints());
+		this.add(this.labelHP, cons);
+		
 		//Character Level
 		cons.gridx = 0;
 		cons.gridy++;
 		this.add(new FormLabel("Level: "), cons);
 		cons.gridx = 1;
-		this.add(new FormLabel(this.getCharacter().getLevel()), cons);
+		this.labelLevel = new FormLabel(c.getLevel());
+		this.add(this.labelLevel, cons);
+		
 		//Character Experience
 		cons.gridx = 0;
 		cons.gridy++;
 		this.add(new FormLabel("Experience: "), cons);
 		cons.gridx = 1;
-		this.add(new FormLabel(this.getCharacter().getExperience()), cons);
+		this.labelExp = new FormLabel(c.getExperience());
+		this.add(this.labelExp, cons);
+		
 		//Character Strength
 		cons.gridx = 0;
 		cons.gridy++;
 		this.add(new FormLabel("Strength: "), cons);
 		cons.gridx = 1;
-		this.add(new FormLabel(this.getCharacter().getStrength()), cons);
+		this.labelStrength = new FormLabel(c.getStrength());
+		this.add(this.labelStrength, cons);
+		
 		//Character Dexterity
 		cons.gridx = 0;
 		cons.gridy++;
 		this.add(new FormLabel("Dexterity: "), cons);
 		cons.gridx = 1;
-		this.add(new FormLabel(this.getCharacter().getDexterity()), cons);
+		this.labelDex = new FormLabel(c.getDexterity());
+		this.add(this.labelDex, cons);
+		
 		//Character Constitution
 		cons.gridx = 0;
 		cons.gridy++;
 		this.add(new FormLabel("Constitution: "), cons);
 		cons.gridx = 1;
-		this.add(new FormLabel(this.getCharacter().getConstitution()), cons);
+		this.labelConst = new FormLabel(c.getConstitution());
+		this.add(this.labelConst, cons);
+		
 		//Character Intelligence
 		cons.gridx = 0;
 		cons.gridy++;
 		this.add(new FormLabel("Intelligence: "), cons);
 		cons.gridx = 1;
-		this.add(new FormLabel(this.getCharacter().getIntelligence()), cons);
+		this.labelInt = new FormLabel(c.getIntelligence());
+		this.add(this.labelInt, cons);
+		
 		//Character Wisdom
 		cons.gridx = 0;
 		cons.gridy++;
 		this.add(new FormLabel("Wisdom: "), cons);
 		cons.gridx = 1;
-		this.add(new FormLabel(this.getCharacter().getWisdom()), cons);
+		this.labelWis = new FormLabel(c.getWisdom());
+		this.add(this.labelWis, cons);
+		
 		//Character Charisma
 		cons.gridx = 0;
 		cons.gridy++;
-		this.add(new FormLabel("Wisdom: "), cons);
+		this.add(new FormLabel("Charisma: "), cons);
 		cons.gridx = 1;
-		this.add(new FormLabel(this.getCharacter().getCharisma()), cons);
-				
+		this.labelCharisma = new FormLabel(c.getCharisma());
+		this.add(this.labelCharisma, cons);
+		
+		
 	}
-	
+	/**
+	 * Update the stats written in the form
+	 */
+	public void updateStat() {
+		GridBagConstraints cons = new GridBagConstraints();
+		
+		DDCharacter c = this.getCharacter();
+
+		
+		this.picLabel.setIcon(this.getScaledPicture(c.getImagePath()));
+		this.labelName.setText(c.getName());
+		this.labelAlignment.setText(c.getAlignment());
+		this.labelDivinity.setText(c.getDivinity());
+		this.labelHP.setText(c.getHitPoints());
+		this.labelLevel.setText(c.getLevel());
+		this.labelExp.setText(c.getExperience());
+		this.labelStrength.setText(c.getStrength());
+		this.labelDex.setText(c.getDexterity());
+		this.labelConst.setText(c.getConstitution());
+		this.labelInt.setText(c.getIntelligence());
+		this.labelWis.setText(c.getWisdom());
+		this.labelCharisma.setText(c.getCharisma());
+
+	}
 	/**
 	 * Return a scaled picture from a picture got from a given path
 	 * @param path path of the picture to scale

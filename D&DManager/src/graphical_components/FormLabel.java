@@ -33,4 +33,8 @@ public class FormLabel extends JLabel {
 		super(integer.toString());
 		this.setFont(new Font(this.font, Font.BOLD, this.fontSize));
 	}
+	public void setText(Integer integer) {
+		super.setText(integer.toString());
+		
+	}
 }
