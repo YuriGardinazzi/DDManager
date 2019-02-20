@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 
 import menu.CellListener;
 import menu.MapPopMenu;
+import tools.DDCharacter;
 
 
 /**
@@ -31,6 +32,7 @@ public class Cell extends JPanel {
 	private int side;
 	private Color bg;
 	private String cellPicPath;
+	private DDCharacter character;
 	
 	private static final int DEFAULT_SIDE = 25;
 
@@ -45,7 +47,7 @@ public class Cell extends JPanel {
 	public void paint(Graphics g) {
 		
 		super.paint(g);
-		if(this.getCellPicPath() != null) {
+		if(this.getCharacter()!= null) {
 			try {
 				BufferedImage picture = ImageIO.read(new File(this.getCellPicPath()));
 				//If the image is  .png this code converts it to jpg
@@ -87,8 +89,14 @@ public class Cell extends JPanel {
 		this.repaint();
 	}
 
-	
-	public void changeCellPicture(String path) {
+	/**
+	 * Add an element to the cell and change the background of the cell
+	 * @param path path of the new character
+	 * @param c
+	 */
+	public void addElement(String path, DDCharacter c) {
+		
+		this.setCharacter(c);
 		if(this.getCellPicPath() != null) {
 			this.setCellPicPath(path);
 		}else {
@@ -96,7 +104,18 @@ public class Cell extends JPanel {
 		}
 		this.repaint();
 	}
-	
+
+	/**
+	 * Remove an element from the cell if there's one.
+	 * and set to null the fields character and cellPicPath
+	 */
+	public void removeElement() {
+		if(this.getCharacter() != null) {
+			this.setCharacter(null);
+			this.setCellPicPath(null);
+			this.repaint();
+		}
+	}
 	/**
 	 * 
 	 * @return the background color of the cell
@@ -143,5 +162,17 @@ public class Cell extends JPanel {
 	 */
 	public void setCellPicPath(String cellPic) {
 		this.cellPicPath = cellPic;
+	}
+	/**
+	 * @return the character
+	 */
+	public DDCharacter getCharacter() {
+		return character;
+	}
+	/**
+	 * @param character the character to set
+	 */
+	public void setCharacter(DDCharacter character) {
+		this.character = character;
 	}
 }
