@@ -29,14 +29,14 @@ public class MapPopMenu extends JPopupMenu {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private JMenuItem addCharacter;
+	private JMenuItem addCharacterItem;
 	private JMenuItem removeCharacter;
 	private Cell cell;
 	
 	public MapPopMenu(Cell c) {
 		this.setCell(c);
-		this.addCharacter = new JMenuItem("Add new character");
-		this.addCharacter.addActionListener(new ActionListener() {			
+		this.addCharacterItem = new JMenuItem("Add new character");
+		this.addCharacterItem.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				DDCharacter c = retrieveCharacter();
@@ -44,7 +44,7 @@ public class MapPopMenu extends JPopupMenu {
 
 			}
 		});
-		this.add(this.addCharacter);
+		this.add(this.addCharacterItem);
 		
 		this.removeCharacter = new JMenuItem("remove character");
 		this.removeCharacter.addActionListener(new ActionListener() {		

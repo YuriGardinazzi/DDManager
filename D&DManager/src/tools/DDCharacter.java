@@ -3,263 +3,83 @@
  */
 package tools;
 
+import java.io.File;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Yuri
  * This class describes a general character
  */
 public class DDCharacter implements Serializable {
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String imagePath;
-	private String name;
-	private String alignment;
-	private String divinity;
-	private String charClass;
-	
-	private Integer hitPoints;
-	private Integer level;
-	private Integer experience;
-	private Integer strength;
-	private Integer	dexterity;
-	private Integer	constitution;
-	private Integer	intelligence;
-	private Integer	wisdom;
-	private Integer charisma;
-	
+	private Map<String, String> textStatMap;
+	public final String[] textStatKeys = new String[] {"Name","Alignment","Divinity",
+												  "CharacterClass"};
+	public final String[] numberStatKeys = new String[] {"HitPoints", "Level", "Experience", "Strength",
+												  "Dexterity", "Constitution","Intelligence", "Wisdom",
+												  	"Charisma"};
+	private Map<String, Integer> numberStatMap;
+
 
 	
-	/**
-	 * Constructor of the character 
-	 * @param imagePath path of the picture of the character
-	 * @param name
-	 * @param alignment
-	 * @param divinity
-	 * @param hitPoints
-	 * @param level
-	 * @param experience
-	 * @param strength
-	 * @param dexterity
-	 * @param constitution
-	 * @param intelligence
-	 * @param wisdom
-	 * @param charisma
-	 */
-	public DDCharacter(
-						String imagePath,
-						String name, String alignment, String divinity,
-						String charClass,Integer hitPoints,Integer level, Integer experience,
-						Integer strength, Integer dexterity,
-						Integer constitution, Integer intelligence, Integer wisdom,
-						Integer charisma) {
-		
-		this.setImagePath(imagePath);
-		this.setName(name);
-		this.setAlignment(alignment);
-		this.setDivinity(divinity);
-		this.setCharClass(charClass);
-		this.setHitPoints(hitPoints);
-		this.setLevel(level);
-		this.setExperience(experience);
-		this.setStrength(strength);
-		this.setDexterity(dexterity);
-		this.setConstitution(constitution);
-		this.setIntelligence(intelligence);
-		this.setWisdom(wisdom);
-		this.setCharisma(charisma);
+
+	public DDCharacter() {
+		this.textStatMap = new HashMap<String, String>();
+		this.numberStatMap = new HashMap<String, Integer>();
+		this.setImagePath("images" + File.separator + "character.jpg");
+		this.setDefaultHashMap();
 	}
 	
-	@Override
-	public String toString() {
-		return("Character stats:\n " +
-			   "\nImagePath: "+ this.getImagePath() +
-			   "\nName: " + this.getName() +
-			   "\nAlignment: "+ this.getAlignment()+
-			   "\nDivinity: "+ this.getDivinity() + 
-			   "\nclass: " + this.getCharClass()+
-			   "\nHit Points: " + this.getHitPoints()+
-			   "\nLevel: "+ this.getLevel()+
-			   "\nExperience: "+ this.getExperience()+
-			   "\nStrength: "+ this.getStrength()+
-			   "\nDexterity: "+ this.getDexterity() +
-			   "\nConstitution: " + this.getConstitution()+
-			   "\nIntelligence: "+ this.getIntelligence() +
-			   "\nWisdom: "+ this.getWisdom() +
-			   "\nCharisma: "+ this.getCharisma());
+	private void setDefaultHashMap() {
+
+		for(String s : this.textStatKeys) {
+			this.textStatMap.put(s, "Test");
+		}
+		for(String s : this.numberStatKeys) {
+			this.numberStatMap.put(s, 0);
+		}
+	}
+
+	
+	public void setTextStat(String key, String value) {
+		this.textStatMap.replace(key, value);
+	}
+	public void setNumberStat(String key, Integer value) {
+		this.numberStatMap.replace(key, value);
 	}
 	
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
+	public String getTextStat(String key) {
+		return this.textStatMap.get(key);
 	}
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
+	
+	public Integer getNumberStat(String key) {
+		return this.numberStatMap.get(key);
 	}
-	/**
-	 * @return the alignment
-	 */
-	public String getAlignment() {
-		return alignment;
-	}
-	/**
-	 * @param alignment the alignment to set
-	 */
-	public void setAlignment(String alignment) {
-		this.alignment = alignment;
-	}
-	/**
-	 * @return the divinity
-	 */
-	public String getDivinity() {
-		return divinity;
-	}
-	/**
-	 * @param divinity the divinity to set
-	 */
-	public void setDivinity(String divinity) {
-		this.divinity = divinity;
-	}
-	/**
-	 * @return the strength
-	 */
-	public Integer getStrength() {
-		return strength;
-	}
-	/**
-	 * @param strength the strength to set
-	 */
-	public void setStrength(Integer strength) {
-		this.strength = strength;
-	}
-	/**
-	 * @return the dexterity
-	 */
-	public Integer getDexterity() {
-		return dexterity;
-	}
-	/**
-	 * @param dexterity the dexterity to set
-	 */
-	public void setDexterity(Integer dexterity) {
-		this.dexterity = dexterity;
-	}
-	/**
-	 * @return the costitution
-	 */
-	public Integer getConstitution() {
-		return constitution;
-	}
-	/**
-	 * @param costitution the costitution to set
-	 */
-	public void setConstitution(Integer costitution) {
-		this.constitution = costitution;
-	}
-	/**
-	 * @return the intelligence
-	 */
-	public Integer getIntelligence() {
-		return intelligence;
-	}
-	/**
-	 * @param intelligence the intelligence to set
-	 */
-	public void setIntelligence(Integer intelligence) {
-		this.intelligence = intelligence;
-	}
-	/**
-	 * @return the wisdom
-	 */
-	public Integer getWisdom() {
-		return wisdom;
-	}
-	/**
-	 * @param wisdom the wisdom to set
-	 */
-	public void setWisdom(Integer wisdom) {
-		this.wisdom = wisdom;
-	}
-	/**
-	 * @return the charisma
-	 */
-	public Integer getCharisma() {
-		return charisma;
-	}
-	/**
-	 * @param charisma the charisma to set
-	 */
-	public void setCharisma(Integer charisma) {
-		this.charisma = charisma;
-	}
-	/**
-	 * @return the level
-	 */
-	public Integer getLevel() {
-		return level;
-	}
-	/**
-	 * @param level the level to set
-	 */
-	public void setLevel(Integer level) {
-		this.level = level;
-	}
-	/**
-	 * @return the experience
-	 */
-	public Integer getExperience() {
-		return experience;
-	}
-	/**
-	 * @param experience the experience to set
-	 */
-	public void setExperience(Integer experience) {
-		this.experience = experience;
-	}
-
-	/**
-	 * @return the charClass
-	 */
-	public String getCharClass() {
-		return charClass;
-	}
-
-	/**
-	 * @param charClass the charClass to set
-	 */
-	public void setCharClass(String charClass) {
-		this.charClass = charClass;
-	}
-
-	/**
-	 * @return the imagePath
-	 */
 	public String getImagePath() {
 		return imagePath;
 	}
 
-	/**
-	 * @param imagePath the imagePath to set
-	 */
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
 	}
 
-	/**
-	 * @return the hitPoints
-	 */
-	public Integer getHitPoints() {
-		return hitPoints;
+	@Override
+	public String toString() {
+		String output = " ";
+		for(String s : this.textStatMap.keySet()) {
+			output += "\n" + s + " " + this.textStatMap.get(s);
+		}
+		for(String s : this.numberStatMap.keySet()) {
+			output += "\n" + s + " " + this.numberStatMap.get(s);
+		}
+		
+		return output;
 	}
 
-	/**
-	 * @param hitPoints the hitPoints to set
-	 */
-	public void setHitPoints(Integer hitPoints) {
-		this.hitPoints = hitPoints;
-	}
 }

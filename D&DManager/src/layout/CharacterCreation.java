@@ -16,6 +16,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
@@ -44,33 +46,8 @@ public class CharacterCreation extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private String imgPath = "images" + File.separator + "character.jpg";
-	
-	private FormLabel labelName = new FormLabel("Name");
-	private FormTextField textName = new FormTextField("name", 16);
-	private FormLabel labelAlignment = new FormLabel("Alignment");
-	private FormTextField textAlign = new FormTextField("chaotic-evil", 16);
-	private FormLabel labelDivinity = new FormLabel("Divinity");
-	private FormTextField textDivinity = new FormTextField("Boccob", 16);
-	private FormLabel labelClass = new FormLabel("Class");
-	private FormTextField textClass = new FormTextField("Wizard", 16);
-	private FormLabel labelHP = new FormLabel("HitPoints");
-	private FormNumber numHP = new FormNumber();
-	private FormLabel labelLevel = new FormLabel("Level");
-	private FormNumber numLevel = new FormNumber();
-	private FormLabel labelExp = new FormLabel("Experience");
-	private FormNumber numExp = new FormNumber();
-	private FormLabel labelStrength = new FormLabel("Strength");
-	private FormNumber numStr = new FormNumber();
-	private FormLabel labelDex = new FormLabel("Dexterity");
-	private FormNumber numDex = new FormNumber();
-	private FormLabel labelConst = new FormLabel("Constitution");
-	private FormNumber numConst = new FormNumber();
-	private FormLabel labelInt = new FormLabel("Intelligence");
-	private FormNumber numInt = new FormNumber();
-	private FormLabel labelWis = new FormLabel("Wisdom");
-	private FormNumber numWis = new FormNumber();
-	private FormLabel labelChar = new FormLabel("Charisma");
-	private FormNumber numChar = new FormNumber();
+	private Map<String, FormTextField> textFields = new HashMap<String, FormTextField>();
+	private Map<String, FormNumber> numberFields = new HashMap<String, FormNumber>();
 	
 	/**
 	 * Create the CharacterCreation window
@@ -108,6 +85,8 @@ public class CharacterCreation extends JFrame {
 	private CustomPanel CreateForm(Dimension ratio, Color bg) {
 		CustomPanel form = new CustomPanel(ratio, bg);
 		form.setLayout(new GridBagLayout());
+	
+		DDCharacter c = new DDCharacter();
 		
 		GridBagConstraints cons = new GridBagConstraints();
 		
@@ -139,132 +118,33 @@ public class CharacterCreation extends JFrame {
 		form.add(addPic, cons);
 		
 		cons.gridy++;
-		cons.gridx = 0;
 		cons.anchor = GridBagConstraints.WEST;
-		cons.fill = GridBagConstraints.HORIZONTAL;
-		//Name fields
-		form.add(labelName, cons);
-		cons.gridx = 1;
-		form.add(textName, cons);
+		cons.fill = GridBagConstraints.HORIZONTAL;	
 		
-		cons.gridy++;
-		cons.gridx = 0;
-	
-		//Alignment fields
-	
-		form.add(labelAlignment, cons);
-		cons.gridx = 1;
-		form.add(textAlign, cons);
-		
-		cons.gridy++;
-		cons.gridx = 0;
-		
-		//Divinity fields
-	
-		form.add(labelDivinity, cons);
-		cons.gridx = 1;		
-		form.add(textDivinity, cons);
-		
-		cons.gridy++;
-		cons.gridx = 0;
-	
-		//Class fields
-		
-		form.add(labelClass, cons);		
-		cons.gridx = 1;	
-		form.add(textClass, cons);
-		
-		cons.gridy++;
-		cons.gridx = 0;
-	
-		//HitPoints fields
-		
-		form.add(labelHP, cons);		
-		cons.gridx = 1;
-		cons.anchor = GridBagConstraints.CENTER;
-		
-		form.add(numHP, cons);
-		
-		cons.gridy++;
-		cons.gridx = 0;
-		
-		//Level fields
-	
-		form.add(labelLevel, cons);		
-		cons.gridx = 1;
-		cons.anchor = GridBagConstraints.CENTER;
-		
-		form.add(numLevel, cons);
-		
-		cons.gridy++;
-		cons.gridx = 0;
-		
-		//Experience fields	
-		form.add(labelExp, cons);	
-		cons.gridx = 1;
-		cons.anchor = GridBagConstraints.CENTER;
-		
-		form.add(numExp, cons);
-		
-		cons.gridy++;
-		cons.gridx = 0;
-		
-		//Strength fields	
-		form.add(labelStrength, cons);
-		cons.gridx = 1;
-		cons.anchor = GridBagConstraints.CENTER;
-		form.add(numStr, cons);
-		
-		cons.gridy++;
-		cons.gridx = 0;
-		
-		//Dexterity fields
-
-		form.add(labelDex, cons);	
-		cons.gridx = 1;
-		cons.anchor = GridBagConstraints.CENTER;
-		form.add(numDex, cons);
-		
-		cons.gridy++;
-		cons.gridx = 0;
-		
-		//Constitution fields
-		
-		form.add(labelConst, cons);	
-		cons.gridx = 1;
-		cons.anchor = GridBagConstraints.CENTER;
-		form.add(numConst, cons);	
-		cons.gridy++;
-		cons.gridx = 0;
-		
-		//Intelligence fields
-
-		form.add(labelInt, cons);		
-		cons.gridx = 1;
-		cons.anchor = GridBagConstraints.CENTER;		
-		form.add(numInt, cons);
-		
-		cons.gridy++;
-		cons.gridx = 0;
-		
-		//Wisdom fields
-		
-		form.add(labelWis, cons);		
-		cons.gridx = 1;
-		cons.anchor = GridBagConstraints.CENTER;
-		form.add(numWis, cons);
-		cons.gridy++;
-		cons.gridx = 0;
-		
-		//Charisma fields
-		
-		form.add(labelChar, cons);	
-		cons.gridx = 1;
-		cons.anchor = GridBagConstraints.CENTER;	
-		form.add(numChar, cons);
 
 		
-		//Save Button
+		for(String s : c.textStatKeys) {
+			this.textFields.put(s, new FormTextField("test", 16));
+			cons.gridx = 0;
+			JLabel label = new JLabel(s);
+			form.add(label, cons);
+			cons.gridx = 1;
+			form.add(this.textFields.get(s), cons);
+			cons.gridy ++;
+		}
+		for(String s : c.numberStatKeys) {	
+			this.numberFields.put(s, new FormNumber());
+			cons.gridx = 0;
+			
+			JLabel label = new JLabel(s);
+			form.add(label, cons);
+			cons.gridx = 1;
+			form.add(this.numberFields.get(s), cons);
+			cons.gridy ++;
+		}
+
+		
+	//Save Button
 		
 		cons.gridy++;
 		cons.gridx = 1;
@@ -273,21 +153,23 @@ public class CharacterCreation extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DDCharacter c = new DDCharacter(
-												getImgPath(),
-												textName.getText(), textAlign.getText(),
-												textDivinity.getText(), textClass.getText(), 
-												numHP.getNumber(),numLevel.getNumber(),
-												numExp.getNumber(), numStr.getNumber(),
-												numDex.getNumber(), numConst.getNumber(),
-												numInt.getNumber(), numWis.getNumber(), numChar.getNumber());
+				DDCharacter c = new DDCharacter();
+				
+				c.setTextStat("ImagePath", getImgPath());
+				for(String key : c.textStatKeys) {
+				
+					c.setTextStat(key, textFields.get(key).getText());
+				}
+				for(String key : c.numberStatKeys) {
+					c.setNumberStat(key, numberFields.get(key).getNumber());
+				}
+				
+				c.setImagePath(getImgPath());
 				
 				saveCharacter(c);
-		
 			}
 		});
-		
-		
+			
 		form.add(save,cons);
 			
 		return form;
@@ -300,7 +182,7 @@ public class CharacterCreation extends JFrame {
 	 */
 	
 	private void saveCharacter(DDCharacter character) {
-	
+		
 		JFileChooser chooser = new JFileChooser();
 
 		int retrival = chooser.showSaveDialog(this.getParent());
@@ -312,7 +194,7 @@ public class CharacterCreation extends JFrame {
 					ObjectOutputStream objOut = new ObjectOutputStream(fOut);
 					objOut.writeObject(character);
 					objOut.close();
-					JOptionPane.showMessageDialog(null, character.getName() + " Has been saved");
+					JOptionPane.showMessageDialog(null, this.getImgPath() + " Has been saved");
 
 			         
 			         //Close the character creation frame
@@ -323,6 +205,7 @@ public class CharacterCreation extends JFrame {
 		            ex.printStackTrace();
 		        }
 		    }
+		System.out.println(character);
 	}
 	private ImageIcon getScaledPicture(String path) {
 		BufferedImage picture;

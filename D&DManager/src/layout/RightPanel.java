@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -32,20 +34,9 @@ public class RightPanel extends CustomPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	
 	private JLabel picLabel;
-	private FormLabel labelName;
-	private FormLabel labelAlignment;	
-	private FormLabel labelDivinity;	
-	private FormLabel labelClass;	
-	private FormLabel labelHP;
-	private FormLabel labelLevel;	
-	private FormLabel labelExp;
-	private FormLabel labelStrength ;
-	private FormLabel labelDex;
-	private FormLabel labelConst;
-	private FormLabel labelInt;
-	private FormLabel labelWis;
-	private FormLabel labelCharisma;
+	private Map<String, FormLabel> mapLabel;
 
 	private DDCharacter character;
 	/**
@@ -65,12 +56,18 @@ public class RightPanel extends CustomPanel {
 	         in.close();
 	         fileIn.close();
 		 }catch( IOException e) {
+			 System.out.println("Input non trovato :S");
 			 e.printStackTrace();
+			 c = new DDCharacter();
 		 } catch (ClassNotFoundException e) {
+			System.out.println("Classe non trovata");
 			e.printStackTrace();
+			c = new DDCharacter();
 		}
 		
 		this.setCharacter(c);
+		this.setMapLabel(new HashMap<String, FormLabel>());
+		
 		this.createAndShowGui();
 	}
 
@@ -96,112 +93,24 @@ public class RightPanel extends CustomPanel {
 		cons.anchor = GridBagConstraints.WEST;
 		cons.fill = GridBagConstraints.HORIZONTAL;
 		
-		//Add each label on the left side
-		//Character name
-		
-		cons.gridx = 0;
 		cons.gridy++;
-		this.add(new FormLabel("Name: "), cons);
-		cons.gridx = 1;
-		this.labelName = new FormLabel(c.getName());
-		this.add(this.labelName, cons);
-	
-		//Character Alignment	
-		
-		cons.gridx = 0;
-		cons.gridy++;
-		this.add(new FormLabel("Alignment: "), cons);
-		cons.gridx = 1;
-		this.labelAlignment = new FormLabel(c.getAlignment());
-		this.add(this.labelAlignment, cons);
-		
-		//Character Divinity	
-		cons.gridx = 0;
-		cons.gridy++;
-		this.add(new FormLabel("Divinity: "), cons);
-		cons.gridx = 1;
-		this.labelDivinity = new FormLabel(c.getDivinity());
-		this.add(this.labelDivinity, cons);
-		
-		//Character Class
-		cons.gridx = 0;
-		cons.gridy++;
-		this.add(new FormLabel("Class: "), cons);
-		cons.gridx = 1;
-		this.labelClass = new FormLabel(c.getCharClass());
-		this.add(this.labelClass, cons);
-		
-		//Character HP
-		cons.gridx = 0;
-		cons.gridy++;
-		this.add(new FormLabel("HP: "), cons);
-		cons.gridx = 1;
-		this.labelHP = new FormLabel(c.getHitPoints());
-		this.add(this.labelHP, cons);
-		
-		//Character Level
-		cons.gridx = 0;
-		cons.gridy++;
-		this.add(new FormLabel("Level: "), cons);
-		cons.gridx = 1;
-		this.labelLevel = new FormLabel(c.getLevel());
-		this.add(this.labelLevel, cons);
-		
-		//Character Experience
-		cons.gridx = 0;
-		cons.gridy++;
-		this.add(new FormLabel("Experience: "), cons);
-		cons.gridx = 1;
-		this.labelExp = new FormLabel(c.getExperience());
-		this.add(this.labelExp, cons);
-		
-		//Character Strength
-		cons.gridx = 0;
-		cons.gridy++;
-		this.add(new FormLabel("Strength: "), cons);
-		cons.gridx = 1;
-		this.labelStrength = new FormLabel(c.getStrength());
-		this.add(this.labelStrength, cons);
-		
-		//Character Dexterity
-		cons.gridx = 0;
-		cons.gridy++;
-		this.add(new FormLabel("Dexterity: "), cons);
-		cons.gridx = 1;
-		this.labelDex = new FormLabel(c.getDexterity());
-		this.add(this.labelDex, cons);
-		
-		//Character Constitution
-		cons.gridx = 0;
-		cons.gridy++;
-		this.add(new FormLabel("Constitution: "), cons);
-		cons.gridx = 1;
-		this.labelConst = new FormLabel(c.getConstitution());
-		this.add(this.labelConst, cons);
-		
-		//Character Intelligence
-		cons.gridx = 0;
-		cons.gridy++;
-		this.add(new FormLabel("Intelligence: "), cons);
-		cons.gridx = 1;
-		this.labelInt = new FormLabel(c.getIntelligence());
-		this.add(this.labelInt, cons);
-		
-		//Character Wisdom
-		cons.gridx = 0;
-		cons.gridy++;
-		this.add(new FormLabel("Wisdom: "), cons);
-		cons.gridx = 1;
-		this.labelWis = new FormLabel(c.getWisdom());
-		this.add(this.labelWis, cons);
-		
-		//Character Charisma
-		cons.gridx = 0;
-		cons.gridy++;
-		this.add(new FormLabel("Charisma: "), cons);
-		cons.gridx = 1;
-		this.labelCharisma = new FormLabel(c.getCharisma());
-		this.add(this.labelCharisma, cons);
+		for(String key : c.textStatKeys) {
+			cons.gridx = 0;
+			this.add(new FormLabel(key + ": "), cons);
+			cons.gridx = 1;
+			this.getMapLabel().put(key, new FormLabel(c.getTextStat(key)));
+			this.add(this.getMapLabel().get(key), cons);
+			cons.gridy++;
+		}
+
+		for(String key : c.numberStatKeys) {
+			cons.gridx = 0;
+			this.add(new FormLabel(key + ": "), cons);
+			cons.gridx = 1;
+			this.getMapLabel().put(key, new FormLabel(c.getNumberStat(key)));
+			this.add(this.getMapLabel().get(key), cons);
+			cons.gridy++;
+		}
 		
 		
 	}
@@ -209,22 +118,14 @@ public class RightPanel extends CustomPanel {
 	 * Update the stats written in the form with the one of a given character
 	 */
 	public void updateStat(DDCharacter c) {
-		GridBagConstraints cons = new GridBagConstraints();
 		this.setCharacter(c);	
 		this.picLabel.setIcon(this.getScaledPicture(c.getImagePath()));
-		this.labelName.setText(c.getName());
-		this.labelAlignment.setText(c.getAlignment());
-		this.labelClass.setText(c.getCharClass());
-		this.labelDivinity.setText(c.getDivinity());
-		this.labelHP.setText(c.getHitPoints());
-		this.labelLevel.setText(c.getLevel());
-		this.labelExp.setText(c.getExperience());
-		this.labelStrength.setText(c.getStrength());
-		this.labelDex.setText(c.getDexterity());
-		this.labelConst.setText(c.getConstitution());
-		this.labelInt.setText(c.getIntelligence());
-		this.labelWis.setText(c.getWisdom());
-		this.labelCharisma.setText(c.getCharisma());
+		for(String key : c.textStatKeys) {
+			this.getMapLabel().get(key).setText(c.getTextStat(key));
+		}
+		for(String key : c.numberStatKeys) {
+			this.getMapLabel().get(key).setText(c.getNumberStat(key));
+		}
 
 	}
 	/**
@@ -251,7 +152,9 @@ public class RightPanel extends CustomPanel {
 			return new ImageIcon(scaledImage);
 			
 		} catch (IOException e) {
+			System.out.println(path);
 			e.printStackTrace();
+			
 			return null;
 		}
 	}
@@ -267,6 +170,14 @@ public class RightPanel extends CustomPanel {
 	 */
 	public void setCharacter(DDCharacter character) {
 		this.character = character;
+	}
+
+	public Map<String, FormLabel> getMapLabel() {
+		return mapLabel;
+	}
+
+	public void setMapLabel(Map<String, FormLabel> mapLabel) {
+		this.mapLabel = mapLabel;
 	}
 
 }
