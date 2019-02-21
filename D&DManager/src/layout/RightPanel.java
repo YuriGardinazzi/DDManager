@@ -82,13 +82,6 @@ public class RightPanel extends CustomPanel {
 	
 		DDCharacter c = this.getCharacter();
 		
-		/*If there's no character instantiate an empty one
-		 * This could happen if we lose de default.ddc file
-		 */
-		if(c == null) {
-			c = new DDCharacter();
-		}
-		
 		GridBagConstraints cons = new GridBagConstraints();
 		
 		cons.gridx = 0;
