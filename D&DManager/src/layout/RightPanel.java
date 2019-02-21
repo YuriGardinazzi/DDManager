@@ -55,11 +55,14 @@ public class RightPanel extends CustomPanel {
 	         c = (DDCharacter) in.readObject();
 	         in.close();
 	         fileIn.close();
+	         
 		 }catch( IOException e) {
 			 System.out.println("Input non trovato :S");
 			 e.printStackTrace();
 			 c = new DDCharacter();
+		
 		 } catch (ClassNotFoundException e) {
+		
 			System.out.println("Classe non trovata");
 			e.printStackTrace();
 			c = new DDCharacter();
@@ -76,8 +79,16 @@ public class RightPanel extends CustomPanel {
 	 */
 	public void createAndShowGui() {
 		this.setLayout(new GridBagLayout());
-
+	
 		DDCharacter c = this.getCharacter();
+		
+		/*If there's no character instantiate an empty one
+		 * This could happen if we lose de default.ddc file
+		 */
+		if(c == null) {
+			c = new DDCharacter();
+		}
+		
 		GridBagConstraints cons = new GridBagConstraints();
 		
 		cons.gridx = 0;
