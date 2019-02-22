@@ -31,6 +31,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import graphical_components.FormIconLabel;
 import graphical_components.FormLabel;
 import graphical_components.FormNumber;
 import graphical_components.FormTextField;
@@ -94,9 +95,8 @@ public class CharacterCreation extends JFrame {
 		cons.gridy = 0;
 
 		//Profile picture fields
-		JLabel	picLabel = new JLabel();
-				picLabel.setPreferredSize(new Dimension(150,150));
-				picLabel.setIcon(this.getScaledPicture(this.imgPath));
+		FormIconLabel picLabel = new FormIconLabel(this.imgPath);
+
 		form.add(picLabel, cons);
 		
 		cons.gridx = 1;
@@ -111,7 +111,7 @@ public class CharacterCreation extends JFrame {
 						if(newCharPath != getImgPath()) {
 							setImgPath(newCharPath);
 						}
-						picLabel.setIcon(getScaledPicture(getImgPath()));
+						picLabel.updatePicture(getImgPath());
 					}
 				});
 		
@@ -126,7 +126,7 @@ public class CharacterCreation extends JFrame {
 		for(String s : c.textStatKeys) {
 			this.textFields.put(s, new FormTextField("test", 16));
 			cons.gridx = 0;
-			JLabel label = new JLabel(s);
+			FormLabel label = new FormLabel(s);
 			form.add(label, cons);
 			cons.gridx = 1;
 			form.add(this.textFields.get(s), cons);
@@ -136,7 +136,7 @@ public class CharacterCreation extends JFrame {
 			this.numberFields.put(s, new FormNumber());
 			cons.gridx = 0;
 			
-			JLabel label = new JLabel(s);
+			FormLabel label = new FormLabel(s);
 			form.add(label, cons);
 			cons.gridx = 1;
 			form.add(this.numberFields.get(s), cons);
@@ -176,11 +176,8 @@ public class CharacterCreation extends JFrame {
 	}
 	
 	/**
-	 * Show an input dialog for a picture
-	 * return the default path if something goes wrong.
-	 * @return path to that picture
+	 * Show a box dialog to save the character
 	 */
-	
 	private void saveCharacter(DDCharacter character) {
 		
 		JFileChooser chooser = new JFileChooser();
@@ -194,7 +191,7 @@ public class CharacterCreation extends JFrame {
 					ObjectOutputStream objOut = new ObjectOutputStream(fOut);
 					objOut.writeObject(character);
 					objOut.close();
-					JOptionPane.showMessageDialog(null, this.getImgPath() + " Has been saved");
+					JOptionPane.showMessageDialog(null, character.getTextStat("Name") + " Has been saved");
 
 			         
 			         //Close the character creation frame
@@ -205,34 +202,14 @@ public class CharacterCreation extends JFrame {
 		            ex.printStackTrace();
 		        }
 		    }
+		//For Debug purposes
 		System.out.println(character);
 	}
-	private ImageIcon getScaledPicture(String path) {
-		BufferedImage picture;
-		try {
-			picture = ImageIO.read(new File(path));
-			
-			//If the image is  .png this code converts it to jpg
-			BufferedImage result = new BufferedImage(
-			        picture.getWidth(),
-			        picture.getHeight(),
-			        BufferedImage.TYPE_INT_RGB);
-			//color the transparent background into white
-			result.createGraphics().drawImage(picture, 0, 0, Color.white, null);
-			
-			ImageIcon toScale = new ImageIcon(result);
-			Image scaledImage = toScale.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-		
-			return new ImageIcon(scaledImage);
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-			return null;
-		}
-
-		
-		
-	}
+	
+	/**
+	 * Create a File chooser box dialog to get the path of a new picture
+	 * @return the path of the picture that the user choosed
+	 */
 	private String getCharPicturePath() {
 		//Get a picture from the user
 		JFileChooser chooser = new JFileChooser();
