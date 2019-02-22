@@ -17,6 +17,8 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import graphical_components.FormIconLabel;
 import graphical_components.FormLabel;
 import graphical_components.FormNumber;
 import graphical_components.FormTextField;
@@ -35,7 +37,7 @@ public class RightPanel extends CustomPanel {
 	private static final long serialVersionUID = 1L;
 
 	
-	private JLabel picLabel;
+	private FormIconLabel picLabel;
 	private Map<String, FormLabel> mapLabel;
 
 	private DDCharacter character;
@@ -88,9 +90,7 @@ public class RightPanel extends CustomPanel {
 		cons.gridy = 0;
 
 		//Profile picture 
-		this.picLabel = new JLabel();
-		this.picLabel.setPreferredSize(new Dimension(150,150));
-		this.picLabel.setIcon(this.getScaledPicture(this.getCharacter().getImagePath()));
+		this.picLabel = new FormIconLabel(this.getCharacter().getImagePath());
 		this.add(picLabel, cons);
 	
 		
@@ -123,7 +123,7 @@ public class RightPanel extends CustomPanel {
 	 */
 	public void updateStat(DDCharacter c) {
 		this.setCharacter(c);	
-		this.picLabel.setIcon(this.getScaledPicture(c.getImagePath()));
+		this.picLabel.updatePicture(c.getImagePath());
 		for(String key : c.textStatKeys) {
 			this.getMapLabel().get(key).setText(c.getTextStat(key));
 		}
@@ -131,36 +131,6 @@ public class RightPanel extends CustomPanel {
 			this.getMapLabel().get(key).setText(c.getNumberStat(key));
 		}
 
-	}
-	/**
-	 * Return a scaled picture from a picture got from a given path
-	 * @param path path of the picture to scale
-	 * @return scaled picture
-	 */
-	private ImageIcon getScaledPicture(String path) {
-		BufferedImage picture;
-		try {
-			picture = ImageIO.read(new File(path));
-			
-			//If the image is  .png this code converts it to jpg
-			BufferedImage result = new BufferedImage(
-			        picture.getWidth(),
-			        picture.getHeight(),
-			        BufferedImage.TYPE_INT_RGB);
-			//color the transparent background into white
-			result.createGraphics().drawImage(picture, 0, 0, Color.white, null);
-			
-			ImageIcon toScale = new ImageIcon(result);
-			Image scaledImage = toScale.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-		
-			return new ImageIcon(scaledImage);
-			
-		} catch (IOException e) {
-			System.out.println(path);
-			e.printStackTrace();
-			
-			return null;
-		}
 	}
 	/**
 	 * @return the character
