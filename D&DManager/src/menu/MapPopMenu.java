@@ -15,6 +15,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import player_map.Cell;
+import player_map.GridPanel;
 import tools.DDCharacter;
 
 /**
@@ -30,24 +31,28 @@ public class MapPopMenu extends JPopupMenu {
 	private static final long serialVersionUID = 1L;
 
 	private JMenuItem addCharacterItem;
-	private JMenuItem removeCharacter;
+	private JMenuItem removeCharacterItem;
+	private JMenuItem moveCharacterItem;
+	private JMenuItem placeCharacterItem;
+	private GridPanel grid;
 	private Cell cell;
 	
-	public MapPopMenu(Cell c) {
+	public MapPopMenu(Cell c, GridPanel grid) {
 		this.setCell(c);
+		this.setGrid(grid);
 		this.addCharacterItem = new JMenuItem("Add new character");
 		this.addCharacterItem.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				DDCharacter c = retrieveCharacter();
-				getCell().addElement(c.getImagePath(), c);
+				getCell().addElement(c);
 
 			}
 		});
 		this.add(this.addCharacterItem);
 		
-		this.removeCharacter = new JMenuItem("remove character");
-		this.removeCharacter.addActionListener(new ActionListener() {		
+		this.removeCharacterItem = new JMenuItem("remove character");
+		this.removeCharacterItem.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//remove a character if present
@@ -55,9 +60,59 @@ public class MapPopMenu extends JPopupMenu {
 				
 			}
 		});
-		this.add(this.removeCharacter);
+		this.add(this.removeCharacterItem);
+		this.displayShowOrPlaceItems();
 	}
 
+	private void displayShowOrPlaceItems() {
+		if(this.getGrid().isCharacterMoving()) {
+			this.addPlaceItem();
+		}else {
+			this.addMoveItem();
+		}
+	}
+	
+	private void addPlaceItem() {
+		//remove MoveButton if present
+		if(this.moveCharacterItem != null) {
+			this.remove(this.moveCharacterItem);
+			this.moveCharacterItem = null;
+		}
+		this.placeCharacterItem = new JMenuItem("Place");
+		this.placeCharacterItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				getCell().addElement(getGrid().getMovedCharacter());
+				getGrid().setMovedCharacter(null);
+			}
+		});
+		this.add(this.placeCharacterItem);
+	}
+	
+	public void addMoveItem() {
+		if(this.placeCharacterItem != null) {
+			this.remove(this.placeCharacterItem);
+			this.placeCharacterItem = null;
+		}
+		
+		this.moveCharacterItem = new JMenuItem("Move");
+		this.moveCharacterItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(getCell().getCharacter() != null) {
+					getGrid().setMovedCharacter(getCell().getCharacter());
+					getCell().removeElement();
+				}
+				
+			}
+		});
+		
+		this.add(this.moveCharacterItem);
+	}
+	
 	/**
 	 * This functions returns a character object from a *.ddc file choosed from the user
 	 * @return character object
@@ -108,5 +163,19 @@ public class MapPopMenu extends JPopupMenu {
 	 */
 	public void setCell(Cell cell) {
 		this.cell = cell;
+	}
+
+	/**
+	 * @return the grid
+	 */
+	public GridPanel getGrid() {
+		return grid;
+	}
+
+	/**
+	 * @param grid the grid to set
+	 */
+	public void setGrid(GridPanel grid) {
+		this.grid = grid;
 	}
 }

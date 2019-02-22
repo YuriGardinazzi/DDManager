@@ -35,6 +35,7 @@ public class Cell extends JPanel {
 	private String cellPicPath;
 	private DDCharacter character;
 	private RightPanel rightPanel;
+	private GridPanel grid;
 	
 	private static final int DEFAULT_SIDE = 25;
 
@@ -72,17 +73,18 @@ public class Cell extends JPanel {
 		
 
 	}	
-	public Cell(int side, Color bg, RightPanel rightPanel) {
+	public Cell(int side, Color bg, RightPanel rightPanel, GridPanel grid) {
 		super();
 		this.setSide(side);
 		this.setBackground(bg);
 		this.setRightPanel(rightPanel);
+		this.setGrid(grid);
 		
 		this.setPreferredSize(new Dimension(this.getSide(), this.getSide()));
 		this.setBorder(BorderFactory.createLoweredBevelBorder());
 
 		
-		this.addMouseListener(new CellListener(this));
+		this.addMouseListener(new CellListener(this, this.getGrid()));
 
 		this.repaint();
 	}
@@ -92,13 +94,13 @@ public class Cell extends JPanel {
 	 * @param path path of the new character
 	 * @param c
 	 */
-	public void addElement(String path, DDCharacter c) {
+	public void addElement(DDCharacter c) {
 		
 		this.setCharacter(c);
 		if(this.getCellPicPath() != null) {
-			this.setCellPicPath(path);
+			this.setCellPicPath(c.getImagePath());
 		}else {
-			this.cellPicPath = new String(path);
+			this.cellPicPath = new String(c.getImagePath());
 		}
 		this.repaint();
 	}
@@ -178,5 +180,17 @@ public class Cell extends JPanel {
 	}
 	public void setRightPanel(RightPanel rightPanel) {
 		this.rightPanel = rightPanel;
+	}
+	/**
+	 * @return the grid
+	 */
+	public GridPanel getGrid() {
+		return grid;
+	}
+	/**
+	 * @param grid the grid to set
+	 */
+	public void setGrid(GridPanel grid) {
+		this.grid = grid;
 	}
 }

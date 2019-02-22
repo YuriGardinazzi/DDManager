@@ -8,6 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import player_map.Cell;
+import player_map.GridPanel;
 
 /**
  * @author ASUS
@@ -17,8 +18,10 @@ public class CellListener extends MouseAdapter {
 
 	private Cell cell;
 	private Color bg;
-	public CellListener(Cell c) {
+	private GridPanel grid;
+	public CellListener(Cell c, GridPanel grid) {
 		this.setCell(c);
+		this.setGrid(grid);
 		this.setBg(c.getBackground());
 	}
 
@@ -51,7 +54,7 @@ public class CellListener extends MouseAdapter {
     }
 
     private void showMenu(MouseEvent e){
-        MapPopMenu menu = new MapPopMenu(this.getCell());
+        MapPopMenu menu = new MapPopMenu(this.getCell(), this.getGrid());
         menu.show(e.getComponent(), e.getX(), e.getY());
     }
 
@@ -81,5 +84,19 @@ public class CellListener extends MouseAdapter {
 	 */
 	public void setBg(Color bg) {
 		this.bg = bg;
+	}
+
+	/**
+	 * @return the grid
+	 */
+	public GridPanel getGrid() {
+		return grid;
+	}
+
+	/**
+	 * @param grid the grid to set
+	 */
+	public void setGrid(GridPanel grid) {
+		this.grid = grid;
 	}
 }

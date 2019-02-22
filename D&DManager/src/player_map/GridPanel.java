@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 
 import layout.RightPanel;
+import tools.DDCharacter;
 
 public class GridPanel extends JPanel {
 
@@ -14,12 +15,17 @@ public class GridPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private static final int DEFAULT_WIDTH = 5;
+	private static final int DEFAULT_HEIGHT = 5;
+	
 	private int gridHeight;
 	private int gridWidth;
 	private int cellSide;
 	private RightPanel rightPanel;
-	private static final int DEFAULT_WIDTH = 5;
-	private static final int DEFAULT_HEIGHT = 5;
+	private DDCharacter movedCharacter;
+	
+	
+
 	private Cell[][] matrice;
 	
 	/**
@@ -97,9 +103,6 @@ public class GridPanel extends JPanel {
 		return matrice;
 	}
 
-
-
-
 	/**
 	 * Initialize and set the matrix
 	 * @param x
@@ -110,25 +113,46 @@ public class GridPanel extends JPanel {
 		this.matrice = new Cell[this.getGridWidth()][this.getGridHeight()];
 		for(int c = 0; c < this.getGridWidth(); c++) {
 			for(int r = 0; r < this.getGridHeight(); r++) {
-				this.matrice[c][r] = new Cell(this.getCellSide(), new Color(4, 165, 13), this.getRightPanel());
+				this.matrice[c][r] = new Cell(this.getCellSide(), new Color(4, 165, 13), this.getRightPanel(), this);
 			}
 		}
 		
 		
 	}
 
-
-
-
 	public RightPanel getRightPanel() {
 		return rightPanel;
 	}
 
-
-
-
 	public void setRightPanel(RightPanel rightPanel) {
 		this.rightPanel = rightPanel;
+	}
+
+	/**
+	 * @return the movedCharacter
+	 */
+	public DDCharacter getMovedCharacter() {
+		return movedCharacter;
+	}
+
+
+	/**
+	 * @param movedCharacter the movedCharacter to set
+	 */
+	public void setMovedCharacter(DDCharacter movedCharacter) {
+		this.movedCharacter = movedCharacter;
+	}
+	
+	/**
+	 * This function tells you if the player is moving a character on the map
+	 * @return true if a character is changing its position, else otherwise
+	 */
+	public boolean isCharacterMoving() {
+		if(this.getMovedCharacter() != null) {
+			return true;
+		}		
+		return false;
+
 	}
 
 }
