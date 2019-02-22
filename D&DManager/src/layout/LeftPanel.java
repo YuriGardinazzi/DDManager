@@ -17,6 +17,8 @@ import javax.imageio.stream.ImageOutputStream;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
+import graphical_components.FormIconLabel;
 /**
  * This class describes the left panel of the MainFrame
  * @author Yuri Gardinazzi
@@ -29,7 +31,7 @@ public class LeftPanel extends CustomPanel {
 	
 	private String myPicturePath = "images" + File.separator + "default.jpg";
 	
-	private JLabel imgLabel;
+	private FormIconLabel imgLabel;
 	
 	
 	/**
@@ -56,7 +58,7 @@ public class LeftPanel extends CustomPanel {
 		this.setLayout(new GridBagLayout());
 		
 		//add profile pic
-		this.setImgLabel(new JLabel());
+		this.setImgLabel(new FormIconLabel());
 		this.ChangeProfilePic(this.getMyPicturePath());
 	
 		this.imgLabel.setPreferredSize(new Dimension(150,150));
@@ -98,9 +100,7 @@ public class LeftPanel extends CustomPanel {
 
 			
 			//change profile pic and scale it
-			ImageIcon toScale = new ImageIcon(result);
-			Image scaledImage = toScale.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-			this.getImgLabel().setIcon(new ImageIcon(scaledImage));	
+			this.getImgLabel().updatePicture(newPicturePath);
 		
 		} catch (IOException e) {
 			System.out.println("Wrong Image Path!");
@@ -111,14 +111,14 @@ public class LeftPanel extends CustomPanel {
 	/**
 	 * @return the imgLabel
 	 */
-	public JLabel getImgLabel() {
+	public FormIconLabel getImgLabel() {
 		return imgLabel;
 	}
 	/**
 	 * set the Label where the profile picture will be shown
 	 * @param imgLabel 
 	 */
-	public void setImgLabel(JLabel imgLabel) {
+	public void setImgLabel(FormIconLabel imgLabel) {
 		this.imgLabel = imgLabel;
 	}
 

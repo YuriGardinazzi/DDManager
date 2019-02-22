@@ -24,6 +24,10 @@ public class FormIconLabel extends JLabel {
 	private final Dimension DIM = new Dimension(150,150);
 	private String imagePath;
 	
+	
+	public FormIconLabel() {
+		this("images"+ File.separator + "default.jpg");
+	}
 	/**
 	 * Create a FormIconLabel with a given picture
 	 * @param path path of the picture to display
@@ -67,6 +71,14 @@ public class FormIconLabel extends JLabel {
 			
 			return null;
 		}
+	}
+	
+	/**
+	 * 
+	 * @return ImageIcon of the label
+	 */
+	public ImageIcon getPicture() {
+		return this.getScaledPicture(this.getImagePath());
 	}
 	
 	/**
