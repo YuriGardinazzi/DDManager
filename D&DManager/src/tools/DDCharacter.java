@@ -48,6 +48,14 @@ public class DDCharacter implements Serializable {
 		}
 	}
 
+	public void healDamage(Integer healValue) {
+		Integer lifeAfterHeal = this.getNumberStat("HitPoints") + healValue;
+		if(lifeAfterHeal <= this.getMaxLife()) {
+			this.setNumberStat("HitPoints", lifeAfterHeal);
+		}else {
+			this.setNumberStat("HitPoints", this.getMaxLife());
+		}
+	}
 	
 	/**
 	 * Add damages to a character and reduce his hitPoints
