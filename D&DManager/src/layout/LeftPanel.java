@@ -7,21 +7,21 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.imageio.stream.ImageOutputStream;
-import javax.swing.ImageIcon;
+
+
 import javax.swing.JButton;
-import javax.swing.JLabel;
+
 
 import graphical_components.FormIconLabel;
 /**
  * This class describes the left panel of the MainFrame
- * @author Yuri Gardinazzi
+ * @author Yuri 
  *
  */
 public class LeftPanel extends CustomPanel {

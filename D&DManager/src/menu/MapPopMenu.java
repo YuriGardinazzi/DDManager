@@ -130,9 +130,7 @@ public class MapPopMenu extends JPopupMenu {
 		//Show the picture
 		if(returnVal == JFileChooser.APPROVE_OPTION) {
 
-			if(chooser.getSelectedFile().getPath() != null) {
-				String path = chooser.getSelectedFile().getPath();
-				
+			if(chooser.getSelectedFile().getPath() != null) {		
 				//Character deserialization
 				 try {
 			         FileInputStream fileIn = new FileInputStream(chooser.getSelectedFile());

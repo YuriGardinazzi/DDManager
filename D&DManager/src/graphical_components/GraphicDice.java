@@ -10,8 +10,6 @@ import java.awt.geom.Line2D;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import layout.CustomPanel;
 /**
  * @author Yuri Gardinazzi
  * TODO: to finish

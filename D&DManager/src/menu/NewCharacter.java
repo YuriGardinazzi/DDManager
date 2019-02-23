@@ -3,9 +3,6 @@ package menu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-
-import javax.swing.Action;
-import javax.swing.Icon;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
@@ -15,10 +12,11 @@ import layout.CharacterCreation;
  * @author Yuri
  *
  */
+@SuppressWarnings("serial")
 public class NewCharacter extends JMenuItem implements ActionListener{
 
 	/**
-	 * Construcot of the CharacterCreation Menu item
+	 * Constructor of the CharacterCreation Menu item
 	 */
 	public NewCharacter() {
 		super("Create a new character");
@@ -30,6 +28,7 @@ public class NewCharacter extends JMenuItem implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+		@SuppressWarnings("unused")
 		CharacterCreation newFrame =  new CharacterCreation("Character creation");
 		
 	}

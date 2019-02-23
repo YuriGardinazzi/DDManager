@@ -2,26 +2,18 @@ package layout;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 import graphical_components.FormIconLabel;
 import graphical_components.FormLabel;
-import graphical_components.FormNumber;
-import graphical_components.FormTextField;
 import tools.DDCharacter;
 
 /**

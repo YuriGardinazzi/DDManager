@@ -7,10 +7,10 @@ import java.awt.Font;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
+
 
 import javax.swing.JFormattedTextField;
-import javax.swing.text.NumberFormatter;
+
 
 
 /**
@@ -18,12 +18,13 @@ import javax.swing.text.NumberFormatter;
  * @author Yuri
  * 
  */
+@SuppressWarnings("serial")
 public class FormNumber extends JFormattedTextField implements PropertyChangeListener{
 
     //TODO: Aggiungere controllo sull'input come si deve
 	private String font = "Times new roman";
 	private int fontSize = 18;
-	private NumberFormat nFormat;
+
 	public FormNumber() {
 		super(new DecimalFormat("######"));
 		this.setValue(0);
