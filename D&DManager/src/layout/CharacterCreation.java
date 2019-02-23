@@ -170,11 +170,12 @@ public class CharacterCreation extends JFrame {
 	 */
 	private void saveCharacter(DDCharacter character) {
 		
-		JFileChooser chooser = new JFileChooser();
-
-		int retrival = chooser.showSaveDialog(this.getParent());
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(
 				"D&D character", "ddc");
+		JFileChooser chooser = new JFileChooser();
+					 chooser.setFileFilter(filter);
+		int retrival = chooser.showSaveDialog(this.getParent());
+
 		if (retrival == JFileChooser.APPROVE_OPTION) {
 			try {
 					FileOutputStream fOut = new FileOutputStream(chooser.getSelectedFile()+ ".ddc");

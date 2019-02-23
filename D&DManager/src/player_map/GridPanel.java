@@ -3,13 +3,14 @@ package player_map;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.io.Serializable;
 
 import javax.swing.JPanel;
 
 import layout.RightPanel;
 import tools.DDCharacter;
 
-public class GridPanel extends JPanel {
+public class GridPanel extends JPanel implements Serializable {
 
 	/**
 	 * 
@@ -26,7 +27,7 @@ public class GridPanel extends JPanel {
 	
 	
 
-	private Cell[][] matrice;
+	private Cell[][] matrix;
 	
 	/**
 	 * GridPanel generates a panel that contains a Grid of a class Cell given in input
@@ -53,7 +54,7 @@ public class GridPanel extends JPanel {
 				cons.fill = GridBagConstraints.NONE;
 				cons.gridx = c;
 				cons.gridy = r;
-				this.add(this.matrice[c][r], cons);
+				this.add(this.matrix[c][r], cons);
 			}
 		}
 	}
@@ -97,10 +98,10 @@ public class GridPanel extends JPanel {
 
 
 	/**
-	 * @return the matrice
+	 * @return the matrix
 	 */
-	public Cell[][] getMatrice() {
-		return matrice;
+	public Cell[][] getMatrix() {
+		return matrix;
 	}
 
 	/**
@@ -110,10 +111,10 @@ public class GridPanel extends JPanel {
 	 */
 	public void setMatrix() {
 		
-		this.matrice = new Cell[this.getGridWidth()][this.getGridHeight()];
+		this.matrix = new Cell[this.getGridWidth()][this.getGridHeight()];
 		for(int c = 0; c < this.getGridWidth(); c++) {
 			for(int r = 0; r < this.getGridHeight(); r++) {
-				this.matrice[c][r] = new Cell(this.getCellSide(), new Color(4, 165, 13), this.getRightPanel(), this);
+				this.matrix[c][r] = new Cell(this.getCellSide(), new Color(4, 165, 13), this.getRightPanel(), this);
 			}
 		}
 		
@@ -154,5 +155,30 @@ public class GridPanel extends JPanel {
 		return false;
 
 	}
+	/**
+	 * 
+	 * @return names of the character on the map and their position in the grid
+	 */
+	public String getCharacterOnTheMap() {
+		String output = "The characters on the map are: \n";
+		for(int c = 0; c < this.getGridWidth(); c++) {
+			for(int r = 0; r < this.getGridHeight(); r++) {
+				if(this.getMatrix()[c][r].getCharacter() != null) {
+					output += "Name: " + this.getMatrix()[c][r].getCharacter().getTextStat("Name") 
+						   + " at "+ c + " " + r + "\n";
+				}
+			}
+		}
+		
+		return output;
+	}
 
-}
+	public void updateGrid(GridPanel newGrid) {
+		for(int c = 0; c < this.getGridWidth(); c++) {
+			for(int r = 0; r < this.getGridHeight(); r++) {
+					this.getMatrix()[c][r].updateCell(newGrid.getMatrix()[c][r]);
+				}
+			}
+		}
+	}
+

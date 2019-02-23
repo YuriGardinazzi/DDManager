@@ -8,6 +8,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -22,10 +23,10 @@ import tools.DDCharacter;
 
 /**
  * 
- * @author Yuri Gardinazzi
+ * @author Yuri 
  *
  */
-public class Cell extends JPanel {
+public class Cell extends JPanel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private int side;
@@ -112,6 +113,17 @@ public class Cell extends JPanel {
 			this.setCharacter(null);
 			this.setCellPicPath(null);
 			this.repaint();
+		}
+	}
+	/**
+	 * Update the cell with a new one taken in input
+	 * @param newCell
+	 */
+	public void updateCell(Cell newCell) {
+		if(newCell.getCharacter() != null) {
+			this.addElement(newCell.getCharacter());
+		}else {
+			this.removeElement();
 		}
 	}
 	/**

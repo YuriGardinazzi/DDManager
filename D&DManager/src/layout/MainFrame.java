@@ -63,7 +63,7 @@ public class MainFrame extends JFrame {
 						   					 splitter, this.p3);
 		this.add(splitter);
 		
-		MyMenu m = new MyMenu(this.p1);
+		MyMenu m = new MyMenu(this.p1, grid);
 		this.setJMenuBar(m);
 		
 		this.pack();
