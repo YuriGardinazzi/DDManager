@@ -2,7 +2,7 @@ package layout;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+
 import javax.swing.BoxLayout;
 
 //import java.awt.Dimension;
@@ -33,7 +33,6 @@ public class MainFrame extends JFrame {
 	 */
 	public MainFrame(String title) {
 		super(title);
-
 		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.X_AXIS));	
 		this.p1 = new LeftPanel(new Dimension(20,70), Color.orange);		
 
