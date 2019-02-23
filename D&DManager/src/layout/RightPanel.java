@@ -125,6 +125,8 @@ public class RightPanel extends CustomPanel {
 			cons.gridy++;
 		}
 		
+		
+		//Deal damage button and label
 		cons.gridx = 0;
 		FormNumber damageNumber = new FormNumber();
 		this.add(damageNumber, cons);
@@ -137,11 +139,34 @@ public class RightPanel extends CustomPanel {
 				
 				getCharacter().dealDamage(damageNumber.getNumber());
 				updateStat(getCharacter());
+				damageNumber.setValue(0);
 			}
 		});
 		
 		cons.gridx = 1;
 		this.add(damageBtn, cons);
+		
+		//Heal damage button and label
+		cons.gridy++;
+		cons.gridx = 0;
+		FormNumber healNumber = new FormNumber();
+		this.add(healNumber, cons);
+		
+		JButton healBtn = new JButton("Heal Damage");
+		healBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				getCharacter().healDamage(healNumber.getNumber());
+				updateStat(getCharacter());
+				healNumber.setValue(0);
+			}
+		});
+		
+		cons.gridx = 1;
+		this.add(healBtn, cons);
+		
 		
 		
 	}

@@ -65,6 +65,8 @@ public class DDCharacter implements Serializable {
 		Integer lifeAfterDamage = this.getNumberStat("HitPoints") - damagePoints;
 		if(lifeAfterDamage >= 0){
 			this.setNumberStat("HitPoints", lifeAfterDamage);
+		}else {
+			this.setNumberStat("HitPoints", 0);
 		}
 	}
 	public void setTextStat(String key, String value) {
