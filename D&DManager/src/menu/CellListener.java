@@ -31,16 +31,8 @@ public class CellListener extends MouseAdapter {
         	if(this.getCell().getCharacter() != null) {
         		this.getCell().getRightPanel().updateStat(this.getCell().getCharacter());
         	}
-    		
-    	/*	if(this.getBg().equals(Color.black)) {
-        		this.setBg(Color.red);
-        		this.cell.setBackground(this.getBg());
-        	}else {
-        		 this.cell.setBackground(Color.black);
-        		 this.setBg(Color.black);
-        	}*/
     	}
-    	
+    	//PopUp Menu event
     	if (e.isPopupTrigger()) {
             this.showMenu(e);
     	}
@@ -48,11 +40,16 @@ public class CellListener extends MouseAdapter {
     }
 
     public void mouseReleased(MouseEvent e){
-        if (e.isPopupTrigger()) {
+        //PopUp menu event
+    	if (e.isPopupTrigger()) {
             this.showMenu(e);
         }
     }
 
+    /**
+     * Display the popup menu where user clicked with the mouse
+     * @param e
+     */
     private void showMenu(MouseEvent e){
         MapPopMenu menu = new MapPopMenu(this.getCell(), this.getGrid());
         menu.show(e.getComponent(), e.getX(), e.getY());
