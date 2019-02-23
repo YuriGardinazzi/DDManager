@@ -38,7 +38,10 @@ public class MainFrame extends JFrame {
 		this.p1 = new LeftPanel(new Dimension(20,70), Color.orange);		
 
 		
-		GridPanel grid = new GridPanel(10,5, 75);
+		//Right Panel		
+		this.p3 = new RightPanel(new Dimension(20,70), Color.pink);
+		
+		GridPanel grid = new GridPanel(10,5,75, this.p3);
 		JScrollPane scrollGrid = new JScrollPane(grid,
 												 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 												 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -52,9 +55,7 @@ public class MainFrame extends JFrame {
 		//Middle Panel
 		this.p2 = new CustomPanel(Color.gray);
 			 p2.add(scrollGrid);
-	
-		//Right Panel		
-		this.p3 = new RightPanel(new Dimension(20,70), Color.pink);
+
 
 		//Insert each panel inside a SplitPane
 		JSplitPane splitter = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
