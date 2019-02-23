@@ -76,6 +76,7 @@ public class MyMenu extends JMenuBar {
 				"D&D Map", "ddm");
 		JFileChooser chooser = new JFileChooser();
 					 chooser.setFileFilter(filter);
+					 chooser.setAcceptAllFileFilterUsed(false);
 		int retrieval = chooser.showSaveDialog(this.getParent());
 		
 		if(retrieval == JFileChooser.APPROVE_OPTION) {

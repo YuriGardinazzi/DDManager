@@ -161,7 +161,7 @@ public class CharacterCreation extends JFrame {
 		});
 			
 		form.add(save,cons);
-			
+		
 		return form;
 	}
 	
@@ -174,6 +174,7 @@ public class CharacterCreation extends JFrame {
 				"D&D character", "ddc");
 		JFileChooser chooser = new JFileChooser();
 					 chooser.setFileFilter(filter);
+					 chooser.setAcceptAllFileFilterUsed(false);
 		int retrival = chooser.showSaveDialog(this.getParent());
 
 		if (retrival == JFileChooser.APPROVE_OPTION) {
