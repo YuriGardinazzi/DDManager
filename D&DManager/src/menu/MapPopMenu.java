@@ -65,6 +65,10 @@ public class MapPopMenu extends JPopupMenu {
 	}
 
 	private void displayShowOrPlaceItems() {
+		
+		if(this.getCell().getCharacter() == null && this.getGrid().isCharacterMoving() == false) {
+			return;
+		} 
 		if(this.getGrid().isCharacterMoving()) {
 			this.addPlaceItem();
 		}else {
