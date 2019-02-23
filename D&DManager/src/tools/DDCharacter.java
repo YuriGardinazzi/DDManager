@@ -18,6 +18,7 @@ public class DDCharacter implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String imagePath;
+	private  Integer maxLife;
 	private Map<String, String> textStatMap;
 	public final String[] textStatKeys = new String[] {"Name","Alignment","Divinity",
 												  "CharacterClass"};
@@ -34,6 +35,7 @@ public class DDCharacter implements Serializable {
 		this.numberStatMap = new HashMap<String, Integer>();
 		this.setImagePath("images" + File.separator + "character.jpg");
 		this.setDefaultHashMap();
+		this.setMaxLife();
 	}
 	
 	private void setDefaultHashMap() {
@@ -47,6 +49,16 @@ public class DDCharacter implements Serializable {
 	}
 
 	
+	/**
+	 * Add damages to a character and reduce his hitPoints
+	 * @param damagePoints damage to deal
+	 */
+	public void dealDamage(Integer damagePoints) {
+		Integer lifeAfterDamage = this.getNumberStat("HitPoints") - damagePoints;
+		if(lifeAfterDamage >= 0){
+			this.setNumberStat("HitPoints", lifeAfterDamage);
+		}
+	}
 	public void setTextStat(String key, String value) {
 		this.textStatMap.replace(key, value);
 	}
@@ -67,6 +79,21 @@ public class DDCharacter implements Serializable {
 
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
+	}
+
+
+	/**
+	 * @return the value of the total life
+	 */
+	public Integer getMaxLife() {
+		return maxLife;
+	}
+
+	/**
+	 * @param maxLife the maxLife to set
+	 */
+	public void setMaxLife() {
+		this.maxLife = this.getNumberStat("HitPoints");
 	}
 
 	@Override

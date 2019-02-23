@@ -155,7 +155,7 @@ public class CharacterCreation extends JFrame {
 				}
 				
 				c.setImagePath(getImgPath());
-				
+				c.setMaxLife();
 				saveCharacter(c);
 			}
 		});

@@ -5,15 +5,20 @@ import java.awt.Dimension;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.swing.JButton;
+
 import graphical_components.FormIconLabel;
 import graphical_components.FormLabel;
+import graphical_components.FormNumber;
 import tools.DDCharacter;
 
 /**
@@ -30,6 +35,7 @@ public class RightPanel extends CustomPanel {
 
 	
 	private FormIconLabel picLabel;
+	private FormLabel maxLifeValueLabel;
 	private Map<String, FormLabel> mapLabel;
 
 	private DDCharacter character;
@@ -64,7 +70,7 @@ public class RightPanel extends CustomPanel {
 		
 		this.setCharacter(c);
 		this.setMapLabel(new HashMap<String, FormLabel>());
-		
+
 		this.createAndShowGui();
 	}
 
@@ -90,6 +96,17 @@ public class RightPanel extends CustomPanel {
 		cons.fill = GridBagConstraints.HORIZONTAL;
 		
 		cons.gridy++;
+	
+		FormLabel maxLifeLabel = new FormLabel("Max Life: ");
+		this.add(maxLifeLabel, cons);
+		
+		cons.gridx = 1;
+
+		this.maxLifeValueLabel = new FormLabel(c.getMaxLife());
+		this.add(maxLifeValueLabel, cons);
+		
+		cons.gridy ++;
+		
 		for(String key : c.textStatKeys) {
 			cons.gridx = 0;
 			this.add(new FormLabel(key + ": "), cons);
@@ -108,6 +125,24 @@ public class RightPanel extends CustomPanel {
 			cons.gridy++;
 		}
 		
+		cons.gridx = 0;
+		FormNumber damageNumber = new FormNumber();
+		this.add(damageNumber, cons);
+		
+		JButton damageBtn = new JButton("Deal Damage");
+		damageBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				getCharacter().dealDamage(damageNumber.getNumber());
+				updateStat(getCharacter());
+			}
+		});
+		
+		cons.gridx = 1;
+		this.add(damageBtn, cons);
+		
 		
 	}
 	/**
@@ -116,6 +151,7 @@ public class RightPanel extends CustomPanel {
 	public void updateStat(DDCharacter c) {
 		this.setCharacter(c);	
 		this.picLabel.updatePicture(c.getImagePath());
+		this.maxLifeValueLabel.setText(c.getMaxLife());
 		for(String key : c.textStatKeys) {
 			this.getMapLabel().get(key).setText(c.getTextStat(key));
 		}
