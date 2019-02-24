@@ -3,11 +3,14 @@
  */
 package layout;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
+import javax.swing.JButton;
 import javax.swing.JScrollPane;
 
+import graphical_components.NotesPanel;
 import player_map.GridPanel;
 
 /**
@@ -24,7 +27,9 @@ public class MiddlePanel extends CustomPanel {
 	
 	public MiddlePanel(Dimension ratio, Color bg, RightPanel p3) {
 		super(ratio, bg);
-		this.setGrid(new GridPanel(10,5,75, p3));
+		this.setLayout(new BorderLayout());
+		
+		this.setGrid(new GridPanel(20,20,75, p3));
 		JScrollPane scrollGrid = new JScrollPane(grid,
 												 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 												 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -32,7 +37,11 @@ public class MiddlePanel extends CustomPanel {
 		
 
 		scrollGrid.setPreferredSize(this.calculateDimensions(new Dimension(35,35)));
-		this.add(scrollGrid);
+		this.add(scrollGrid, BorderLayout.PAGE_START);
+		
+		NotesPanel notePane = new NotesPanel(new Dimension(30,20), bg);
+		this.add(notePane,  BorderLayout.CENTER);
+
 	}
 	
 

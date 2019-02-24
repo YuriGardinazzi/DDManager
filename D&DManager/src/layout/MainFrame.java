@@ -39,9 +39,7 @@ public class MainFrame extends JFrame {
 		
 		//Middle Panel
 		this.p2 = new MiddlePanel(new Dimension(40,70), Color.gray, this.p3);
-			 
-
-
+		
 		//Insert each panel inside a SplitPane
 		JSplitPane splitter = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
 											 this.p1, this.p2);
