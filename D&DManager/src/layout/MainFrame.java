@@ -15,9 +15,6 @@ import player_map.GridPanel;
 import menu.*;
 public class MainFrame extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private LeftPanel p1;
 	private MiddlePanel p2;
@@ -27,8 +24,8 @@ public class MainFrame extends JFrame {
 		this("");
 	}
 	/**
-	 * Create a frame with 3 panels inside
-	 * 
+	 * Create a frame with the 3 main panels inside
+	 * Left, Middle and RightPanel.
 	 * @param title of the main frame
 	 */
 	public MainFrame(String title) {
@@ -40,12 +37,6 @@ public class MainFrame extends JFrame {
 		//Right Panel		
 		this.p3 = new RightPanel(new Dimension(20,70), Color.pink);
 		
-	
-		/**
-		 * TODO:
-		 * Creare una dimensione coerente con la grandezza delle celle 
-		 * e un limite massimo
-		 */
 		//Middle Panel
 		this.p2 = new MiddlePanel(new Dimension(40,70), Color.gray, this.p3);
 			 
