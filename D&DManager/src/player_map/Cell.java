@@ -39,7 +39,21 @@ public class Cell extends JPanel implements Serializable {
 	private static final int DEFAULT_SIDE = 25;
 
 	
+	public Cell(int side, Color bg, RightPanel rightPanel, GridPanel grid) {
+		super();
+		this.setSide(side);
+		this.setBackground(bg);
+		this.setRightPanel(rightPanel);
+		this.setGrid(grid);
+		
+		this.setPreferredSize(new Dimension(this.getSide(), this.getSide()));
+		this.setBorder(BorderFactory.createLoweredBevelBorder());
 
+		
+		this.addMouseListener(new CellListener(this, this.getGrid()));
+
+		this.repaint();
+	}
 
 
 	/**
@@ -72,21 +86,7 @@ public class Cell extends JPanel implements Serializable {
 		
 
 	}	
-	public Cell(int side, Color bg, RightPanel rightPanel, GridPanel grid) {
-		super();
-		this.setSide(side);
-		this.setBackground(bg);
-		this.setRightPanel(rightPanel);
-		this.setGrid(grid);
-		
-		this.setPreferredSize(new Dimension(this.getSide(), this.getSide()));
-		this.setBorder(BorderFactory.createLoweredBevelBorder());
 
-		
-		this.addMouseListener(new CellListener(this, this.getGrid()));
-
-		this.repaint();
-	}
 
 	/**
 	 * Add an element to the cell and change the background of the cell
