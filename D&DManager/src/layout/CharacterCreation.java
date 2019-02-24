@@ -56,31 +56,32 @@ public class CharacterCreation extends JFrame {
 		this.CreateGUI();
 	}
 
+	/**
+	 * Creates the Graphic User Interface of the character creation form
+	 */
 	private void CreateGUI() {
-		CustomPanel form = this.CreateForm(new Dimension(30,60), Color.cyan);
-		
-		this.add(form);
+		//CustomPanel form = this.CreateForm(new Dimension(30,60), Color.cyan);
+		this.CreateForm(this);
 		this.pack();
-		
+		this.getContentPane().setBackground(Color.cyan);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
 	}
 	
 	/**
-	 * Create the Form panel with a given ratio and background color
-	 * @param ratio
-	 * @param bg background color
-	 * @return
+	 * Add character fields to the form 
+	 * @param form
 	 */
-	private CustomPanel CreateForm(Dimension ratio, Color bg) {
-		CustomPanel form = new CustomPanel(ratio, bg);
+	private void CreateForm(JFrame form) {
+
 		form.setLayout(new GridBagLayout());
 	
 		DDCharacter c = new DDCharacter();
 		
 		GridBagConstraints cons = new GridBagConstraints();
 		
+		cons.ipady = 10;
 		cons.gridx = 0;
 		cons.gridy = 0;
 
@@ -112,7 +113,7 @@ public class CharacterCreation extends JFrame {
 		cons.fill = GridBagConstraints.HORIZONTAL;	
 		
 
-		
+		//add label and text/number fields 
 		for(String s : c.textStatKeys) {
 			this.textFields.put(s, new FormTextField("test", 16));
 			cons.gridx = 0;
@@ -161,8 +162,7 @@ public class CharacterCreation extends JFrame {
 		});
 			
 		form.add(save,cons);
-		
-		return form;
+
 	}
 	
 	/**
