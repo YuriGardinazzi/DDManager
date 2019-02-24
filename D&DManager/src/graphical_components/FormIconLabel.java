@@ -26,7 +26,7 @@ public class FormIconLabel extends JLabel {
 	
 	
 	public FormIconLabel() {
-		this("images"+ File.separator + "default.jpg");
+		this("defaults"+ File.separator + "default.jpg");
 	}
 	/**
 	 * Create a FormIconLabel with a given picture

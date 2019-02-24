@@ -50,7 +50,7 @@ public class RightPanel extends CustomPanel {
 		//get the default character located in the file "default.ddc"
 		DDCharacter c = null;
 		try {
-	         FileInputStream fileIn = new FileInputStream(new File("images" + File.separator + "default.ddc"));
+	         FileInputStream fileIn = new FileInputStream(new File("defaults" + File.separator + "default.ddc"));
 	         ObjectInputStream in = new ObjectInputStream(fileIn);
 	         c = (DDCharacter) in.readObject();
 	         in.close();

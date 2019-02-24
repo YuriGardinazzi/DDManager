@@ -29,7 +29,7 @@ public class LeftPanel extends CustomPanel {
 	private static final long serialVersionUID = 1L;
 	
 	
-	private String myPicturePath = "images" + File.separator + "default.jpg";
+	private String myPicturePath = "defaults" + File.separator + "default.jpg";
 	
 	private FormIconLabel imgLabel;
 	

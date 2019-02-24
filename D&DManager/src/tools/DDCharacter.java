@@ -33,7 +33,7 @@ public class DDCharacter implements Serializable {
 	public DDCharacter() {
 		this.textStatMap = new HashMap<String, String>();
 		this.numberStatMap = new HashMap<String, Integer>();
-		this.setImagePath("images" + File.separator + "character.jpg");
+		this.setImagePath("defaults" + File.separator + "character.jpg");
 		this.setDefaultHashMap();
 		this.setMaxLife();
 	}

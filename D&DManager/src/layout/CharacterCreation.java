@@ -37,7 +37,7 @@ public class CharacterCreation extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
-	private String imgPath = "images" + File.separator + "character.jpg";
+	private String imgPath = "defaults" + File.separator + "character.jpg";
 	private Map<String, FormTextField> textFields = new HashMap<String, FormTextField>();
 	private Map<String, FormNumber> numberFields = new HashMap<String, FormNumber>();
 	

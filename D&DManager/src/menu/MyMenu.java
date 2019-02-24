@@ -40,7 +40,7 @@ public class MyMenu extends JMenuBar {
 		
 		
 		//Save file item, shortcut Ctrl + S
-		menuItem = new JMenuItem("Save Map", new ImageIcon("images/save_icon.png"));		
+		menuItem = new JMenuItem("Save Map", new ImageIcon("defaults/save_icon.png"));		
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
 		menuItem.addActionListener(new ActionListener() {
 				@Override
