@@ -81,7 +81,7 @@ public class CharacterCreation extends JFrame {
 		
 		GridBagConstraints cons = new GridBagConstraints();
 		
-		cons.ipady = 10;
+		cons.ipady = 5;
 		cons.gridx = 0;
 		cons.gridy = 0;
 
