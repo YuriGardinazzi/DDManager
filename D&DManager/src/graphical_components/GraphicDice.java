@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import layout.MainFrame;
+import tools.Dice;
 /*
  * @author Yuri Gardinazzi
  * TODO: to finish
@@ -22,7 +23,8 @@ import layout.MainFrame;
  */
 public class GraphicDice extends FormIconLabel {
 	private static final long serialVersionUID = 1L;
-	private static final String PICS_PATH = "defaults"+ File.separator + "d6" + File.separator;
+	private final String PICS_PATH = "defaults"+ File.separator;
+	private int diceType = 6;
 	private int displayedDice;
 	
 	public GraphicDice() {
@@ -46,6 +48,24 @@ public class GraphicDice extends FormIconLabel {
 		}
 		this.displayedDice = displayedDice;
 		
-		this.updatePicture(this.PICS_PATH + "n"+ this.displayedDice +".png");
+		this.updatePicture(this.PICS_PATH + "d" + this.getDiceType() + File.separator + "n"+ this.displayedDice +".png");
+	}
+
+	public void rollTheDice() {
+		Dice d = new Dice(this.diceType);
+		this.setDisplayedDice(d.roll());
+	}
+	/**
+	 * @return the diceType
+	 */
+	public int getDiceType() {
+		return this.diceType;
+	}
+
+	/**
+	 * @param diceType the diceType to set
+	 */
+	public  void setDiceType(int diceType) {
+		this.diceType = diceType;
 	}
 }

@@ -48,7 +48,7 @@ public class Dice {
 	 */
 	public void setNSide(int nSide) {
 		if(nSide <= 3 || nSide % 2 != 0) {
-			System.err.println("Number of side of the dice is wrong or not multiple of 2\n dice value set to default = 4 ");
+			System.err.println("Number of side is wrong:  "+ nSide);
 			this.nSide = 4;
 		}else {
 			this.nSide = nSide;

@@ -7,7 +7,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -16,9 +17,11 @@ import javax.imageio.ImageIO;
 
 
 import javax.swing.JButton;
-
+import javax.swing.JComboBox;
 
 import graphical_components.FormIconLabel;
+import graphical_components.FormLabel;
+import graphical_components.GraphicDice;
 /**
  * This class describes the left panel of the MainFrame
  * @author Yuri 
@@ -30,9 +33,9 @@ public class LeftPanel extends CustomPanel {
 	
 	
 	private String myPicturePath = "defaults" + File.separator + "default.jpg";
-	
+	private final Integer possibleDices[] = {4,6,8,10,12,20};
 	private FormIconLabel imgLabel;
-	
+	private GraphicDice dice;
 	
 	/**
 	 * Creates the left panel with a given background color
@@ -63,18 +66,46 @@ public class LeftPanel extends CustomPanel {
 	
 		this.imgLabel.setPreferredSize(new Dimension(150,150));
 
-	    GridBagConstraints c = new GridBagConstraints();   
-		
-	    c.gridy = 0;
-	    this.add(this.getImgLabel(), c);
-	  
-	    //generate buttons for test purposes
-	    for(int i = 0; i < 10; i++) {
-	    	c.gridy++;
-	    	JButton btn= new JButton("Test " + i);
-	    	btn.setMinimumSize(new Dimension(100, 25));
-	    	this.add(btn, c);
-	    }
+	    GridBagConstraints cons = new GridBagConstraints();   
+	    cons.gridy = 0;
+	    cons.gridx = 0;
+	    cons.gridwidth = 2;
+	    this.add(this.getImgLabel(), cons);
+	    
+	    cons.gridx = 0;
+	    cons.gridy ++;
+	    cons.gridwidth = 1;
+	    FormLabel diceLabel = new FormLabel("Roll a d");
+	    this.add(diceLabel, cons);
+	    
+	    cons.gridx = 1;
+	    cons.gridwidth = 1;
+	   	JComboBox<Integer> diceList = new JComboBox<Integer>(this.possibleDices);
+	    this.add(diceList, cons);
+	    
+	    cons.gridy++;
+	    cons.gridx = 0;
+	    cons.gridwidth = 2;
+	    JButton rollBtn = new JButton("Roll !");
+	    rollBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dice.setDiceType((Integer) diceList.getSelectedItem()); 
+				dice.rollTheDice();
+			}
+		});
+	    
+	    
+	    this.add(rollBtn, cons);
+	    
+	   
+	    cons.gridy ++;
+	    cons.gridx = 0;
+	    cons.gridwidth = 2;
+	    this.dice = new GraphicDice();
+	    this.add(dice, cons);
+	    
 		
 
 	}
