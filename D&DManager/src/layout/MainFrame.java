@@ -20,7 +20,7 @@ public class MainFrame extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private LeftPanel p1;
-	private CustomPanel p2;
+	private MiddlePanel p2;
 	private RightPanel p3;
 	
 	public MainFrame() {
@@ -40,20 +40,15 @@ public class MainFrame extends JFrame {
 		//Right Panel		
 		this.p3 = new RightPanel(new Dimension(20,70), Color.pink);
 		
-		GridPanel grid = new GridPanel(10,5,75, this.p3);
-		JScrollPane scrollGrid = new JScrollPane(grid,
-												 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
-												 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-					scrollGrid.setPreferredSize(new Dimension(600,350));
-					scrollGrid.setMinimumSize(new Dimension(600,350));			
+	
 		/**
 		 * TODO:
 		 * Creare una dimensione coerente con la grandezza delle celle 
 		 * e un limite massimo
 		 */
 		//Middle Panel
-		this.p2 = new CustomPanel(Color.gray);
-			 p2.add(scrollGrid);
+		this.p2 = new MiddlePanel(new Dimension(40,70), Color.gray, this.p3);
+			 
 
 
 		//Insert each panel inside a SplitPane
@@ -63,7 +58,7 @@ public class MainFrame extends JFrame {
 						   					 splitter, this.p3);
 		this.add(splitter);
 		
-		MyMenu m = new MyMenu(this.p1, grid);
+		MyMenu m = new MyMenu(this.p1, this.p2.getGrid());
 		this.setJMenuBar(m);
 		
 		this.pack();
