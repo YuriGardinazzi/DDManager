@@ -177,9 +177,9 @@ public class CharacterCreation extends JFrame {
 		JFileChooser chooser = new JFileChooser();
 					 chooser.setFileFilter(filter);
 					 chooser.setAcceptAllFileFilterUsed(false);
-		int retrival = chooser.showSaveDialog(this.getParent());
+		int retrieval = chooser.showSaveDialog(this.getParent());
 
-		if (retrival == JFileChooser.APPROVE_OPTION) {
+		if (retrieval == JFileChooser.APPROVE_OPTION) {
 			try {
 					FileOutputStream fOut = new FileOutputStream(chooser.getSelectedFile()+ ".ddc");
 					ObjectOutputStream objOut = new ObjectOutputStream(fOut);
