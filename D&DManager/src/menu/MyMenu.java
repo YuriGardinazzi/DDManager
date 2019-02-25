@@ -157,7 +157,7 @@ public class MyMenu extends JMenuBar {
 					ObjectOutputStream objOut = new ObjectOutputStream(fOut);
 					objOut.writeObject(getGrid());
 					objOut.close();
-					JOptionPane.showMessageDialog(null,  "Grid Has been saved");
+					JOptionPane.showMessageDialog(null,  "Map Has been saved");
 					
 		        } catch (Exception ex) {
 		        	JOptionPane.showMessageDialog(null, "Something went wrong :C");
