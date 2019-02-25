@@ -33,6 +33,7 @@ public class Cell extends JPanel implements Serializable {
 	private Color bg;
 	private String cellPicPath;
 	private DDCharacter character;
+	private String characterPath;
 	private RightPanel rightPanel;
 	private GridPanel grid;
 	
@@ -112,6 +113,7 @@ public class Cell extends JPanel implements Serializable {
 		if(this.getCharacter() != null) {
 			this.setCharacter(null);
 			this.setCellPicPath(null);
+			this.setCharacterPath(null);
 			this.repaint();
 		}
 	}
@@ -202,5 +204,21 @@ public class Cell extends JPanel implements Serializable {
 	 */
 	public void setGrid(GridPanel grid) {
 		this.grid = grid;
+	}
+
+
+	/**
+	 * @return the characterPath
+	 */
+	public String getCharacterPath() {
+		return characterPath;
+	}
+
+
+	/**
+	 * @param characterPath the characterPath to set
+	 */
+	public void setCharacterPath(String characterPath) {
+		this.characterPath = characterPath;
 	}
 }

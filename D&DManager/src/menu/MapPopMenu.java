@@ -5,12 +5,16 @@ package menu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -35,6 +39,7 @@ public class MapPopMenu extends JPopupMenu {
 	private JMenuItem removeCharacterItem;
 	private JMenuItem moveCharacterItem;
 	private JMenuItem placeCharacterItem;
+	private JMenuItem updateCharacterItem;
 	private GridPanel grid;
 	private Cell cell;
 	
@@ -52,6 +57,7 @@ public class MapPopMenu extends JPopupMenu {
 			public void actionPerformed(ActionEvent e) {
 				DDCharacter c = retrieveCharacter();
 				getCell().addElement(c);
+				
 
 			}
 		});
@@ -67,7 +73,9 @@ public class MapPopMenu extends JPopupMenu {
 			}
 		});
 		this.add(this.removeCharacterItem);
+		
 		this.displayMoveOrPlaceItems();
+		this.displayUpdateCharacterItem();
 	}
 
 	/**
@@ -86,7 +94,38 @@ public class MapPopMenu extends JPopupMenu {
 			this.addMoveItem();
 		}
 	}
+	/**
+	 * Displays the update button if there's a character on the cell
+	 * it rewrites the character file (*.ddc) with the character in the cell
+	 * If there's not a character it removes the "update" button if it was present
+	 */
+	private void displayUpdateCharacterItem() {
+		if(this.getCell().getCharacterPath() != null) {
+			this.updateCharacterItem = new JMenuItem("Update stats");
+			this.updateCharacterItem.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					try {
+						FileOutputStream fOut = new FileOutputStream(getCell().getCharacterPath());
+						ObjectOutputStream objOut = new ObjectOutputStream(fOut);
+						objOut.writeObject(getCell().getCharacter());
+						objOut.close();						
+			        } catch (Exception ex) {
+			        	JOptionPane.showMessageDialog(null, "Something went wrong :C");
+			            ex.printStackTrace();
+			        }
+			    }
+					
+				});
+			this.add(this.updateCharacterItem);
+		}else {
+			if(this.updateCharacterItem != null) {
+				this.remove(this.updateCharacterItem);
+			}
+		}
 	
+	}
 	/**
 	 * add the button "Place" to the PopUp menu and remove the button "Move"
 	 */
@@ -136,6 +175,7 @@ public class MapPopMenu extends JPopupMenu {
 	
 	/**
 	 * This functions returns a DDCharacter object from a *.ddc file choosed from the user
+	 * and updates characterPath field of the Cell
 	 * @return DDCharacter
 	 */
 	private DDCharacter retrieveCharacter() {
@@ -157,6 +197,10 @@ public class MapPopMenu extends JPopupMenu {
 			         c = (DDCharacter) in.readObject();
 			         in.close();
 			         fileIn.close();
+			         
+			         //update cell
+			         this.getCell().setCharacterPath(chooser.getSelectedFile().getPath());
+			     
 				 }catch( IOException e) {
 					 e.printStackTrace();
 				 } catch (ClassNotFoundException e) {
