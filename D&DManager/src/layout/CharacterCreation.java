@@ -37,7 +37,7 @@ public class CharacterCreation extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
-	private String imgPath = "defaults" + File.separator + "character.jpg";
+	private String imgPath;
 	private Map<String, FormTextField> textFields = new HashMap<String, FormTextField>();
 	private Map<String, FormNumber> numberFields = new HashMap<String, FormNumber>();
 	
@@ -102,7 +102,7 @@ public class CharacterCreation extends JFrame {
 		form.setLayout(new GridBagLayout());
 	
 		DDCharacter c = character;
-		
+		this.setImgPath(c.getImagePath());
 		GridBagConstraints cons = new GridBagConstraints();
 		
 		cons.insets = new Insets(2,5,2,5);
@@ -111,7 +111,7 @@ public class CharacterCreation extends JFrame {
 		cons.gridy = 0;
 
 		//Profile picture fields
-		FormIconLabel picLabel = new FormIconLabel(this.imgPath);
+		FormIconLabel picLabel = new FormIconLabel(c.getImagePath());
 
 		form.add(picLabel, cons);
 		
@@ -139,23 +139,23 @@ public class CharacterCreation extends JFrame {
 		
 
 		//add label and text/number fields 
-		for(String s : c.textStatKeys) {
-			this.textFields.put(s, new FormTextField("test", 16));
+		for(String key : c.textStatKeys) {
+			this.textFields.put(key, new FormTextField(c.getTextStat(key), 16));
 			cons.gridx = 0;
-			FormLabel label = new FormLabel(s);
+			FormLabel label = new FormLabel(key);
 			form.add(label, cons);
 			cons.gridx = 1;
-			form.add(this.textFields.get(s), cons);
+			form.add(this.textFields.get(key), cons);
 			cons.gridy ++;
 		}
-		for(String s : c.numberStatKeys) {	
-			this.numberFields.put(s, new FormNumber());
+		for(String key : c.numberStatKeys) {	
+			this.numberFields.put(key, new FormNumber(c.getNumberStat(key)));
 			cons.gridx = 0;
 			
-			FormLabel label = new FormLabel(s);
+			FormLabel label = new FormLabel(key);
 			form.add(label, cons);
 			cons.gridx = 1;
-			form.add(this.numberFields.get(s), cons);
+			form.add(this.numberFields.get(key), cons);
 			cons.gridy ++;
 		}
 

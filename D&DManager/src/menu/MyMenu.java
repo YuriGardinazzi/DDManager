@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import layout.*;
 import player_map.GridPanel;
+import tools.DDCharacter;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -64,6 +66,32 @@ public class MyMenu extends JMenuBar {
 		menu.add(menuItem);
 		NewCharacter characterCreationItem = new NewCharacter();
 		menu.add(characterCreationItem);
+		
+		menuItem = new JMenuItem("Modify a character");
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M, ActionEvent.CTRL_MASK));
+		menuItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String path = showChooseFileDialog(false);
+				try {
+					FileInputStream fileIn = new FileInputStream(path);
+			         ObjectInputStream in = new ObjectInputStream(fileIn);
+			         DDCharacter inputChar = (DDCharacter) in.readObject();
+			         in.close();
+			         fileIn.close();
+			         CharacterCreation modify = new CharacterCreation("Modify " + inputChar.getTextStat("Name"),
+			        		 											inputChar);	
+			        		 
+			         
+		        } catch (Exception ex) {
+		        	
+		            ex.printStackTrace();
+		        }
+		    }	
+		});
+		
+		menu.add(menuItem);
 	}
 
 
@@ -71,9 +99,15 @@ public class MyMenu extends JMenuBar {
 	 * Create a File chooser box dialog and get a *.ddm file from the user
 	 * @return name of the file choosen by the user
 	 */
-	private String showChooseFileDialog() {
-		FileNameExtensionFilter filter = new FileNameExtensionFilter(
-				"D&D Map", "ddm");
+	private String showChooseFileDialog(boolean isMap) {
+		FileNameExtensionFilter filter = null;
+		if(isMap) {
+			filter = new FileNameExtensionFilter("D&D Map", "ddm");
+		}else {
+			filter = new FileNameExtensionFilter(
+					"D&D character", "ddc");
+		}
+		
 		JFileChooser chooser = new JFileChooser();
 					 chooser.setFileFilter(filter);
 					 chooser.setAcceptAllFileFilterUsed(false);
@@ -81,6 +115,7 @@ public class MyMenu extends JMenuBar {
 		
 		if(retrieval == JFileChooser.APPROVE_OPTION) {
 			return chooser.getSelectedFile().getAbsolutePath();
+			
 		}
 			
 		return null;
@@ -90,7 +125,7 @@ public class MyMenu extends JMenuBar {
 	
 	private GridPanel uploadMapDialog() {
 		GridPanel map = null;
-		String file = this.showChooseFileDialog();
+		String file = this.showChooseFileDialog(true);
 		if(file != null) {
 			try {
 				System.out.println("trie to take: " + file);
@@ -114,7 +149,7 @@ public class MyMenu extends JMenuBar {
 	 * Show the save dialog for the grid
 	 */
 	private void saveMapDialog() {
-		String file = this.showChooseFileDialog();
+		String file = this.showChooseFileDialog(true);
 		System.out.println("Path: "+ file);
 		if (file != null) {
 			try {

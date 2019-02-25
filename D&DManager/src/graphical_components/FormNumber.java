@@ -24,14 +24,22 @@ public class FormNumber extends JFormattedTextField implements PropertyChangeLis
     //TODO: Aggiungere controllo sull'input come si deve
 	private String font = "Times new roman";
 	private int fontSize = 18;
-
+	
+	public FormNumber(Integer number) {
+		super(new DecimalFormat("######"));
+		this.setProperties(number);
+		
+	}
 	public FormNumber() {
 		super(new DecimalFormat("######"));
-		this.setValue(0);
+		this.setProperties(0);
+		
+	}
+	private void setProperties(Integer number) {
+		this.setValue(number);
 		this.addPropertyChangeListener("value",this);
 		this.setFont(new Font(this.font, Font.PLAIN, this.fontSize));
-		this.setText("0");
-		
+		this.setText(number.toString());
 	}
 
 	public Integer getNumber() {
