@@ -57,6 +57,7 @@ public class NotesPanel extends CustomPanel {
 	//	noteArea.setPreferredSize(this.calculateDimensions(new Dimension(35,20)));
 		
 		JScrollPane noteAreaScrollPane = new JScrollPane(noteArea);
+					noteAreaScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 					noteAreaScrollPane.setPreferredSize(this.calculateDimensions(ratio));
 					noteAreaScrollPane.setMinimumSize(this.calculateDimensions(ratio));
 		this.add(noteAreaScrollPane, cons);
