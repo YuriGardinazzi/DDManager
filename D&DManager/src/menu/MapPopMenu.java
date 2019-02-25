@@ -20,7 +20,8 @@ import tools.DDCharacter;
 
 /**
  * @author Yuri
- * Popup menu that displays what you can do on the map
+ * Popup menu that displays what you can do with the characters on the map
+ * Like adding and removing a character or changing his position on the map
  *
  */
 public class MapPopMenu extends JPopupMenu {
@@ -37,6 +38,11 @@ public class MapPopMenu extends JPopupMenu {
 	private GridPanel grid;
 	private Cell cell;
 	
+	/**
+	 * Constructor
+	 * @param c  cell where the Menu should appear
+	 * @param grid grid where the cell is placed
+	 */
 	public MapPopMenu(Cell c, GridPanel grid) {
 		this.setCell(c);
 		this.setGrid(grid);
@@ -61,10 +67,15 @@ public class MapPopMenu extends JPopupMenu {
 			}
 		});
 		this.add(this.removeCharacterItem);
-		this.displayShowOrPlaceItems();
+		this.displayMoveOrPlaceItems();
 	}
 
-	private void displayShowOrPlaceItems() {
+	/**
+	 * Add the button Move or Show to the PopUp menu
+	 * if the user is already changing the position of a character display "Place" button
+	 * otherwise show the "Move" button
+	 */
+	private void displayMoveOrPlaceItems() {
 		
 		if(this.getCell().getCharacter() == null && this.getGrid().isCharacterMoving() == false) {
 			return;
@@ -76,6 +87,9 @@ public class MapPopMenu extends JPopupMenu {
 		}
 	}
 	
+	/**
+	 * add the button "Place" to the PopUp menu and remove the button "Move"
+	 */
 	private void addPlaceItem() {
 		//remove MoveButton if present
 		if(this.moveCharacterItem != null) {
@@ -95,6 +109,9 @@ public class MapPopMenu extends JPopupMenu {
 		this.add(this.placeCharacterItem);
 	}
 	
+	/**
+	 * add the button "Move" to the PopUp menu and remove the button "Place"
+	 */
 	public void addMoveItem() {
 		if(this.placeCharacterItem != null) {
 			this.remove(this.placeCharacterItem);
@@ -118,8 +135,8 @@ public class MapPopMenu extends JPopupMenu {
 	}
 	
 	/**
-	 * This functions returns a character object from a *.ddc file choosed from the user
-	 * @return character object
+	 * This functions returns a DDCharacter object from a *.ddc file choosed from the user
+	 * @return DDCharacter
 	 */
 	private DDCharacter retrieveCharacter() {
 		DDCharacter c = null;
@@ -130,8 +147,6 @@ public class MapPopMenu extends JPopupMenu {
 		chooser.setFileFilter(filter);
 		chooser.setAcceptAllFileFilterUsed(false);
 		int returnVal = chooser.showOpenDialog(this.getParent());
-		
-		//Show the picture
 		if(returnVal == JFileChooser.APPROVE_OPTION) {
 
 			if(chooser.getSelectedFile().getPath() != null) {		
