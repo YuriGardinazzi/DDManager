@@ -49,20 +49,43 @@ public class CharacterCreation extends JFrame {
 		this.CreateGUI();
 	}
 	/**
-	 * Create the CharacterCreation window with a given name
+	 * Create the Character creation window with a given name
 	 * @param title
 	 */
 	public CharacterCreation(String title) {
 		super(title);
 		this.CreateGUI();
 	}
+	
+	/**
+	 * Create the Character modify window with a given name
+	 * @param title name of the window
+	 * @param character character to modify
+	 */
+	public CharacterCreation(String title, DDCharacter character) {
+		super(title);
+		this.CreateGUI(character);
+	}
 
 	/**
-	 * Creates the Graphic User Interface of the character creation form
+	 * Creates the Graphic User Interface to modify a character
+	 * @param character  character to modify
+	 */
+	private void CreateGUI(DDCharacter character) {
+		
+		this.CreateForm(this, character);
+		this.pack();
+		this.getContentPane().setBackground(Color.cyan);
+		this.setLocationRelativeTo(null);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setVisible(true);
+	}
+	/**
+	 * Creates the Graphic User Interface to create a new character
 	 */
 	private void CreateGUI() {
-		//CustomPanel form = this.CreateForm(new Dimension(30,60), Color.cyan);
-		this.CreateForm(this);
+		
+		this.CreateForm(this, new DDCharacter());
 		this.pack();
 		this.getContentPane().setBackground(Color.cyan);
 		this.setLocationRelativeTo(null);
@@ -74,11 +97,11 @@ public class CharacterCreation extends JFrame {
 	 * Add character fields to the form 
 	 * @param form
 	 */
-	private void CreateForm(JFrame form) {
+	private void CreateForm(JFrame form, DDCharacter character) {
 
 		form.setLayout(new GridBagLayout());
 	
-		DDCharacter c = new DDCharacter();
+		DDCharacter c = character;
 		
 		GridBagConstraints cons = new GridBagConstraints();
 		
