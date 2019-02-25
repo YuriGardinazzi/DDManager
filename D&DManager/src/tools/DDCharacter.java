@@ -17,7 +17,7 @@ public class DDCharacter implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String imagePath;
+	private String imagePath = "defaults" + File.separator + "character.jpg";
 	private  Integer maxLife;
 	private Map<String, String> textStatMap;
 	public final String[] textStatKeys = new String[] {"Name","Alignment","Divinity",
@@ -33,7 +33,6 @@ public class DDCharacter implements Serializable {
 	public DDCharacter() {
 		this.textStatMap = new HashMap<String, String>();
 		this.numberStatMap = new HashMap<String, Integer>();
-		this.setImagePath("defaults" + File.separator + "character.jpg");
 		this.setDefaultHashMap();
 		this.setMaxLife();
 	}

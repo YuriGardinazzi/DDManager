@@ -40,34 +40,15 @@ public class RightPanel extends CustomPanel {
 
 	private DDCharacter character;
 	/**
-	 * Create the right panel with a given dimension and background color
+	 * Generate the right panel with a given dimension and background color
 	 * @param d
 	 * @param bg
 	 */
 	public RightPanel(Dimension d, Color bg) {
 		super(d, bg);
 		
-		//get the default character located in the file "default.ddc"
-		DDCharacter c = null;
-		try {
-	         FileInputStream fileIn = new FileInputStream(new File("defaults" + File.separator + "default.ddc"));
-	         ObjectInputStream in = new ObjectInputStream(fileIn);
-	         c = (DDCharacter) in.readObject();
-	         in.close();
-	         fileIn.close();
-	         
-		 }catch( IOException e) {
-			 System.out.println("Input non trovato :S");
-			 e.printStackTrace();
-			 c = new DDCharacter();
-		
-		 } catch (ClassNotFoundException e) {
-		
-			System.out.println("Classe non trovata");
-			e.printStackTrace();
-			c = new DDCharacter();
-		}
-		
+		//Display the default character located in the file "default.ddc"
+		DDCharacter c = new DDCharacter();
 		this.setCharacter(c);
 		this.setMapLabel(new HashMap<String, FormLabel>());
 
@@ -88,7 +69,7 @@ public class RightPanel extends CustomPanel {
 		cons.gridy = 0;
 
 		//Profile picture 
-		this.picLabel = new FormIconLabel(this.getCharacter().getImagePath());
+  		this.picLabel = new FormIconLabel(this.getCharacter().getImagePath());
 		this.add(picLabel, cons);
 	
 		
