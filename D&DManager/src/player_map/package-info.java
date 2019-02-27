@@ -1,7 +1,8 @@
 /**
  * 
  * 
- * Classes used to create the interactive grid of the application
+ * This package has just the classes to handle the player's map
+ * 
  * 
  * @since 1.0
  * @author Yuri Gardinazzi

@@ -10,11 +10,13 @@ import javax.swing.JPanel;
 import layout.RightPanel;
 import tools.DDCharacter;
 
+/**
+ * This class handle the player's map that is basically a matrix of Cell
+ * @author Yuri
+ *
+ */
 public class GridPanel extends JPanel implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private static final int DEFAULT_WIDTH = 5;
 	private static final int DEFAULT_HEIGHT = 5;
@@ -30,10 +32,10 @@ public class GridPanel extends JPanel implements Serializable {
 	private Cell[][] matrix;
 	
 	/**
-	 * GridPanel generates a panel that contains a Grid of a class Cell given in input
-	 * @param h rows
-	 * @param w coloumns
-	 * @param cell cell that draws
+	 * Initialize the Grid Panel that contains a matrix of cells
+	 * @param h rows of the matrix
+	 * @param w columns of the cell
+	 * @param cell side in pixel of the cell 
 	 */
 	public GridPanel(int w, int h, int cell, RightPanel rightPanel) {
 		super();
@@ -61,10 +63,17 @@ public class GridPanel extends JPanel implements Serializable {
 	
 	
 	
-
+	/**
+	 * Get the number of rows of the grid
+	 * @return rows
+	 */
 	public int getGridHeight() {
 		return this.gridHeight;
 	}
+	/**
+	 * Set the number of rows of the grid
+	 * @param gridHeight
+	 */
 	public void setGridHeight(int gridHeight) {
 		if(gridHeight <= 0 ) {
 			this.gridHeight = DEFAULT_HEIGHT;
@@ -72,9 +81,18 @@ public class GridPanel extends JPanel implements Serializable {
 			this.gridHeight = gridHeight;
 		}
 	}
+	/**
+	 * Get the number of columns of the grid
+	 * @return columns
+	 */
 	public int getGridWidth() {
 		return this.gridWidth;
 	}
+	
+	/**
+	 * Set the number of columns of the grid
+	 * @param gridWidth
+	 */
 	public void setGridWidth(int gridWidth) {
 		
 		if(gridWidth <= 0) {
@@ -84,12 +102,18 @@ public class GridPanel extends JPanel implements Serializable {
 		}
 	}
 
-
+	/**
+	 * Get the side of the single cell displayed in the grid
+	 * @return
+	 */
 	public int getCellSide() {
 		return cellSide;
 	}
 
-
+	/**
+	 * Set the side of the cells displayed
+	 * @param cellSide
+	 */
 	public void setCellSide(int cellSide) {
 		this.cellSide = cellSide;
 	}
@@ -98,6 +122,7 @@ public class GridPanel extends JPanel implements Serializable {
 
 
 	/**
+	 * Return the matrix of cells 
 	 * @return the matrix
 	 */
 	public Cell[][] getMatrix() {
@@ -121,15 +146,24 @@ public class GridPanel extends JPanel implements Serializable {
 		
 	}
 
+	/**
+	 * Return the right panel that the grid refers to
+	 * @return
+	 */
 	public RightPanel getRightPanel() {
 		return rightPanel;
 	}
 
+	/**
+	 * Set the rightPanel that the grid should refer
+	 * @param rightPanel
+	 */
 	public void setRightPanel(RightPanel rightPanel) {
 		this.rightPanel = rightPanel;
 	}
 
 	/**
+	 * Return the character that the user is moving
 	 * @return the movedCharacter
 	 */
 	public DDCharacter getMovedCharacter() {
@@ -138,6 +172,7 @@ public class GridPanel extends JPanel implements Serializable {
 
 
 	/**
+	 * Set the character that the user wants to change position
 	 * @param movedCharacter the movedCharacter to set
 	 */
 	public void setMovedCharacter(DDCharacter movedCharacter) {
@@ -156,7 +191,7 @@ public class GridPanel extends JPanel implements Serializable {
 
 	}
 	/**
-	 * 
+	 *
 	 * @return names of the character on the map and their position in the grid
 	 */
 	public String getCharacterOnTheMap() {
@@ -173,6 +208,10 @@ public class GridPanel extends JPanel implements Serializable {
 		return output;
 	}
 
+	/**
+	 * Update the grid with a new one given in input
+	 * @param newGrid
+	 */
 	public void updateGrid(GridPanel newGrid) {
 		for(int c = 0; c < this.getGridWidth(); c++) {
 			for(int r = 0; r < this.getGridHeight(); r++) {
