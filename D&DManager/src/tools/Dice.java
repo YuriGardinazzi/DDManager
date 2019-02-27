@@ -14,7 +14,7 @@ public class Dice {
 	
 	/**
 	 * takes in input the number of sides of the dice
-	 * @param n
+	 * @param n side of the dice
 	 */
 	public Dice(int n) {
 		this.setNSide(n);
@@ -45,8 +45,8 @@ public class Dice {
 	}
 	/**
 	 * Set the number of sides of the dice
-	 * the value must be >= 4 and multiple of 2
-	 * @param nSide
+	 * the value must be greater than 4 and multiple of 2
+	 * @param nSide new Number of side of the dice
 	 */
 	public void setNSide(int nSide) {
 		if(nSide <= 3 || nSide % 2 != 0) {

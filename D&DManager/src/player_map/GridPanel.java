@@ -36,6 +36,7 @@ public class GridPanel extends JPanel implements Serializable {
 	 * @param h rows of the matrix
 	 * @param w columns of the cell
 	 * @param cell side in pixel of the cell 
+	 * @param rightPanel panel that the grid must references
 	 */
 	public GridPanel(int w, int h, int cell, RightPanel rightPanel) {
 		super();
@@ -72,7 +73,7 @@ public class GridPanel extends JPanel implements Serializable {
 	}
 	/**
 	 * Set the number of rows of the grid
-	 * @param gridHeight
+	 * @param gridHeight rows
 	 */
 	public void setGridHeight(int gridHeight) {
 		if(gridHeight <= 0 ) {
@@ -91,7 +92,7 @@ public class GridPanel extends JPanel implements Serializable {
 	
 	/**
 	 * Set the number of columns of the grid
-	 * @param gridWidth
+	 * @param gridWidth columns
 	 */
 	public void setGridWidth(int gridWidth) {
 		
@@ -104,7 +105,7 @@ public class GridPanel extends JPanel implements Serializable {
 
 	/**
 	 * Get the side of the single cell displayed in the grid
-	 * @return
+	 * @return the side of the cell
 	 */
 	public int getCellSide() {
 		return cellSide;
@@ -131,8 +132,6 @@ public class GridPanel extends JPanel implements Serializable {
 
 	/**
 	 * Initialize and set the matrix
-	 * @param x
-	 * @param y
 	 */
 	public void setMatrix() {
 		
@@ -156,7 +155,7 @@ public class GridPanel extends JPanel implements Serializable {
 
 	/**
 	 * Set the rightPanel that the grid should refer
-	 * @param rightPanel
+	 * @param rightPanel new RightPanel
 	 */
 	public void setRightPanel(RightPanel rightPanel) {
 		this.rightPanel = rightPanel;
@@ -210,7 +209,7 @@ public class GridPanel extends JPanel implements Serializable {
 
 	/**
 	 * Update the grid with a new one given in input
-	 * @param newGrid
+	 * @param newGrid grid that will get the place of the old one
 	 */
 	public void updateGrid(GridPanel newGrid) {
 		for(int c = 0; c < this.getGridWidth(); c++) {

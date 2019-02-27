@@ -75,7 +75,7 @@ public class CellListener extends MouseAdapter {
 
 	/**
 	 * Set the cell of the CellListener
-	 * @param cell 
+	 * @param cell  new cell
 	 */
 	public void setCell(Cell cell) {
 		this.cell = cell;

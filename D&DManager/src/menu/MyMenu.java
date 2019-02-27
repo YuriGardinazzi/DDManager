@@ -103,6 +103,7 @@ public class MyMenu extends JMenuBar {
 
 	/**
 	 * Create a File chooser box dialog and get a *.ddm file from the user
+	 * @param isMap true if you wanna select a *.ddm, false if you want a *.ddc
 	 * @return name of the file choosen by the user
 	 */
 	private String showChooseFileDialog(boolean isMap) {
@@ -157,7 +158,7 @@ public class MyMenu extends JMenuBar {
 	}
 	/**
 	 * Show the save dialog for the map.
-	 * The user will save the file as <file_name>.ddm
+	 * The user will save the file as [file_name].ddm
 	 */
 	private void saveMapDialog() {
 		String file = this.showChooseFileDialog(true);

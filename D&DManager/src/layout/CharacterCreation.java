@@ -187,7 +187,7 @@ public class CharacterCreation extends JFrame {
 	}
 	
 	/**
-	 * Show a box dialog to save a character as <file_name>.ddc
+	 * Show a box dialog to save a character as [file_name].ddc
 	 * @param character DDCharacter To save
 	 */
 	private void saveCharacter(DDCharacter character) {

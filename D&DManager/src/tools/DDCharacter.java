@@ -112,7 +112,7 @@ public class DDCharacter implements Serializable {
 	}
 	/**
 	 * Get the character's image path
-	 * @return
+	 * @return path of the image
 	 */
 	public String getImagePath() {
 		return imagePath;
@@ -120,7 +120,7 @@ public class DDCharacter implements Serializable {
 
 	/**
 	 * Set the character's image path
-	 * @param imagePath
+	 * @param imagePath path of the new image
 	 */
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
@@ -137,7 +137,6 @@ public class DDCharacter implements Serializable {
 	
 	/**
 	 * Set the maximum life of the character equal to the HitPoints value
-	 * @param maxLife the maxLife to set
 	 */
 	public void setMaxLife() {
 		this.maxLife = this.getNumberStat("HitPoints");

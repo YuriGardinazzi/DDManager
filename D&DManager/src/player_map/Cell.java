@@ -65,7 +65,7 @@ public class Cell extends JPanel implements Serializable {
 
 	/**
 	 * Draw the picture of a character if present in the cell
-	 * @param g
+	 * @param g Graphics object
 	 */
 	public void paint(Graphics g) {
 		
@@ -124,7 +124,7 @@ public class Cell extends JPanel implements Serializable {
 	}
 	/**
 	 * Update the cell with a new one taken in input
-	 * @param newCell
+	 * @param newCell cell that will replace the old one
 	 */
 	public void updateCell(Cell newCell) {
 		if(newCell.getCharacter() != null) {
@@ -142,7 +142,7 @@ public class Cell extends JPanel implements Serializable {
 	}
 	/**
 	 * Set the background color of the cell
-	 * @param bg
+	 * @param bg new background color
 	 */
 	public void setBg(Color bg) {
 		this.bg = bg;
@@ -157,7 +157,7 @@ public class Cell extends JPanel implements Serializable {
 	}
 	/**
 	 * Set the side of the cell
-	 * @param side
+	 * @param side new side of the cell
 	 */
 	public void setSide(int side) {
 		if(side < 50) {
@@ -198,7 +198,7 @@ public class Cell extends JPanel implements Serializable {
 	}
 	/**
 	 * Get the rightPanel that the cell refers to
-	 * @return
+	 * @return return the RightPanel that the cell references
 	 */
 	public RightPanel getRightPanel() {
 		return rightPanel;

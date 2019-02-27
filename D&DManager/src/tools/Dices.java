@@ -61,7 +61,7 @@ public class Dices extends Dice {
 	 * Set the number of dices
 	 * the value must be different from 0 but can be negative.
 	 * negative number of dices could be useful in a formula
-	 * @param numberOfDices 
+	 * @param numberOfDices  new number of dices
 	 */
 	public void setNumberOfDices(int numberOfDices) {
 		if(numberOfDices == 0) {
