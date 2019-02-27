@@ -1,25 +1,17 @@
 
 package graphical_components;
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.geom.Line2D;
+
 import java.io.File;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import layout.MainFrame;
 import tools.Dice;
-/*
- * @author Yuri Gardinazzi
- * TODO: to finish
- * This class describes the drawing of a dice
- * It can draw a dice with any number of sides.
+/**
+ * @author Yuri 
+ * This class is a FormIconLabel with defined picture
+ * the picture that it can display are just picture of dices
+ * those picture are saved in the folder defaults
  * 
+ * Folders follow the rule d<number of the dice>
+ * and picture follo the rule n<side to display>
  */
 public class GraphicDice extends FormIconLabel {
 	private static final long serialVersionUID = 1L;
@@ -27,6 +19,11 @@ public class GraphicDice extends FormIconLabel {
 	private int diceType = 6;
 	private int displayedDice;
 	
+	
+	/**
+	 * create a Graphic dice
+	 * display a d6 with the number 6
+	 */
 	public GraphicDice() {
 		super();
 		this.setDisplayedDice(6);
@@ -40,10 +37,11 @@ public class GraphicDice extends FormIconLabel {
 	}
 
 	/**
-	 * @param set the number of the displayed dice
+	 * @param displayeDice number of the side to display
+	 * if the input number is not in the interval [1,20] it sets the value to 6
 	 */
-	public void setDisplayedDice(int displayedDice) {
-		if(displayedDice <= 0 || displayedDice > 6) {
+	private void setDisplayedDice(int displayedDice) {
+		if(displayedDice <= 0 || displayedDice > 20) {
 			this.displayedDice = 6;
 		}
 		this.displayedDice = displayedDice;
@@ -51,12 +49,17 @@ public class GraphicDice extends FormIconLabel {
 		this.updatePicture(this.PICS_PATH + "d" + this.getDiceType() + File.separator + "n"+ this.displayedDice +".png");
 	}
 
+	/**
+	 * Roll a dice of the displayed dice type
+	 * and change the picture displayed according to the rolled number
+	 * the number rolled is just a random number in the interval [1, diceType]
+	 */
 	public void rollTheDice() {
 		Dice d = new Dice(this.diceType);
 		this.setDisplayedDice(d.roll());
 	}
 	/**
-	 * @return the diceType
+	 * @return the actual dice type
 	 */
 	public int getDiceType() {
 		return this.diceType;
@@ -66,6 +69,9 @@ public class GraphicDice extends FormIconLabel {
 	 * @param diceType the diceType to set
 	 */
 	public  void setDiceType(int diceType) {
+		if(diceType <= 0 || diceType > 20) {
+			this.diceType = 6;
+		}
 		this.diceType = diceType;
 	}
 }

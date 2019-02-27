@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package graphical_components;
 
 import java.awt.Color;
@@ -16,7 +14,8 @@ import javax.swing.JLabel;
 
 /**
  * @author Yuri
- *
+ * Personalized Icon Label that displays a picture with a fixed dimension
+ * 
  */
 public class FormIconLabel extends JLabel {
 
@@ -24,12 +23,14 @@ public class FormIconLabel extends JLabel {
 	private final Dimension DIM = new Dimension(150,150);
 	private String imagePath;
 	
-	
+	/**
+	 * Displays the default.jpg picture saved in the defaults folder
+	 */
 	public FormIconLabel() {
 		this("defaults"+ File.separator + "default.jpg");
 	}
 	/**
-	 * Create a FormIconLabel with a given picture
+	 * Displays a picture 
 	 * @param path path of the picture to display
 	 */
 	public FormIconLabel(String path) {
@@ -41,7 +42,7 @@ public class FormIconLabel extends JLabel {
 
 	
 	/**
-	 * Return a scaled picture from a picture got from a given path
+	 * Return a scaled ImageIcon of a picture given by his path
 	 * @param path path of the picture to scale
 	 * @return ImageIcon of the scaled picture
 	 */
@@ -74,7 +75,6 @@ public class FormIconLabel extends JLabel {
 	}
 	
 	/**
-	 * 
 	 * @return ImageIcon of the label
 	 */
 	public ImageIcon getPicture() {
@@ -90,16 +90,16 @@ public class FormIconLabel extends JLabel {
 		this.setIcon(this.getScaledPicture(this.getImagePath()));
 	}
 	/**
-	 * @return the imagePath
+	 * @return the path of the displayed picture
 	 */
 	public String getImagePath() {
 		return imagePath;
 	}
 
 	/**
-	 * @param imagePath the imagePath to set
+	 * @param set the path of the displayed picture
 	 */
-	public void setImagePath(String imagePath) {
+	private void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
 	}
 	

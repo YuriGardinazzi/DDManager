@@ -1,27 +1,22 @@
 package layout;
 
 import java.awt.Color;
-import java.awt.Dimension;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
-import java.io.File;
 import java.io.FileOutputStream;
-
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 import javax.swing.filechooser.FileNameExtensionFilter;
-
 import graphical_components.FormIconLabel;
 import graphical_components.FormLabel;
 import graphical_components.FormNumber;
@@ -31,7 +26,6 @@ import tools.DDCharacter;
 /**
  * @author Yuri
  * This class describes the window that handle the character creation 
- *
  */
 public class CharacterCreation extends JFrame {
 

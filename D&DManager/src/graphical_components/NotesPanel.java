@@ -10,12 +10,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -28,17 +23,26 @@ import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import layout.CustomPanel;
-import tools.DDCharacter;
+
 
 /**
  * @author Yuri
- *
+ * Personalized Panel that display a JTextArea and two button
+ * it is possible to save the text given by the Text area in a file .txt 
+ * or upload a text from a file.txt
  */
 public class NotesPanel extends CustomPanel {
-
+	private static final long serialVersionUID = 1L;
 	
 	private String font = "Times new roman";
 	private int fontSize = 18;
+	
+	/**
+	 * Create a NotesPanel with a given ratio the set his dimensions related to the screen size
+	 * and a given background color
+	 * @param ratio percentage of the panel sizes compared to the screen 
+	 * @param bg background color of the panel
+	 */
 	public NotesPanel(Dimension ratio, Color bg) {
 		super(ratio, bg);
 		this.setLayout(new GridBagLayout());
@@ -54,7 +58,6 @@ public class NotesPanel extends CustomPanel {
 		cons.gridheight = 2;
 		JTextArea	noteArea = new JTextArea("Write your notes here");
 					noteArea.setFont(new Font(this.font, Font.PLAIN, this.fontSize));
-	//	noteArea.setPreferredSize(this.calculateDimensions(new Dimension(35,20)));
 		
 		JScrollPane noteAreaScrollPane = new JScrollPane(noteArea);
 					noteAreaScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -95,8 +98,8 @@ public class NotesPanel extends CustomPanel {
 		
 	}
 	/**
-	 * Open a box dialog to save a string
-	 * @param textToSave
+	 * Open a box dialog to save an input text
+	 * @param textToSave String to save as a file.txt
 	 */
 	private void saveNote(String textToSave) {
 		
@@ -139,10 +142,10 @@ public class NotesPanel extends CustomPanel {
 		//Show the picture
 		if(retrieval == JFileChooser.APPROVE_OPTION) {
 			if(chooser.getSelectedFile().getPath() != null) {		
-				//Character deserialization
 				 try {
 			        output = new String(Files.readAllBytes(Paths.get(chooser.getSelectedFile().getPath())));
 				 }catch( IOException e) {
+					 System.err.println("Can't read the file");
 					 e.printStackTrace();
 				 }
 			

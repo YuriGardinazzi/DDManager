@@ -8,7 +8,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 
 /**
- * Personalized label
+ * Personalized Jlabel
  * @author Yuri
  *
  */
@@ -21,20 +21,28 @@ public class FormLabel extends JLabel {
 
 	private String font = "Times new roman";
 	private int fontSize = 18;
+	
 	/**
-	 * Istantiate a form label with a given text
-	 * @param text
+	 * Create label that displays the input text
+	 * @param text text to display
 	 */
 	public FormLabel(String text) {
 		super(text);
 		this.setFont(new Font(this.font, Font.BOLD, this.fontSize));
 	}
+	/**
+	 * Create a label that displays a number
+	 * @param integer number to display
+	 */
 	public FormLabel(Integer integer) {
 		super(integer.toString());
 		this.setFont(new Font(this.font, Font.BOLD, this.fontSize));
 	}
+	/**
+	 * Change the number displayed
+	 * @param integer new number to display
+	 */
 	public void setText(Integer integer) {
-		super.setText(integer.toString());
-		
+		super.setText(integer.toString());	
 	}
 }
