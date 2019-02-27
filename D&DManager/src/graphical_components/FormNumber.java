@@ -43,7 +43,7 @@ public class FormNumber extends JFormattedTextField implements PropertyChangeLis
 	/**
 	 * Set the properties of the FormNumber
 	 * and displays the number given in input
-	 * @param number
+	 * @param number input number
 	 */
 	private void setProperties(Integer number) {
 		this.setValue(number);

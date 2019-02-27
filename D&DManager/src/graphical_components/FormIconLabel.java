@@ -97,7 +97,8 @@ public class FormIconLabel extends JLabel {
 	}
 
 	/**
-	 * @param set the path of the displayed picture
+	 * Set the path of the displayed picture
+	 * @param imagePath path of the picture
 	 */
 	private void setImagePath(String imagePath) {
 		this.imagePath = imagePath;

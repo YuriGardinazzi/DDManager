@@ -15,9 +15,9 @@ public class FormFont extends Font {
 	
 	/**
 	 * Initalize FormFont
-	 * @param fontName
-	 * @param style
-	 * @param size
+	 * @param fontName name of the font used
+	 * @param style style of the font 
+	 * @param size size of the font
 	 */
 	public FormFont(String fontName, int style, int size) {
 		super(fontName, style, size);

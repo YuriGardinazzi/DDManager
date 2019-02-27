@@ -37,8 +37,9 @@ public class GraphicDice extends FormIconLabel {
 	}
 
 	/**
-	 * @param displayeDice number of the side to display
 	 * if the input number is not in the interval [1,20] it sets the value to 6
+	 * @param displayedDice number of the side to display
+	 * 
 	 */
 	private void setDisplayedDice(int displayedDice) {
 		if(displayedDice <= 0 || displayedDice > 20) {

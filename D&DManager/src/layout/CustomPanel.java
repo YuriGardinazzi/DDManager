@@ -43,7 +43,7 @@ public class CustomPanel extends JPanel{
 	/**
 	 * Return a dimension relative to the screen size
 	 * @param ratio percentage of the dimensions needed compared to the screen dimensions
-	 * @return
+	 * @return calculated Dimension
 	 */
 	protected Dimension calculateDimensions(Dimension ratio) {
 		
@@ -64,7 +64,8 @@ public class CustomPanel extends JPanel{
 		return screenRatio;
 	}
 	/**
-	 * @param set the screen ratio according to the minimum one
+	 * Set the screen ratio according to the minimum one
+	 * @param ratio percentage to set
 	 */
 	public void setScreenRatio(Dimension ratio) {
 		if(ratio.getWidth() < this.getMinimumRatio().getWidth() || 
