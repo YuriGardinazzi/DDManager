@@ -74,18 +74,6 @@ public class Formula {
 			this.vet.add(new Dices(n,d));
 		}
 	}
-
-	/**
-	 * Test Formula
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		Formula f = new Formula(-3,4, new Dice(4));
-				f.addDice(3, new Dice(6) );
-			    f.addDice(-3, new Dice(20));
-				f.addDice(-1, new Dice(8));
-		System.out.println("the formula is: " + f);
-	}
 	
 	/**
 	 * Get the result of the formula
