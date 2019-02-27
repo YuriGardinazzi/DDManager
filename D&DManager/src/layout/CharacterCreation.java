@@ -36,7 +36,7 @@ public class CharacterCreation extends JFrame {
 	private Map<String, FormNumber> numberFields = new HashMap<String, FormNumber>();
 	
 	/**
-	 * Create the CharacterCreation window
+	 * Create the CharacterCreation window with no name
 	 */
 	public CharacterCreation() {
 		super("");
@@ -44,7 +44,7 @@ public class CharacterCreation extends JFrame {
 	}
 	/**
 	 * Create the Character creation window with a given name
-	 * @param title
+	 * @param title name of the window
 	 */
 	public CharacterCreation(String title) {
 		super(title);
@@ -88,8 +88,9 @@ public class CharacterCreation extends JFrame {
 	}
 	
 	/**
-	 * Add character fields to the form 
-	 * @param form
+	 * Creates the form with the fields related to the input character
+	 * @param form JFrame of the wanted form
+	 * @param character character to display
 	 */
 	private void CreateForm(JFrame form, DDCharacter character) {
 
@@ -154,13 +155,13 @@ public class CharacterCreation extends JFrame {
 		}
 
 		
-	//Save Button
-		
+		//Add Save Button	
 		cons.gridy++;
 		cons.gridx = 1;
 		JButton save = new JButton("Save");
 		save.addActionListener(new ActionListener() {
 			
+			//retrieve each informations from fields
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				DDCharacter c = new DDCharacter();
@@ -185,7 +186,8 @@ public class CharacterCreation extends JFrame {
 	}
 	
 	/**
-	 * Show a box dialog to save the character
+	 * Show a box dialog to save a character as <file_name>.ddc
+	 * @param character DDCharacter To save
 	 */
 	private void saveCharacter(DDCharacter character) {
 		
@@ -242,15 +244,16 @@ public class CharacterCreation extends JFrame {
 		return this.imgPath;
 	}
 	/**
-	 * @return the imgPath
+	 * @return the path of the displayed picture
 	 */
 	public String getImgPath() {
 		return imgPath;
 	}
 	/**
-	 * @param imgPath the imgPath to set
+	 * set the image path
+	 * @param imgPath path to set
 	 */
-	public void setImgPath(String imgPath) {
+	private void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}
 }

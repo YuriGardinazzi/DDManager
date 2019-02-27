@@ -28,13 +28,11 @@ import tools.DDCharacter;
 /**
  * 
  * @author Yuri	
- *	This class describes the right panel of the main layout of the application
+ *	This class describes the right panel of the main layout of the application.
+ *	It displays the character informations
  */
 public class RightPanel extends CustomPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	
@@ -44,12 +42,12 @@ public class RightPanel extends CustomPanel {
 
 	private DDCharacter character;
 	/**
-	 * Generate the right panel with a given dimension and background color
-	 * @param d
-	 * @param bg
+	 * Initialize the right panel 
+	 * @param ratio percentage use to calculate the actual dimensions
+	 * @param bg background color
 	 */
-	public RightPanel(Dimension d, Color bg) {
-		super(d, bg);
+	public RightPanel(Dimension ratio, Color bg) {
+		super(ratio, bg);
 		
 		//Display the default character located in the file "default.ddc"
 		DDCharacter c = new DDCharacter();
@@ -60,7 +58,7 @@ public class RightPanel extends CustomPanel {
 	}
 
 	/**
-	 * Draws the GUI of the right panel
+	 * Initialize the GUI of the right panel
 	 */
 	public void createAndShowGui() {
 		this.setLayout(new GridBagLayout());
@@ -170,14 +168,14 @@ public class RightPanel extends CustomPanel {
 
 	}
 	/**
-	 * @return the character
+	 * @return the character displayed
 	 */
 	public DDCharacter getCharacter() {
 		return character;
 	}
 
 	/**
-	 * @param character the character to set
+	 * @param character set the character
 	 */
 	public void setCharacter(DDCharacter character) {
 		this.character = character;

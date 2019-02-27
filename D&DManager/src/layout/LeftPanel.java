@@ -23,7 +23,7 @@ import graphical_components.FormIconLabel;
 import graphical_components.FormLabel;
 import graphical_components.GraphicDice;
 /**
- * This class describes the left panel of the MainFrame
+ * This class describes the Left panel of the application
  * @author Yuri 
  *
  */
@@ -38,7 +38,7 @@ public class LeftPanel extends CustomPanel {
 	private GraphicDice dice;
 	
 	/**
-	 * Creates the left panel with a given background color
+	 * Creates the left panel with just a given background color
 	 * @param bg Background color
 	 */
 	public LeftPanel(Color bg) {
@@ -111,7 +111,7 @@ public class LeftPanel extends CustomPanel {
 	}
 	/**
 	 * Change profile picture
-	 * @param newPicturePath path of the picture
+	 * @param newPicturePath path of the new picture
 	 */
 	public void ChangeProfilePic(String newPicturePath) {
 		
@@ -140,7 +140,7 @@ public class LeftPanel extends CustomPanel {
 			
 	}
 	/**
-	 * @return the imgLabel
+	 * @return the label of the profile picture
 	 */
 	public FormIconLabel getImgLabel() {
 		return imgLabel;
@@ -154,14 +154,14 @@ public class LeftPanel extends CustomPanel {
 	}
 
 	/**
-	 * @return the myPicturePath
+	 * @return the path of the profile picture
 	 */
 	public String getMyPicturePath() {
 		return myPicturePath;
 	}
 
 	/**
-	 * @param myPicturePath the myPicturePath to set
+	 * @param myPicturePath set the path of the profile picture
 	 */
 	public void setMyPicturePath(String myPicturePath) {
 		this.myPicturePath = myPicturePath;

@@ -6,20 +6,19 @@ import java.awt.*;
  * 
  * @author Yuri 
  * This class describes a custom JPanel
+ * the user can give an input ratio that is basically a percentage.
+ * The dimensions of the panel will be the input percentage of the actual screen size 
+ * of the monitor where the software is running
  *
  */
 public class CustomPanel extends JPanel{
-	//TODO: Non gli piace 100 come valore, settare controlli anche per il massimo
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Dimension screenRatio;
 	private final Dimension MINIMUM_RATIO = new Dimension(10,25);
 	
 	/**
 	 * Creates a customized JPanel
-	 * @param ratio dimension of the panel
+	 * @param ratio percentage dimension of the panel related to the screen size
 	 * @param bg background of the panel
 	 */
 	public CustomPanel(Dimension ratio, Color bg) {	
@@ -38,20 +37,19 @@ public class CustomPanel extends JPanel{
 	 */
 	private void setSizes() {
 		this.setPreferredSize(this.calculateDimensions(this.getScreenRatio()));
-		
 		this.setMinimumSize(this.calculateDimensions(this.MINIMUM_RATIO));
 	}
 	
 	/**
-	 * Return a dimension relative to the screen size given a ratio 
-	 * @param ratio
+	 * Return a dimension relative to the screen size
+	 * @param ratio percentage of the dimensions needed compared to the screen dimensions
 	 * @return
 	 */
 	protected Dimension calculateDimensions(Dimension ratio) {
 		
 		Dimension output = new Dimension(0,0);
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		
 		output.setSize(screenSize.getWidth()*ratio.getWidth()/100,
 					   screenSize.getHeight()*ratio.getHeight()/100);

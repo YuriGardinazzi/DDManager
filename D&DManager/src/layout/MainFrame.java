@@ -2,17 +2,19 @@ package layout;
 
 import java.awt.Color;
 import java.awt.Dimension;
-
 import javax.swing.BoxLayout;
-
-//import java.awt.Dimension;
-
 import javax.swing.JFrame;
-import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
-
-import player_map.GridPanel;
 import menu.*;
+
+
+/**
+ * 
+ * @author Yuri
+ * This class describes the JFrame of the entire application
+ * It contains the followin 3 CustomPanels
+ * LeftPanel, MiddlePanel and RightPanel
+ */
 public class MainFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -20,13 +22,15 @@ public class MainFrame extends JFrame {
 	private MiddlePanel p2;
 	private RightPanel p3;
 	
+	/**
+	 * Initialize a MainFrame without a title
+	 */
 	public MainFrame() {
 		this("");
 	}
 	/**
-	 * Create a frame with the 3 main panels inside
-	 * Left, Middle and RightPanel.
-	 * @param title of the main frame
+	 * Initialize the MainFrame with the 3 main panels inside
+	 * @param title title of the main frame
 	 */
 	public MainFrame(String title) {
 		super(title);

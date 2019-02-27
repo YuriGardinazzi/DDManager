@@ -15,21 +15,24 @@ import player_map.GridPanel;
 
 /**
  * @author Yuri
- *
+ * This class describes the MiddlePanel of the application.
+ * It is composed of a GridPanel and a NotePanel
  */
 public class MiddlePanel extends CustomPanel {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private GridPanel grid;
 	
-	public MiddlePanel(Dimension ratio, Color bg, RightPanel p3) {
+	/**
+	 * Initialize the middle pnel
+	 * @param ratio percentage used to calculate the actual dimensions
+	 * @param bg background color
+	 * @param rightPanel reference to the right panel to display character informations
+	 */
+	public MiddlePanel(Dimension ratio, Color bg, RightPanel rightPanel) {
 		super(ratio, bg);
 		this.setLayout(new BorderLayout());
 		
-		this.setGrid(new GridPanel(20,20,75, p3));
+		this.setGrid(new GridPanel(20,20,75, rightPanel));
 		JScrollPane scrollGrid = new JScrollPane(grid,
 												 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 												 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -46,17 +49,18 @@ public class MiddlePanel extends CustomPanel {
 	
 
 	/**
-	 * @return the grid
+	 * @return the player map
 	 */
 	public GridPanel getGrid() {
 		return grid;
 	}
 
 	/**
-	 * @param grid the grid to set
+	 * Set a new grid
+	 * @param newGrid 
 	 */
-	public void setGrid(GridPanel grid) {
-		this.grid = grid;
+	public void setGrid(GridPanel newGrid) {
+		this.grid = newGrid;
 	}
 
 }
