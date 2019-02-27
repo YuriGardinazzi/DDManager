@@ -4,6 +4,7 @@
 package graphical_components;
 
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.DecimalFormat;
@@ -21,9 +22,7 @@ import javax.swing.JFormattedTextField;
  */
 @SuppressWarnings("serial")
 public class FormNumber extends JFormattedTextField implements PropertyChangeListener{
-	private String font = "Times new roman";
-	private int fontSize = 18;
-	
+
 	/**
 	 * Create a FormNumber with a a number given input as default
 	 * @param number Input number to display
@@ -49,7 +48,7 @@ public class FormNumber extends JFormattedTextField implements PropertyChangeLis
 	private void setProperties(Integer number) {
 		this.setValue(number);
 		this.addPropertyChangeListener("value",this);
-		this.setFont(new Font(this.font, Font.PLAIN, this.fontSize));
+		this.setFont(FormFont.getUsedFont(false));
 		this.setText(number.toString());
 	}
 

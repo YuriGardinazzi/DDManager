@@ -34,9 +34,6 @@ import layout.CustomPanel;
 public class NotesPanel extends CustomPanel {
 	private static final long serialVersionUID = 1L;
 	
-	private String font = "Times new roman";
-	private int fontSize = 18;
-	
 	/**
 	 * Create a NotesPanel with a given ratio the set his dimensions related to the screen size
 	 * and a given background color
@@ -57,7 +54,7 @@ public class NotesPanel extends CustomPanel {
 		cons.fill = GridBagConstraints.BOTH;
 		cons.gridheight = 2;
 		JTextArea	noteArea = new JTextArea("Write your notes here");
-					noteArea.setFont(new Font(this.font, Font.PLAIN, this.fontSize));
+					noteArea.setFont(FormFont.getUsedFont(false));
 		
 		JScrollPane noteAreaScrollPane = new JScrollPane(noteArea);
 					noteAreaScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);

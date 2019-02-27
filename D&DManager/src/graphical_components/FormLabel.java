@@ -19,8 +19,7 @@ public class FormLabel extends JLabel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private String font = "Times new roman";
-	private int fontSize = 18;
+
 	
 	/**
 	 * Create label that displays the input text
@@ -28,7 +27,7 @@ public class FormLabel extends JLabel {
 	 */
 	public FormLabel(String text) {
 		super(text);
-		this.setFont(new Font(this.font, Font.BOLD, this.fontSize));
+		this.setFont(FormFont.getUsedFont(true));
 	}
 	/**
 	 * Create a label that displays a number
@@ -36,7 +35,7 @@ public class FormLabel extends JLabel {
 	 */
 	public FormLabel(Integer integer) {
 		super(integer.toString());
-		this.setFont(new Font(this.font, Font.BOLD, this.fontSize));
+		this.setFont(FormFont.getUsedFont(true));
 	}
 	/**
 	 * Change the number displayed
