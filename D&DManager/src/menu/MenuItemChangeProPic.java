@@ -15,14 +15,11 @@ import layout.LeftPanel;
 /**
  * Menu Item used to change the profile picture in a LeftPanel
  * It uses a JFileChooser
- * @author Yuri Gardinazzi
+ * @author Yuri 
  *
  */
 public class MenuItemChangeProPic extends JMenuItem implements ActionListener{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private LeftPanel panel;
 	
@@ -59,12 +56,14 @@ public class MenuItemChangeProPic extends JMenuItem implements ActionListener{
 		}
 	}
 	/**
+	 * Get the LeftPanel
 	 * @return the panel
 	 */
 	private LeftPanel getPanel() {
 		return this.panel;
 	}
 	/**
+	 * Set the LeftPanel
 	 * @param panel the panel to set
 	 */
 	private void setPanel(LeftPanel panel) {

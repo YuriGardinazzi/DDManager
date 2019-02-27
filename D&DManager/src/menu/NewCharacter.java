@@ -25,6 +25,9 @@ public class NewCharacter extends JMenuItem implements ActionListener{
 		this.addActionListener(this);
 	}
 
+	/**
+	 * When the user clicks this button it will instantiate the Character Creation window
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		

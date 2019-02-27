@@ -3,7 +3,6 @@
  */
 package menu;
 
-import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -11,20 +10,27 @@ import player_map.Cell;
 import player_map.GridPanel;
 
 /**
- * @author ASUS
- *
+ * @author Yuri
+ * This class describe the listener event on mouse click of the Cell class
  */
 public class CellListener extends MouseAdapter {
 
 	private Cell cell;
-	private Color bg;
 	private GridPanel grid;
+	
+	/**
+	 * Initialized listener
+	 * @param c Cell where the listener is applied
+	 * @param grid Grid where the cell is placed
+	 */
 	public CellListener(Cell c, GridPanel grid) {
 		this.setCell(c);
 		this.setGrid(grid);
-		this.setBg(c.getBackground());
 	}
 
+	/**
+	 * Describes the actions to do when the mouse is pressed
+	 */
     public void mousePressed(MouseEvent e){
         //left Click
     	if(e.getButton() == MouseEvent.BUTTON1) {
@@ -39,6 +45,9 @@ public class CellListener extends MouseAdapter {
     	
     }
 
+    /**
+     * Describes the action to do when the mouse is released
+     */
     public void mouseReleased(MouseEvent e){
         //PopUp menu event
     	if (e.isPopupTrigger()) {
@@ -56,6 +65,7 @@ public class CellListener extends MouseAdapter {
     }
 
 	/**
+	 * Return actual Cell when CellListener is applied
 	 * @return the cell
 	 */
 	public Cell getCell() {
@@ -63,27 +73,15 @@ public class CellListener extends MouseAdapter {
 	}
 
 	/**
-	 * @param cell the cell to set
+	 * Set the cell of the CellListener
+	 * @param cell 
 	 */
 	public void setCell(Cell cell) {
 		this.cell = cell;
 	}
 
 	/**
-	 * @return the bg
-	 */
-	public Color getBg() {
-		return bg;
-	}
-
-	/**
-	 * @param bg the bg to set
-	 */
-	public void setBg(Color bg) {
-		this.bg = bg;
-	}
-
-	/**
+	 * Get the Grid that CellListener refers to
 	 * @return the grid
 	 */
 	public GridPanel getGrid() {
@@ -91,6 +89,7 @@ public class CellListener extends MouseAdapter {
 	}
 
 	/**
+	 * Set the grid of CellListener
 	 * @param grid the grid to set
 	 */
 	public void setGrid(GridPanel grid) {

@@ -14,11 +14,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+
+
+/**
+ * 
+ * @author Yuri
+ *	This class describes the "Options" Menu in the upper left corner
+ *	of the application
+ */
 public class MyMenu extends JMenuBar {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private LeftPanel leftP;
 	private GridPanel grid;
@@ -123,6 +128,10 @@ public class MyMenu extends JMenuBar {
 		
 	}
 	
+	/**
+	 * Displays a dialog box where the user can choose a map file ".ddm"
+	 * @return the map (GridPanel object)
+	 */
 	private GridPanel uploadMapDialog() {
 		GridPanel map = null;
 		String file = this.showChooseFileDialog(true);
@@ -146,7 +155,8 @@ public class MyMenu extends JMenuBar {
 		return map;
 	}
 	/**
-	 * Show the save dialog for the grid
+	 * Show the save dialog for the map.
+	 * The user will save the file as <file_name>.ddm
 	 */
 	private void saveMapDialog() {
 		String file = this.showChooseFileDialog(true);
@@ -167,6 +177,7 @@ public class MyMenu extends JMenuBar {
 	}
 	
 	/**
+	 * Return the LeftPanel 
 	 * @return the leftP
 	 */
 	public LeftPanel getLeftP() {
@@ -174,6 +185,7 @@ public class MyMenu extends JMenuBar {
 	}
 
 	/**
+	 * Set the left panel
 	 * @param leftP the leftP to set
 	 */
 	public void setLeftP(LeftPanel leftP) {
@@ -181,6 +193,7 @@ public class MyMenu extends JMenuBar {
 	}
 
 	/**
+	 * Return the map
 	 * @return the grid
 	 */
 	public GridPanel getGrid() {
@@ -188,6 +201,7 @@ public class MyMenu extends JMenuBar {
 	}
 
 	/**
+	 * Set the map 
 	 * @param grid the grid to set
 	 */
 	public void setGrid(GridPanel grid) {

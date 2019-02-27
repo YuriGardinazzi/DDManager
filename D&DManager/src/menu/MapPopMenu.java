@@ -44,7 +44,7 @@ public class MapPopMenu extends JPopupMenu {
 	private Cell cell;
 	
 	/**
-	 * Constructor
+	 * Initialize the pop-up menu
 	 * @param c  cell where the Menu should appear
 	 * @param grid grid where the cell is placed
 	 */
@@ -213,6 +213,7 @@ public class MapPopMenu extends JPopupMenu {
 	}
 
 	/**
+	 * Return the cell where the MapPopMenu appears
 	 * @return the cell
 	 */
 	public Cell getCell() {
@@ -220,6 +221,7 @@ public class MapPopMenu extends JPopupMenu {
 	}
 
 	/**
+	 * Set the Cell where the MapPopMenu should appear
 	 * @param cell the cell to set
 	 */
 	public void setCell(Cell cell) {
@@ -227,6 +229,7 @@ public class MapPopMenu extends JPopupMenu {
 	}
 
 	/**
+	 * Return the Grid
 	 * @return the grid
 	 */
 	public GridPanel getGrid() {
@@ -234,6 +237,7 @@ public class MapPopMenu extends JPopupMenu {
 	}
 
 	/**
+	 * Set the grid of the MapPopMenu
 	 * @param grid the grid to set
 	 */
 	public void setGrid(GridPanel grid) {
