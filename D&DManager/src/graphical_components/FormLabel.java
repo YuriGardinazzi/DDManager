@@ -3,8 +3,6 @@
  */
 package graphical_components;
 
-import java.awt.Font;
-
 import javax.swing.JLabel;
 
 /**

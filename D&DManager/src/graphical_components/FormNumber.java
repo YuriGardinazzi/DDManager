@@ -3,8 +3,6 @@
  */
 package graphical_components;
 
-import java.awt.Font;
-import java.awt.FontFormatException;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.DecimalFormat;
