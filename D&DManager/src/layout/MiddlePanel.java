@@ -14,9 +14,10 @@ import graphical_components.NotesPanel;
 import player_map.GridPanel;
 
 /**
- * @author Yuri
+ * 
  * This class describes the MiddlePanel of the application.
  * It is composed of a GridPanel and a NotePanel
+ * @author Yuri
  */
 public class MiddlePanel extends CustomPanel {
 	private static final long serialVersionUID = 1L;
@@ -57,7 +58,7 @@ public class MiddlePanel extends CustomPanel {
 
 	/**
 	 * Set a new grid
-	 * @param newGrid 
+	 * @param newGrid grid to set
 	 */
 	public void setGrid(GridPanel newGrid) {
 		this.grid = newGrid;

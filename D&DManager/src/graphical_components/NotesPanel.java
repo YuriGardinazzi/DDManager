@@ -26,10 +26,10 @@ import layout.CustomPanel;
 
 
 /**
- * @author Yuri
  * Personalized Panel that display a JTextArea and two button
  * it is possible to save the text given by the Text area in a file .txt 
  * or upload a text from a file.txt
+ * @author Yuri
  */
 public class NotesPanel extends CustomPanel {
 	private static final long serialVersionUID = 1L;

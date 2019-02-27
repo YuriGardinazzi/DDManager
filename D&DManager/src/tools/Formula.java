@@ -8,7 +8,7 @@ import java.util.Vector;
 /**
  * This class describes a formula that is a sum of dices and levels
  * 
- * @author Yuri Gardinazzi
+ * @author Yuri 
  *
  */
 public class Formula {

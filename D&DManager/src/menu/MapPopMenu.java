@@ -23,10 +23,10 @@ import player_map.GridPanel;
 import tools.DDCharacter;
 
 /**
- * @author Yuri
+ * 
  * Popup menu that displays what you can do with the characters on the map
  * Like adding and removing a character or changing his position on the map
- *
+ * @author Yuri
  */
 public class MapPopMenu extends JPopupMenu {
 

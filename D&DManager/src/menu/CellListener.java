@@ -10,8 +10,9 @@ import player_map.Cell;
 import player_map.GridPanel;
 
 /**
- * @author Yuri
+ * 
  * This class describe the listener event on mouse click of the Cell class
+ * @author Yuri
  */
 public class CellListener extends MouseAdapter {
 
@@ -57,7 +58,7 @@ public class CellListener extends MouseAdapter {
 
     /**
      * Display the popup menu where user clicked with the mouse
-     * @param e
+     * @param e event
      */
     private void showMenu(MouseEvent e){
         MapPopMenu menu = new MapPopMenu(this.getCell(), this.getGrid());

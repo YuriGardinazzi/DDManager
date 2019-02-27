@@ -24,8 +24,9 @@ import graphical_components.FormTextField;
 import tools.DDCharacter;
 
 /**
- * @author Yuri
+ * 
  * This class describes the window that handle the character creation 
+ * @author Yuri
  */
 public class CharacterCreation extends JFrame {
 

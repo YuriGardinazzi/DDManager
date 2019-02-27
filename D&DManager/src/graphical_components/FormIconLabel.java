@@ -13,9 +13,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 /**
- * @author Yuri
- * Personalized Icon Label that displays a picture with a fixed dimension
  * 
+ * Personalized Icon Label that displays a picture with a fixed dimension
+ * @author Yuri
  */
 public class FormIconLabel extends JLabel {
 

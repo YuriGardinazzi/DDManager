@@ -147,7 +147,7 @@ public class LeftPanel extends CustomPanel {
 	}
 	/**
 	 * set the Label where the profile picture will be shown
-	 * @param imgLabel 
+	 * @param imgLabel new label
 	 */
 	public void setImgLabel(FormIconLabel imgLabel) {
 		this.imgLabel = imgLabel;

@@ -7,7 +7,6 @@
  * and the Menu in the top-left corner of the application.
  * @author Yuri 
  * @since 1.0
- * @verion 1.0
-
+ * @version 1.0
  */
 package menu;

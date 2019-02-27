@@ -4,12 +4,12 @@ import javax.swing.JPanel;
 import java.awt.*;
 /**
  * 
- * @author Yuri 
+ * 
  * This class describes a custom JPanel
  * the user can give an input ratio that is basically a percentage.
  * The dimensions of the panel will be the input percentage of the actual screen size 
  * of the monitor where the software is running
- *
+ * @author Yuri 
  */
 public class CustomPanel extends JPanel{
 	private static final long serialVersionUID = 1L;

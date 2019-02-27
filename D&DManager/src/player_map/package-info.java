@@ -5,7 +5,7 @@
  * 
  * 
  * @since 1.0
- * @author Yuri Gardinazzi
+ * @author Yuri 
  * @version 1.0
  */
 package player_map;

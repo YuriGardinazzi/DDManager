@@ -8,7 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * This class implements the couple Number and Dice to indicate a number of dices
  * example : 2d4 that stands for 2 dices of 4 sides
- * @author Yuri Gardinazzi
+ * @author Yuri 
  *
  */
 public class Dices extends Dice {

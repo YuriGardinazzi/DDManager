@@ -15,10 +15,11 @@ import javax.swing.JFormattedTextField;
 
 
 /**
- * @author Yuri
+ * 
  * Personalized formatted text field for numbers
- * it accepts only number >= 0. 
+ * it accepts only number greater than 0. 
  * If the user inserts a string or a wrong number the value set is 0 
+ * @author Yuri
  */
 @SuppressWarnings("serial")
 public class FormNumber extends JFormattedTextField implements PropertyChangeListener{

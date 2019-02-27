@@ -18,9 +18,10 @@ import java.io.ObjectOutputStream;
 
 /**
  * 
- * @author Yuri
+ * 
  *	This class describes the "Options" Menu in the upper left corner
  *	of the application
+ *	@author Yuri
  */
 public class MyMenu extends JMenuBar {
 

@@ -4,8 +4,9 @@
 package tools;
 import java.util.concurrent.ThreadLocalRandom;
 /**
- * @author Yuri Gardinazzi
+ * 
  * This class defines a Dice and provides a method to get a random number
+ * @author Yuri 
  */
 public class Dice {
 

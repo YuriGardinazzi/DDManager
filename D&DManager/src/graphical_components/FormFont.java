@@ -6,8 +6,8 @@ package graphical_components;
 import java.awt.Font;
 
 /**
- * @author Yuri
  *	This class describes the personalized Font object used in the application
+ * @author Yuri
  */
 public class FormFont extends Font {
 

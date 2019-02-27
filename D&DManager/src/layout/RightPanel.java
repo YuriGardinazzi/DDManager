@@ -27,9 +27,10 @@ import tools.DDCharacter;
 
 /**
  * 
- * @author Yuri	
+ * 
  *	This class describes the right panel of the main layout of the application.
  *	It displays the character informations
+ *	@author Yuri	
  */
 public class RightPanel extends CustomPanel {
 
@@ -154,6 +155,7 @@ public class RightPanel extends CustomPanel {
 	}
 	/**
 	 * Update the stats written in the form with the one of a given character
+	 * @param c new Character
 	 */
 	public void updateStat(DDCharacter c) {
 		this.setCharacter(c);	

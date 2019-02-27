@@ -10,10 +10,11 @@ import menu.*;
 
 /**
  * 
- * @author Yuri
+ * 
  * This class describes the JFrame of the entire application
  * It contains the followin 3 CustomPanels
  * LeftPanel, MiddlePanel and RightPanel
+ * @author Yuri
  */
 public class MainFrame extends JFrame {
 

@@ -9,8 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author Yuri
+ * 
  * This class describes the Character that the applications handle
+ * @author Yuri
  */
 public class DDCharacter implements Serializable {
 	private static final long serialVersionUID = 1L;

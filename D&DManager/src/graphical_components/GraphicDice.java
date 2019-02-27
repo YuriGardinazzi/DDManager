@@ -5,13 +5,14 @@ import java.io.File;
 
 import tools.Dice;
 /**
- * @author Yuri 
+ *
  * This class is a FormIconLabel with defined picture
  * the picture that it can display are just picture of dices
  * those picture are saved in the folder defaults
  * 
- * Folders follow the rule d<number of the dice>
- * and picture follo the rule n<side to display>
+ * Folders follow the rule d[number of the dice]
+ * and picture follo the rule n[side to display]
+ *  @author Yuri 
  */
 public class GraphicDice extends FormIconLabel {
 	private static final long serialVersionUID = 1L;
