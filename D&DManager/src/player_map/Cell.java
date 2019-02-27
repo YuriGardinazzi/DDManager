@@ -205,7 +205,7 @@ public class Cell extends JPanel implements Serializable {
 	}
 	/**
 	 * Set the rightPanel that the cell should refers to
-	 * @param rightPanel
+	 * @param rightPanel new Right panel
 	 */
 	public void setRightPanel(RightPanel rightPanel) {
 		this.rightPanel = rightPanel;

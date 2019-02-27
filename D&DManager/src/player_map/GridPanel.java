@@ -113,7 +113,7 @@ public class GridPanel extends JPanel implements Serializable {
 
 	/**
 	 * Set the side of the cells displayed
-	 * @param cellSide
+	 * @param cellSide new Cell Side
 	 */
 	public void setCellSide(int cellSide) {
 		this.cellSide = cellSide;
@@ -147,7 +147,7 @@ public class GridPanel extends JPanel implements Serializable {
 
 	/**
 	 * Return the right panel that the grid refers to
-	 * @return
+	 * @return RightPanel
 	 */
 	public RightPanel getRightPanel() {
 		return rightPanel;
