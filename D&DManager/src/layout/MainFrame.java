@@ -35,14 +35,14 @@ public class MainFrame extends JFrame {
 	public MainFrame(String title) {
 		super(title);
 		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.X_AXIS));	
-		this.p1 = new LeftPanel(new Dimension(20,70), Color.orange);		
+		this.p1 = new LeftPanel(new Dimension(20,70), new Color(201, 221, 255));		
 
 		
 		//Right Panel		
-		this.p3 = new RightPanel(new Dimension(20,70), Color.pink);
+		this.p3 = new RightPanel(new Dimension(20,70), new Color(143, 252, 133));
 		
 		//Middle Panel
-		this.p2 = new MiddlePanel(new Dimension(40,70), Color.gray, this.p3);
+		this.p2 = new MiddlePanel(new Dimension(40,70), new Color(255, 214, 140), this.p3);
 		
 		//Insert each panel inside a SplitPane
 		JSplitPane splitter = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
