@@ -22,7 +22,7 @@ import tools.DDCharacter;
 
 
 /**
- * 
+ * This class describes the single cell of the map
  * @author Yuri 
  *
  */
@@ -39,7 +39,13 @@ public class Cell extends JPanel implements Serializable {
 	
 	private static final int DEFAULT_SIDE = 25;
 
-	
+	/**
+	 * Initialize the single cell
+	 * @param side side of the cell
+	 * @param bg	background color
+	 * @param rightPanel reference to the right panel
+	 * @param grid grid where the cell is displayed
+	 */
 	public Cell(int side, Color bg, RightPanel rightPanel, GridPanel grid) {
 		super();
 		this.setSide(side);
@@ -58,7 +64,7 @@ public class Cell extends JPanel implements Serializable {
 
 
 	/**
-	 * Draw the cell
+	 * Draw the picture of a character if present in the cell
 	 * @param g
 	 */
 	public void paint(Graphics g) {
@@ -90,9 +96,8 @@ public class Cell extends JPanel implements Serializable {
 
 
 	/**
-	 * Add an element to the cell and change the background of the cell
-	 * @param path path of the new character
-	 * @param c
+	 * Add a character to the cell and change the background of the cell
+	 * @param c character
 	 */
 	public void addElement(DDCharacter c) {
 		
@@ -129,7 +134,7 @@ public class Cell extends JPanel implements Serializable {
 		}
 	}
 	/**
-	 * 
+	 * get the background color of the cell
 	 * @return the background color of the cell
 	 */
 	public Color getBg() {
@@ -144,7 +149,7 @@ public class Cell extends JPanel implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Get the side of the cell
 	 * @return the side of the cell
 	 */
 	public int getSide() {
@@ -163,6 +168,7 @@ public class Cell extends JPanel implements Serializable {
 	}
 
 	/**
+	 * get the path of the picture that is displayed in the cell
 	 * @return the cellPic
 	 */
 	public String getCellPicPath() {
@@ -170,36 +176,49 @@ public class Cell extends JPanel implements Serializable {
 	}
 
 	/**
+	 * Set the path of the picture displayed in the cell
 	 * @param cellPic the cellPic to set
 	 */
 	public void setCellPicPath(String cellPic) {
 		this.cellPicPath = cellPic;
 	}
 	/**
+	 * Get the character placed in the cell
 	 * @return the character
 	 */
 	public DDCharacter getCharacter() {
 		return character;
 	}
 	/**
+	 * Set the character to place on the cell
 	 * @param character the character to set
 	 */
 	public void setCharacter(DDCharacter character) {
 		this.character = character;
 	}
+	/**
+	 * Get the rightPanel that the cell refers to
+	 * @return
+	 */
 	public RightPanel getRightPanel() {
 		return rightPanel;
 	}
+	/**
+	 * Set the rightPanel that the cell should refers to
+	 * @param rightPanel
+	 */
 	public void setRightPanel(RightPanel rightPanel) {
 		this.rightPanel = rightPanel;
 	}
 	/**
+	 * Get the grid where the cell is placed
 	 * @return the grid
 	 */
 	public GridPanel getGrid() {
 		return grid;
 	}
 	/**
+	 * Set the grid where the cell is displayed
 	 * @param grid the grid to set
 	 */
 	public void setGrid(GridPanel grid) {
@@ -208,6 +227,7 @@ public class Cell extends JPanel implements Serializable {
 
 
 	/**
+	 * Get the path of the character placed on the cell
 	 * @return the characterPath
 	 */
 	public String getCharacterPath() {
@@ -216,6 +236,7 @@ public class Cell extends JPanel implements Serializable {
 
 
 	/**
+	 * Set the path of the character placed in the cell
 	 * @param characterPath the characterPath to set
 	 */
 	public void setCharacterPath(String characterPath) {
