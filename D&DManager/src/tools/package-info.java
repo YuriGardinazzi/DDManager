@@ -1,7 +1,7 @@
 
 /**
- * this package has classes that could be useful like dices and so on
- * <p>
+ * this package has classes that will be fully implemented in the future
+ * to handle personalized formulas from the user and so on
  * 
  * @author Yuri Gardinazzi
  * @since 1.0

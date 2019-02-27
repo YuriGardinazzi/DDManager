@@ -10,12 +10,9 @@ import java.util.Map;
 
 /**
  * @author Yuri
- * This class describes a general character
+ * This class describes the Character that the applications handle
  */
 public class DDCharacter implements Serializable {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private String imagePath = "defaults" + File.separator + "character.jpg";
 	private  Integer maxLife;
@@ -29,7 +26,9 @@ public class DDCharacter implements Serializable {
 
 
 	
-
+	/**
+	 * Initialize the default Character of the application
+	 */
 	public DDCharacter() {
 		this.textStatMap = new HashMap<String, String>();
 		this.numberStatMap = new HashMap<String, Integer>();
@@ -37,6 +36,9 @@ public class DDCharacter implements Serializable {
 		this.setMaxLife();
 	}
 	
+	/**
+	 * Set defaults value of the character
+	 */
 	private void setDefaultHashMap() {
 
 		for(String s : this.textStatKeys) {
@@ -47,6 +49,10 @@ public class DDCharacter implements Serializable {
 		}
 	}
 
+	/**
+	 * Add a number to HitPoints stats
+	 * @param healValue value added
+	 */
 	public void healDamage(Integer healValue) {
 		Integer lifeAfterHeal = this.getNumberStat("HitPoints") + healValue;
 		if(lifeAfterHeal <= this.getMaxLife()) {
@@ -57,8 +63,8 @@ public class DDCharacter implements Serializable {
 	}
 	
 	/**
-	 * Add damages to a character and reduce his hitPoints
-	 * @param damagePoints damage to deal
+	 * Reduce hitPoints value by a number
+	 * @param damagePoints value to subtruct
 	 */
 	public void dealDamage(Integer damagePoints) {
 		Integer lifeAfterDamage = this.getNumberStat("HitPoints") - damagePoints;
@@ -68,42 +74,74 @@ public class DDCharacter implements Serializable {
 			this.setNumberStat("HitPoints", 0);
 		}
 	}
+	/**
+	 * Set a textual statistic of the character
+	 * @param key name of the value to change
+	 * @param value new value to set
+	 */
 	public void setTextStat(String key, String value) {
 		this.textStatMap.replace(key, value);
 	}
+	/**
+	 * Set a numerical statistic of the character
+	 * @param key name of the statistic to change 
+	 * @param value new value to set
+	 */
 	public void setNumberStat(String key, Integer value) {
 		this.numberStatMap.replace(key, value);
 	}
 	
+	
+	/**
+	 * Get a textual statistic of the character
+	 * @param key name of the statistic to get
+	 * @return value of that statistic
+	 */
 	public String getTextStat(String key) {
 		return this.textStatMap.get(key);
 	}
 	
+	/**
+	 * Get a numerical statistic of the character
+	 * @param key name of the statistic to get
+	 * @return value of that statistic
+	 */
 	public Integer getNumberStat(String key) {
 		return this.numberStatMap.get(key);
 	}
+	/**
+	 * Get the character's image path
+	 * @return
+	 */
 	public String getImagePath() {
 		return imagePath;
 	}
 
+	/**
+	 * Set the character's image path
+	 * @param imagePath
+	 */
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
 	}
 
 
 	/**
-	 * @return the value of the total life
+	 * @return the value of the total life of the character
 	 */
 	public Integer getMaxLife() {
 		return maxLife;
 	}
 
+	
 	/**
+	 * Set the maximum life of the character equal to the HitPoints value
 	 * @param maxLife the maxLife to set
 	 */
 	public void setMaxLife() {
 		this.maxLife = this.getNumberStat("HitPoints");
 	}
+
 
 	@Override
 	public String toString() {

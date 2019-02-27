@@ -16,10 +16,9 @@ public class Dices extends Dice {
 
 	private int numberOfDices;
 	/**
-	 * Dices need the number of sides of the dice
-	 * and the number of dices to roll
-	 * @param num
-	 * @param sides
+	 * Initialize Dices 
+	 * @param num number of times to roll a dice
+	 * @param d dice to roll
 	 */
 	
 	public Dices(int num, Dice d) {
@@ -27,12 +26,17 @@ public class Dices extends Dice {
 		this.setNumberOfDices(num);
 	}
 	
+	/**
+	 * Initialize Dices
+	 * @param num number of rolling
+	 * @param sides number of the sides of the dice to roll;
+	 */
 	public Dices(int num, int sides) {
 		super(sides);
 		this.setNumberOfDices(num);
-		// TODO Auto-generated constructor stub
+		
 	}
-	
+
 	@Override
 	public int roll() {
 		int sum = 0;
@@ -47,6 +51,7 @@ public class Dices extends Dice {
 		return this.getNumberOfDices() +"d"+ this.getNSide();
 	}
 	/**
+	 * Get the number of dices to roll
 	 * @return the numberOfDices
 	 */
 	public int getNumberOfDices() {

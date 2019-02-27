@@ -16,13 +16,23 @@ public class Formula {
 	private Vector<Dices> vet;
 	private int additionalNumber;
 	
-	
+	/**
+	 * Initialize the formula
+	 * @param num number of dices
+	 * @param d dice
+	 */
 	public Formula(int num, Dice d) {
 		Vector<Dices> v = new Vector<Dices>();
 					  v.add(new Dices(1,d));
 		this.setVet(v);
 		this.setAdditionalNumber(num);
 	}
+	/**
+	 * Initialize a formula
+	 * @param addNum additional number to add or subtract
+	 * @param numDices number of times to launch a dice
+	 * @param d  dice
+	 */
 	public Formula(int addNum, int numDices, Dice d) {
 		Vector<Dices> v = new Vector<Dices>();
 					  v.add(new Dices(numDices, d));
@@ -32,11 +42,17 @@ public class Formula {
 	/**
 	 * takes in input just the vector of dices 
 	 * the additionalNumber value is set to 0
-	 * @param v
+	 * @param v vector that contains the formula
 	 */
 	public Formula(Vector<Dices> v) {
 		this(v, 0);
 	}
+	
+	/**
+	 * Initialize a Formula
+	 * @param v Vector of Dices of the formula
+	 * @param num additional number to add or subtract at the end
+	 */
 	public Formula(Vector<Dices> v, int num) {	
 		this.setVet(v);
 		this.setAdditionalNumber(num);
@@ -70,6 +86,11 @@ public class Formula {
 				f.addDice(-1, new Dice(8));
 		System.out.println("the formula is: " + f);
 	}
+	
+	/**
+	 * Get the result of the formula
+	 * @return the value that results from the formula
+	 */
 	public int getResult() {
 		int result = 0;
 		
@@ -89,6 +110,7 @@ public class Formula {
 		return output;
 	}
 	/**
+	 * Get the vector of dices
 	 * @return the vet
 	 */
 	public Vector<Dices> getVet() {
@@ -96,6 +118,7 @@ public class Formula {
 	}
 
 	/**
+	 * Set the vector of dices
 	 * @param vet the vet to set
 	 */
 	public void setVet(Vector<Dices> vet) {
@@ -111,6 +134,7 @@ public class Formula {
 	}
 
 	/**
+	 * Get the additional number of the formula
 	 * @return the additionalNumber
 	 */
 	public int getAdditionalNumber() {
@@ -118,6 +142,8 @@ public class Formula {
 	}
 
 	/**
+	 * Set the additional number of the formula that will be
+	 * added or subtracted at the end of the formula
 	 * @param additionalNumber the additionalNumber to set
 	 */
 	public void setAdditionalNumber(int additionalNumber) {

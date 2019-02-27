@@ -36,7 +36,8 @@ public class Dice {
 	}
 	
 	/**
-	 * @return the nSide
+	 * Get the number of sides of the character
+	 * @return the number of side of the character
 	 */
 	public int getNSide() {
 		return this.nSide;
