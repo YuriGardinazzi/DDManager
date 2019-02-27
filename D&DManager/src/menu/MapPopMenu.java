@@ -110,7 +110,9 @@ public class MapPopMenu extends JPopupMenu {
 						FileOutputStream fOut = new FileOutputStream(getCell().getCharacterPath());
 						ObjectOutputStream objOut = new ObjectOutputStream(fOut);
 						objOut.writeObject(getCell().getCharacter());
-						objOut.close();						
+						objOut.close();	
+						JOptionPane.showMessageDialog(null, getCell().getCharacter().getTextStat("Name")
+													+" is now updated");
 			        } catch (Exception ex) {
 			        	JOptionPane.showMessageDialog(null, "Something went wrong :C");
 			            ex.printStackTrace();
