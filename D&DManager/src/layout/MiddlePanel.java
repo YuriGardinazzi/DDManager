@@ -33,7 +33,7 @@ public class MiddlePanel extends CustomPanel {
 		super(ratio, bg);
 		this.setLayout(new BorderLayout());
 		
-		this.setGrid(new GridPanel(20,20,75, rightPanel));
+		this.setGrid(new GridPanel(15,10,75, rightPanel));
 		JScrollPane scrollGrid = new JScrollPane(grid,
 												 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 												 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
