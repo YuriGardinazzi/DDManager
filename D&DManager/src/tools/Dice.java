@@ -12,6 +12,8 @@ public class Dice {
 
 	private int nSide;
 	
+	
+	
 	/**
 	 * takes in input the number of sides of the dice
 	 * @param n side of the dice

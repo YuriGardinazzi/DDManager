@@ -15,6 +15,15 @@ public class Dices extends Dice {
 
 
 	private int numberOfDices;
+	
+	/**
+	 * Create just a Dice that rolls one time
+	 * @param d input Dice
+	 */
+	public Dices(Dice d) {
+		super(d.getNSide());
+		this.setNumberOfDices(1);
+	}
 	/**
 	 * Initialize Dices 
 	 * @param num number of times to roll a dice

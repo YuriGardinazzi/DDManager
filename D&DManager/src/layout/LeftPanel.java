@@ -18,10 +18,14 @@ import javax.imageio.ImageIO;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 import graphical_components.FormIconLabel;
 import graphical_components.FormLabel;
+import graphical_components.FormNumber;
 import graphical_components.GraphicDice;
+import tools.Dice;
+import tools.Dices;
 /**
  * This class describes the Left panel of the application
  * @author Yuri 
@@ -85,8 +89,17 @@ public class LeftPanel extends CustomPanel {
 	    
 	    cons.gridy++;
 	    cons.gridx = 0;
-	    cons.gridwidth = 2;
-	    JButton rollBtn = new JButton("Roll !");
+	    FormNumber times = new FormNumber(0);
+	    this.add(times, cons);
+	    
+	    cons.gridx = 1;
+	    FormLabel timesLabel = new FormLabel("times");
+	    this.add(timesLabel, cons);
+	    
+	    cons.gridy++;
+	    cons.gridx = 0;
+	    cons.gridwidth = 1;
+	    JButton rollBtn = new JButton("Roll one dice !");
 	    rollBtn.addActionListener(new ActionListener() {
 			
 			@Override
@@ -99,7 +112,31 @@ public class LeftPanel extends CustomPanel {
 	    
 	    this.add(rollBtn, cons);
 	    
-	   
+	    /**
+	     * More than one dice
+	     */
+	    cons.gridx = 1;
+	    cons.gridwidth = 1;
+	    JButton moreDiceBtn = new JButton("Roll more!");
+	    moreDiceBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Dice rollDice = null;
+				if(times.getNumber() == 0) {
+					rollDice = new Dice((Integer) diceList.getSelectedItem());
+				}else {
+					rollDice = new Dices(times.getNumber(), new Dice((Integer) diceList.getSelectedItem()));
+				}
+				JOptionPane.showMessageDialog(null, "You rolled a "+ rollDice.roll());
+				
+			}
+		});
+	    
+	    
+	    this.add(moreDiceBtn, cons);
+	    
+	    
 	    cons.gridy ++;
 	    cons.gridx = 0;
 	    cons.gridwidth = 2;

@@ -16,6 +16,7 @@ import tools.Dice;
  */
 public class GraphicDice extends FormIconLabel {
 	private static final long serialVersionUID = 1L;
+	private Dice dice;
 	private final String PICS_PATH = "defaults"+ File.separator;
 	private int diceType = 6;
 	private int displayedDice;
@@ -75,5 +76,19 @@ public class GraphicDice extends FormIconLabel {
 			this.diceType = 6;
 		}
 		this.diceType = diceType;
+	}
+
+	/**
+	 * @return the dice
+	 */
+	public Dice getDice() {
+		return dice;
+	}
+
+	/**
+	 * @param dice the dice to set
+	 */
+	public void setDice(Dice dice) {
+		this.dice = dice;
 	}
 }
