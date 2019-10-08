@@ -1,5 +1,5 @@
 # DDManager
-DDManager is a Dungeons &amp; Dragons adventure manager that helps the user builds maps and keep track on players and more
+DDManager is a Dungeons &amp; Dragons adventures manager that helps the user builds maps and keep track on players and more
 
 # Installation
 This project has been created with Eclipse so you can just **git clone** inside an Eclipse project using EGit.
